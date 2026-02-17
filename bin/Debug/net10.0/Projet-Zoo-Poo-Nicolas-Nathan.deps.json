@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "Projet-Zoo-Poo-Nicolas-Nathan/1.0.0": {
+        "runtime": {
+          "Projet-Zoo-Poo-Nicolas-Nathan.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Projet-Zoo-Poo-Nicolas-Nathan/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
