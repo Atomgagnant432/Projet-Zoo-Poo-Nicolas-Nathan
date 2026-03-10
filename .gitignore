@@ -4,6 +4,8 @@ Thumbs.db
 *.log
 logs/
 
+bin/
+obj/
 .env
 .env.local
 .env.*.local
