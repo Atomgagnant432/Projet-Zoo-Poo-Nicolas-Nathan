@@ -4,12 +4,18 @@ Thumbs.db
 *.log
 logs/
 
+bin/
+obj/
 .env
 .env.local
 .env.*.local
 
 node_modules/
 vendor/
+
+.vscode/
+*.user
+*.suo
 
 dist/
 build/
