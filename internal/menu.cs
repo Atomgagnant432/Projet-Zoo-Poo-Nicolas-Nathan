@@ -33,6 +33,11 @@ class MenuManager
                     break;
                 case "4" :
                     Console.Clear();
+                    Console.WriteLine("");
+                    ShopMenu();
+                    break;
+                case "5" :
+                    Console.Clear();
                     InMenu = false;
                     break;
                     
@@ -147,12 +152,107 @@ public void ColdMenu()
     
     }
 
+public void ShopMenu()
+    {
+        bool InShop = true;
+        while (InShop)
+        {
+            PrintShopMenu();
+            string? action = Console.ReadLine();
+
+            switch (action)
+            {
+                case "1" :
+                    Console.Clear();
+                    Console.WriteLine("");
+                    BuyMenu();
+                    break;
+                case "2" :
+                    Console.Clear();
+                    Console.WriteLine("");
+                    break;
+                case "3" :
+                    Console.Clear();
+                    InShop = false;
+                    break;
+            }
+        }
+    
+    }
+
+
+public void BuyMenu()
+    {
+        bool InShop = true;
+        while (InShop)
+        {
+            PrintBuyMenu();
+            string? action = Console.ReadLine();
+
+            switch (action)
+            {
+                case "1" :
+                    Console.Clear();
+                    Console.WriteLine("");
+                    break;
+                case "2" :
+                    Console.Clear();
+                    Console.WriteLine("");
+                    break;
+                case "3" :
+                    Console.Clear();
+                    break;
+                case "4" :
+                    Console.Clear();
+                    break;
+                case "5" :
+                    Console.Clear();
+                    InShop = false;
+                    break;
+            }
+        }
+    
+    }
+
+    public void SellMenu()
+    {
+        bool InShop = true;
+        while (InShop)
+        {
+            PrintBuyMenu();
+            string? action = Console.ReadLine();
+
+            switch (action)
+            {
+                case "1" :
+                    Console.Clear();
+                    Console.WriteLine("");
+                    break;
+                case "2" :
+                    Console.Clear();
+                    Console.WriteLine("");
+                    break;
+                case "3" :
+                    Console.Clear();
+                    break;
+                case "4" :
+                    Console.Clear();
+                    break;
+                case "5" :
+                    Console.Clear();
+                    InShop = false;
+                    break;
+            }
+        }
+    
+    }
     public void PrintMainMenu() {
         Console.WriteLine("\n======= Choisissez une action =======\n");
         Console.WriteLine("1.Stockage");
         Console.WriteLine("2.Habitats");
         Console.WriteLine("3.Infos du zoo");
-        Console.WriteLine("4.Quitter\n");
+        Console.WriteLine("4.Magasin");
+        Console.WriteLine("5.Quitter\n");
     }
 
     public void PrintStorageMenu()
@@ -183,5 +283,34 @@ public void ColdMenu()
         Console.WriteLine("\n======= Choisissez une action =======\n");
         Console.WriteLine("1.Infos de la chambre froide");
         Console.WriteLine("2.Retour\n");
+    }
+
+    public void PrintShopMenu()
+    {
+        Console.WriteLine("\n======= Que voulez-vous faire ? =======\n");
+        Console.WriteLine("1.Acheter");
+        Console.WriteLine("2.Vendre");
+        Console.WriteLine("3.Retour");
+    
+    }
+
+    public void PrintBuyMenu()
+    {
+        Console.WriteLine("\n======= Que voulez-vous acheter ? =======\n");
+        Console.WriteLine("1.Viandes");
+        Console.WriteLine("2.Graines");
+        Console.WriteLine("3.Animaux");
+        Console.WriteLine("4.Habitats");
+        Console.WriteLine("5.Retour\n");
+    }
+
+    public void PrintSellMenu()
+    {
+        Console.WriteLine("\n======= Que voulez-vous vendre ? =======\n");
+        Console.WriteLine("1.Viandes");
+        Console.WriteLine("2.Graines");
+        Console.WriteLine("3.Animaux");
+        Console.WriteLine("4.Habitats");
+        Console.WriteLine("5.Retour\n");
     }
 }

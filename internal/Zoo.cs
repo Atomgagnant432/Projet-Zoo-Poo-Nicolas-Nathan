@@ -47,4 +47,14 @@ class Zoo
     {
         _storage.PrintSiloInfos();
     }
+
+    public void FillSilo(float amount)
+    {
+        _storage.AddSeed(amount);
+    }
+
+    public void FillCold(float amount)
+    {
+        _storage.AddMeat(amount);
+    }
 }
