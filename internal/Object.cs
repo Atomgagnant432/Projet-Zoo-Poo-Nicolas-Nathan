@@ -1,11 +1,11 @@
-class Object
+class Item
 {
-    private string _label;
-    private float _quantity;
-    private float _cost;
-    private float _sellPrice;
+    protected string _label;
+    protected float _quantity;
+    protected float _cost;
+    protected float _sellPrice;
 
-    public Object(string label, float quantity, float cost, float sellPrice)
+    public Item(string label, float quantity, float cost, float sellPrice)
     {
         _label = label;
         _quantity = quantity;
@@ -13,5 +13,23 @@ class Object
         _sellPrice = sellPrice;
     }
 
+    public Buy(Zoo zoo)
+    {
+        
+    }
 
+}
+
+
+class Viande : Item
+{
+    public Viande(string label, float quantity, float cost, float sellPrice)
+        : base (label, quantity, cost, sellPrice );
+    
+}
+
+class Graines : Item    
+{
+    public Graines(string label, float quantity, float cost, float sellPrice)
+        : base (label, quantity, cost, sellPrice );
 }
