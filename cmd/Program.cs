@@ -3,6 +3,7 @@ class Program
 {
     static string ChooseZooName()
     {
+        Console.Clear();
         Console.Write("Choisis le nom de ton Zoo : ");
         string? nomZoo = Console.ReadLine();
 
@@ -23,7 +24,10 @@ class Program
         Zoo monPremierZoo = new Zoo(80000f, 13f, 17f, nomZoo);
 
 
-        monPremierZoo.PrintZooInfos();
+        monPremierZoo.PrintZoo();
         monPremierZoo.PrintStorage();
+        
+        MenuManager Game = new MenuManager(monPremierZoo);
+        Game.MainMenu();
     }
 }

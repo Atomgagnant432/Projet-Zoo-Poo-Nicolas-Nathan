@@ -19,9 +19,14 @@ class Storage
     
     }
 
-    public void PrintStorageInfos()
+    public void PrintSiloInfos()
     {
         Console.WriteLine($"Stockage du silo actuel : {_actualSiloStorage}/{_maxSiloCapacity}");
+
+    }
+
+    public void PrintColdInfos()
+    {
         Console.WriteLine($"Stockage de la chambre froide actuel : {_actualColdChamberStorage}/{_maxColdChamberCapacity}");
 
     }
@@ -36,7 +41,7 @@ class Storage
         }else
         {
             _actualSiloStorage += amount;   
-            Console.WriteLine($"Stockage du silo actuel : {_actualSiloStorage}/{_maxSiloCapacity}");
+            Console.WriteLine($"Stockage du silo actuel : {_actualSiloStorage}/{_maxSiloCapacity}\n");
         }
     }
 
