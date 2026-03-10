@@ -15,8 +15,8 @@ dist/
 build/
 out/
 
-obj/
 bin/
+obj/
 
 __pycache__/
 *.py[cod]

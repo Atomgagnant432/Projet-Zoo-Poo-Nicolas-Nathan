@@ -17,16 +17,44 @@ class Zoo
         _storage = new Storage (200f,100f);
     }
 
+    public void PrintZoo()
+    {
+        Console.WriteLine($"\nVotre Zoo {ZooName}, vient d'être créé avec un budget initial de {_money} € ! ");
+        Console.WriteLine($"\nTarif enfant : {_childPrice} €\nTarif adulte : {_adultPrice} €");
+        
+    }
+
     public void PrintZooInfos()
     {
-        Console.WriteLine($"Votre Zoo {ZooName}, vient d'être créé avec un budget initial de {_money} € ! ");
-        Console.WriteLine($"Tarif enfant : {_childPrice} €\nTarif adulte : {_adultPrice} €");
-        
+        Console.WriteLine("\nVotre Zoo :\n");
+        Console.WriteLine($"Nom: {ZooName}");
+        Console.WriteLine($"Tarif enfant: {_childPrice}€");
+        Console.WriteLine($"Tarif adulte: {_adultPrice}€");
+        Console.WriteLine($"Budget: {_money}€");
+
     }
     
     public void PrintStorage()
     {
-        _storage.PrintStorageInfos();
+        _storage.PrintColdInfos();
+        _storage.PrintSiloInfos();
     }
-   
+   public void ColdInfos()
+    {
+        _storage.PrintColdInfos();  
+    }
+    public void SiloInfos()
+    {
+        _storage.PrintSiloInfos();
+    }
+
+    public void FillSilo(float amount)
+    {
+        _storage.AddSeed(amount);
+    }
+
+    public void FillCold(float amount)
+    {
+        _storage.AddMeat(amount);
+    }
 }
