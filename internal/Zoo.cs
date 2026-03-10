@@ -57,4 +57,15 @@ class Zoo
     {
         _storage.AddMeat(amount);
     }
+
+    public void Pay(float amount)
+    {
+        _money -= amount;
+    }
+
+    public void Buying()
+    {
+        
+    }
+
 }

@@ -4,16 +4,17 @@ class Item
     protected float _quantity;
     protected float _cost;
     protected float _sellPrice;
+    protected Zoo _zoo;
 
     public Item(string label, float quantity, float cost, float sellPrice)
     {
         _label = label;
         _quantity = quantity;
-        _cost = cost;
+        _cost = cost * quantity;
         _sellPrice = sellPrice;
     }
 
-    public Buy(Zoo zoo)
+    public virtual void Buy(Zoo zoo)
     {
         
     }
@@ -23,13 +24,61 @@ class Item
 
 class Viande : Item
 {
-    public Viande(string label, float quantity, float cost, float sellPrice)
-        : base (label, quantity, cost, sellPrice );
+    public Viande(string label, float quantity, float cost)
+        : base (label, quantity, cost)
+    {
+        
+    }
+
+    public override void Buy(Zoo zoo)
+    {
+        zoo.Pay(_cost);
+        zoo.FillCold(_quantity);
+    }
     
 }
 
-class Graines : Item    
+class Graine : Item    
 {
-    public Graines(string label, float quantity, float cost, float sellPrice)
-        : base (label, quantity, cost, sellPrice );
+    public Graine(string label, float quantity, float cost)
+        : base (label, quantity, cost)
+    {
+        
+    }
+
+    public override void Buy(Zoo zoo)
+    {
+        zoo.Pay(_cost); 
+        zoo.FillSilo(_quantity);
+    }
+}
+
+class Animal : Item    
+{
+    public Animal(string label, float quantity, float cost, float sellPrice)
+        : base (label, quantity, cost, sellPrice)
+    {
+        
+    }
+
+    public override void Buy(Zoo zoo)
+    {
+        zoo.Pay(_cost); 
+        zoo.FillSilo(_quantity);
+    }
+}
+
+class Habitat : Item    
+{
+    public Habitat(string label, float quantity, float cost, float sellPrice)
+        : base (label, quantity, cost, sellPrice)
+    {
+        
+    }
+
+    public override void Buy(Zoo zoo)
+    {
+        zoo.Pay(_cost); 
+        zoo.FillSilo(_quantity);
+    }
 }
