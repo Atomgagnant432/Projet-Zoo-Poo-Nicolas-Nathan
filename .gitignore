@@ -13,6 +13,10 @@ obj/
 node_modules/
 vendor/
 
+.vscode/
+*.user
+*.suo
+
 dist/
 build/
 out/
