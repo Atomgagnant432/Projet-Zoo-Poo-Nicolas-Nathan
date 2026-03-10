@@ -24,6 +24,6 @@ class Program
 
 
         monPremierZoo.PrintZooInfos();
-
+        monPremierZoo.PrintStorage();
     }
 }

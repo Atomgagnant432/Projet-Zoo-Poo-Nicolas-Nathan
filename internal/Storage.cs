@@ -19,6 +19,13 @@ class Storage
     
     }
 
+    public void PrintStorageInfos()
+    {
+        Console.WriteLine($"Stockage du silo actuel : {_actualSiloStorage}/{_maxSiloCapacity}");
+        Console.WriteLine($"Stockage de la chambre froide actuel : {_actualColdChamberStorage}/{_maxColdChamberCapacity}");
+
+    }
+
     public void AddSeed(float amount)
     {
         if (_actualSiloStorage + amount > _maxSiloCapacity)
