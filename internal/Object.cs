@@ -4,7 +4,6 @@ class Item
     protected float _quantity;
     protected float _cost;
     protected float _sellPrice;
-    protected Zoo _zoo;
 
     public Item(string label, float quantity, float cost, float sellPrice)
     {
@@ -12,6 +11,7 @@ class Item
         _quantity = quantity;
         _cost = cost * quantity;
         _sellPrice = sellPrice;
+        
     }
 
     public virtual void Buy(Zoo zoo)
@@ -25,7 +25,7 @@ class Item
 class Viande : Item
 {
     public Viande(string label, float quantity, float cost)
-        : base (label, quantity, cost)
+        : base (label, quantity, cost, 0)
     {
         
     }
@@ -41,7 +41,7 @@ class Viande : Item
 class Graine : Item    
 {
     public Graine(string label, float quantity, float cost)
-        : base (label, quantity, cost)
+        : base (label, quantity, cost, 0)
     {
         
     }

@@ -193,11 +193,14 @@ public void BuyMenu()
             {
                 case "1" :
                     Console.Clear();
-                    Console.WriteLine("");
+                    Console.WriteLine("====== Quelle quantité ? ======");
+                    string? quantite = Console.ReadLine(); 
                     break;
                 case "2" :
                     Console.Clear();
-                    Console.WriteLine("");
+                    Console.WriteLine("====== Quelle quantité ? ======");
+                    string? quantity = Console.ReadLine(); 
+
                     break;
                 case "3" :
                     Console.Clear();
