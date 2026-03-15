@@ -28,7 +28,6 @@ class MenuManager
                     break;
                 case "3" :
                     Console.Clear();
-                    Console.WriteLine("\nVotre Zoo :\n");
                     _zoo.PrintZooInfos();
                     break;
                 case "4" :
@@ -193,13 +192,22 @@ public void BuyMenu()
             {
                 case "1" :
                     Console.Clear();
-                    Console.WriteLine("====== Quelle quantité ? ======");
-                    string? quantite = Console.ReadLine(); 
+                    Console.WriteLine("====== Quelle quantité (kg) ? ======");
+                    
+                    float quantite = float.Parse(Console.ReadLine()!);
+
+                    Meat meat = new Meat("Viande", quantite, 5);
+                    meat.Buy(_zoo);
+
                     break;
                 case "2" :
                     Console.Clear();
-                    Console.WriteLine("====== Quelle quantité ? ======");
-                    string? quantity = Console.ReadLine(); 
+                    Console.WriteLine("====== Quelle quantité (kg) ? ======");
+
+                    float quantity = float.Parse(Console.ReadLine()!);
+
+                    Seed seed = new Seed ("Graine", quantity, 2.5f);
+                    seed.Buy(_zoo);
 
                     break;
                 case "3" :
@@ -229,19 +237,11 @@ public void BuyMenu()
             {
                 case "1" :
                     Console.Clear();
-                    Console.WriteLine("");
                     break;
                 case "2" :
                     Console.Clear();
-                    Console.WriteLine("");
                     break;
                 case "3" :
-                    Console.Clear();
-                    break;
-                case "4" :
-                    Console.Clear();
-                    break;
-                case "5" :
                     Console.Clear();
                     InShop = false;
                     break;
@@ -310,10 +310,8 @@ public void BuyMenu()
     public void PrintSellMenu()
     {
         Console.WriteLine("\n======= Que voulez-vous vendre ? =======\n");
-        Console.WriteLine("1.Viandes");
-        Console.WriteLine("2.Graines");
-        Console.WriteLine("3.Animaux");
-        Console.WriteLine("4.Habitats");
-        Console.WriteLine("5.Retour\n");
+        Console.WriteLine("1.Animaux");
+        Console.WriteLine("2.Habitats");
+        Console.WriteLine("3.Retour\n");
     }
 }

@@ -22,9 +22,9 @@ class Item
 }
 
 
-class Viande : Item
+class Meat : Item
 {
-    public Viande(string label, float quantity, float cost)
+    public Meat(string label, float quantity, float cost)
         : base (label, quantity, cost, 0)
     {
         
@@ -38,9 +38,9 @@ class Viande : Item
     
 }
 
-class Graine : Item    
+class Seed : Item    
 {
-    public Graine(string label, float quantity, float cost)
+    public Seed(string label, float quantity, float cost)
         : base (label, quantity, cost, 0)
     {
         

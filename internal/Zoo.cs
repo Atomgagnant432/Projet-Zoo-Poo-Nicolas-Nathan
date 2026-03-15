@@ -60,12 +60,17 @@ class Zoo
 
     public void Pay(float amount)
     {
-        _money -= amount;
-    }
-
-    public void Buying()
-    {
+        if (_money >= amount)
+        {
+            _money -= amount;
+            Console.WriteLine($"Vous venez de dépenser {amount}€");
+            Console.WriteLine($"Fonds restant {_money}€.");
+        }else
+        {
+            Console.WriteLine($"Fonds insufissant ! Il ne vous reste que {_money}€.");
+        }
         
     }
+
 
 }

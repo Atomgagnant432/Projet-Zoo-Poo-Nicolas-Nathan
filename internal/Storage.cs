@@ -35,9 +35,9 @@ class Storage
     {
         if (_actualSiloStorage + amount > _maxSiloCapacity)
         {
-            _actualSiloStorage = _maxSiloCapacity;
             float Waste = _actualSiloStorage + amount - _maxSiloCapacity;
-            Console.WriteLine($"Vous avez acheté trop de graines, votre silo est plein, vous perdez donc {Waste} graines...");
+            _actualSiloStorage = _maxSiloCapacity;
+            Console.WriteLine($"Vous avez acheté {Waste} de trop, votre silo est plein, vous perdez donc {Waste} kg de graines...");
         }else
         {
             _actualSiloStorage += amount;   
@@ -49,9 +49,9 @@ class Storage
     {
         if (_actualColdChamberStorage + amount > _maxColdChamberCapacity)
         {
-            _actualColdChamberStorage = _maxColdChamberCapacity;
             float Waste = _actualColdChamberStorage + amount - _maxColdChamberCapacity;
-            Console.WriteLine($"Vous avez acheté trop de viandes, votre chambre froide est pleine, vous perdez donc {Waste} viandes...");
+            _actualColdChamberStorage = _maxColdChamberCapacity;
+            Console.WriteLine($"Vous avez acheté {Waste} de trop, votre chambre froide est pleine, vous perdez donc {Waste} kg de viandes...");
         }else
         {
             _actualColdChamberStorage += amount;   
