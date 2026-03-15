@@ -32,8 +32,13 @@ class Meat : Item
 
     public override void Buy(Zoo zoo)
     {
-        zoo.Pay(_cost);
-        zoo.FillCold(_quantity);
+        if (zoo.Pay(_cost))
+        {
+            zoo.FillCold(_quantity);
+        }else
+        {
+            Console.WriteLine("Transaction annulée.");
+        }
     }
     
 }
@@ -48,8 +53,13 @@ class Seed : Item
 
     public override void Buy(Zoo zoo)
     {
-        zoo.Pay(_cost); 
-        zoo.FillSilo(_quantity);
+        if (zoo.Pay(_cost))
+        {
+            zoo.FillSilo(_quantity);
+        }else
+        {
+            Console.WriteLine("Transaction annulée.");
+        }
     }
 }
 
@@ -68,9 +78,9 @@ class Animal : Item
     }
 }
 
-class Habitat : Item    
+class Home : Item    
 {
-    public Habitat(string label, float quantity, float cost, float sellPrice)
+    public Home(string label, float quantity, float cost, float sellPrice)
         : base (label, quantity, cost, sellPrice)
     {
         

@@ -249,6 +249,27 @@ public void BuyMenu()
         }
     
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public void PrintMainMenu() {
         Console.WriteLine("\n======= Choisissez une action =======\n");
         Console.WriteLine("1.Stockage");
@@ -260,7 +281,7 @@ public void BuyMenu()
 
     public void PrintStorageMenu()
     {
-        Console.WriteLine("\n======= Choisissez une action =======\n");
+        Console.WriteLine("\n======= Stockage =======\n");
         Console.WriteLine("1.Chambre froide");
         Console.WriteLine("2.Silo");
         Console.WriteLine("3.Retour\n");
@@ -276,21 +297,21 @@ public void BuyMenu()
 
     public void PrintSiloMenu()
     {
-        Console.WriteLine("\n======= Choisissez une action =======\n");
+        Console.WriteLine("\n======= Silo =======\n");
         Console.WriteLine("1.Infos du Silo");
         Console.WriteLine("2.Retour\n");
     }
 
     public void PrintColdMenu()
     {
-        Console.WriteLine("\n======= Choisissez une action =======\n");
+        Console.WriteLine("\n======= Chambre froide =======\n");
         Console.WriteLine("1.Infos de la chambre froide");
         Console.WriteLine("2.Retour\n");
     }
 
     public void PrintShopMenu()
     {
-        Console.WriteLine("\n======= Que voulez-vous faire ? =======\n");
+        Console.WriteLine("\n======= Magasin =======\n");
         Console.WriteLine("1.Acheter");
         Console.WriteLine("2.Vendre");
         Console.WriteLine("3.Retour");
@@ -300,8 +321,8 @@ public void BuyMenu()
     public void PrintBuyMenu()
     {
         Console.WriteLine("\n======= Que voulez-vous acheter ? =======\n");
-        Console.WriteLine("1.Viandes");
-        Console.WriteLine("2.Graines");
+        Console.WriteLine("1.Viandes (5€/kg)");
+        Console.WriteLine("2.Graines (2.5€/kg)");
         Console.WriteLine("3.Animaux");
         Console.WriteLine("4.Habitats");
         Console.WriteLine("5.Retour\n");

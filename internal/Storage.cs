@@ -37,7 +37,7 @@ class Storage
         {
             float Waste = _actualSiloStorage + amount - _maxSiloCapacity;
             _actualSiloStorage = _maxSiloCapacity;
-            Console.WriteLine($"Vous avez acheté {Waste} de trop, votre silo est plein, vous perdez donc {Waste} kg de graines...");
+            Console.WriteLine($"Vous avez acheté {Waste} kg de trop, votre silo est plein, vous perdez donc {Waste} kg de graines...");
         }else
         {
             _actualSiloStorage += amount;   
@@ -51,7 +51,7 @@ class Storage
         {
             float Waste = _actualColdChamberStorage + amount - _maxColdChamberCapacity;
             _actualColdChamberStorage = _maxColdChamberCapacity;
-            Console.WriteLine($"Vous avez acheté {Waste} de trop, votre chambre froide est pleine, vous perdez donc {Waste} kg de viandes...");
+            Console.WriteLine($"Vous avez acheté {Waste} kg de trop, votre chambre froide est pleine, vous perdez donc {Waste} kg de viandes...");
         }else
         {
             _actualColdChamberStorage += amount;   

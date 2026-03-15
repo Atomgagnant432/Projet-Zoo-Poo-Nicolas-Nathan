@@ -58,16 +58,18 @@ class Zoo
         _storage.AddMeat(amount);
     }
 
-    public void Pay(float amount)
+    public bool Pay(float amount)
     {
         if (_money >= amount)
         {
             _money -= amount;
             Console.WriteLine($"Vous venez de dépenser {amount}€");
             Console.WriteLine($"Fonds restant {_money}€.");
+            return true;
         }else
         {
             Console.WriteLine($"Fonds insufissant ! Il ne vous reste que {_money}€.");
+            return false;
         }
         
     }
