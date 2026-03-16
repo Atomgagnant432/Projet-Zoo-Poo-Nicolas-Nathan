@@ -21,13 +21,13 @@ class Storage
 
     public void PrintSiloInfos()
     {
-        Console.WriteLine($"Stockage du silo actuel : {_actualSiloStorage}/{_maxSiloCapacity}");
+        Console.WriteLine($"Stockage du silo actuel : {_actualSiloStorage}kg/{_maxSiloCapacity}kg");
 
     }
 
     public void PrintColdInfos()
     {
-        Console.WriteLine($"Stockage de la chambre froide actuel : {_actualColdChamberStorage}/{_maxColdChamberCapacity}");
+        Console.WriteLine($"Stockage de la chambre froide actuel : {_actualColdChamberStorage}kg/{_maxColdChamberCapacity}kg");
 
     }
 
@@ -35,13 +35,13 @@ class Storage
     {
         if (_actualSiloStorage + amount > _maxSiloCapacity)
         {
-            _actualSiloStorage = _maxSiloCapacity;
             float Waste = _actualSiloStorage + amount - _maxSiloCapacity;
-            Console.WriteLine($"Vous avez acheté trop de graines, votre silo est plein, vous perdez donc {Waste} graines...");
+            _actualSiloStorage = _maxSiloCapacity;
+            Console.WriteLine($"Vous avez acheté {Waste} kg de trop, votre silo est plein, vous perdez donc {Waste} kg de graines...");
         }else
         {
             _actualSiloStorage += amount;   
-            Console.WriteLine($"Stockage du silo actuel : {_actualSiloStorage}/{_maxSiloCapacity}\n");
+            PrintSiloInfos();
         }
     }
 
@@ -49,13 +49,13 @@ class Storage
     {
         if (_actualColdChamberStorage + amount > _maxColdChamberCapacity)
         {
-            _actualColdChamberStorage = _maxColdChamberCapacity;
             float Waste = _actualColdChamberStorage + amount - _maxColdChamberCapacity;
-            Console.WriteLine($"Vous avez acheté trop de viandes, votre chambre froide est pleine, vous perdez donc {Waste} viandes...");
+            _actualColdChamberStorage = _maxColdChamberCapacity;
+            Console.WriteLine($"Vous avez acheté {Waste} kg de trop, votre chambre froide est pleine, vous perdez donc {Waste} kg de viandes...");
         }else
         {
             _actualColdChamberStorage += amount;   
-            Console.WriteLine($"Stockage de la chambre froide actuel : {_actualColdChamberStorage}/{_maxColdChamberCapacity}");
+            PrintColdInfos();
         }
     }
 }

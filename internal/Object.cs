@@ -4,7 +4,6 @@ class Item
     protected float _quantity;
     protected float _cost;
     protected float _sellPrice;
-    protected Zoo _zoo;
 
     public Item(string label, float quantity, float cost, float sellPrice)
     {
@@ -12,9 +11,9 @@ class Item
         _quantity = quantity;
         _cost = cost * quantity;
         _sellPrice = sellPrice;
+        
     }
 
-<<<<<<< Updated upstream
     public virtual void Buy(Zoo zoo)
     {
         
@@ -23,34 +22,44 @@ class Item
 }
 
 
-class Viande : Item
+class Meat : Item
 {
-    public Viande(string label, float quantity, float cost)
-        : base (label, quantity, cost)
+    public Meat(string label, float quantity, float cost)
+        : base (label, quantity, cost, 0)
     {
         
     }
 
     public override void Buy(Zoo zoo)
     {
-        zoo.Pay(_cost);
-        zoo.FillCold(_quantity);
+        if (zoo.Pay(_cost))
+        {
+            zoo.FillCold(_quantity);
+        }else
+        {
+            Console.WriteLine("Transaction annulée.");
+        }
     }
     
 }
 
-class Graine : Item    
+class Seed : Item    
 {
-    public Graine(string label, float quantity, float cost)
-        : base (label, quantity, cost)
+    public Seed(string label, float quantity, float cost)
+        : base (label, quantity, cost, 0)
     {
         
     }
 
     public override void Buy(Zoo zoo)
     {
-        zoo.Pay(_cost); 
-        zoo.FillSilo(_quantity);
+        if (zoo.Pay(_cost))
+        {
+            zoo.FillSilo(_quantity);
+        }else
+        {
+            Console.WriteLine("Transaction annulée.");
+        }
     }
 }
 
@@ -69,9 +78,9 @@ class Animal : Item
     }
 }
 
-class Habitat : Item    
+class Home : Item    
 {
-    public Habitat(string label, float quantity, float cost, float sellPrice)
+    public Home(string label, float quantity, float cost, float sellPrice)
         : base (label, quantity, cost, sellPrice)
     {
         
@@ -82,6 +91,4 @@ class Habitat : Item
         zoo.Pay(_cost); 
         zoo.FillSilo(_quantity);
     }
-=======
->>>>>>> Stashed changes
 }

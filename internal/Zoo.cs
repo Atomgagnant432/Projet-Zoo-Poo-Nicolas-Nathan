@@ -6,6 +6,9 @@ class Zoo
     private float _adultPrice;
     public string ZooName { get; private set; }
 
+    private List<Enclosure>? enclosures;
+    private List<Animals>? animals;
+
     private Storage _storage;
  
     public Zoo(float money, float childPrice, float adultPrice, string zooName)
@@ -58,14 +61,30 @@ class Zoo
         _storage.AddMeat(amount);
     }
 
-    public void Pay(float amount)
+    public bool Pay(float amount)
     {
-        _money -= amount;
+        if (_money >= amount)
+        {
+            _money -= amount;
+            Console.WriteLine($"Vous venez de dépenser {amount}€");
+            Console.WriteLine($"Fonds restant {_money}€.");
+            return true;
+        }else
+        {
+            Console.WriteLine($"Fonds insufissant ! Il ne vous reste que {_money}€.");
+            return false;
+        }
+        
     }
 
-    public void Buying()
+    public void AddEnclosure(Enclosure enclosure)
     {
-        
+        enclosures.Add(enclosure); 
+    }
+
+    public void AddAnimal(Animals animal)
+    {
+        animals.Add(animal);
     }
 
 }

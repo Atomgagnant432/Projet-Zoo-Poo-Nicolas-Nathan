@@ -28,7 +28,6 @@ class MenuManager
                     break;
                 case "3" :
                     Console.Clear();
-                    Console.WriteLine("\nVotre Zoo :\n");
                     _zoo.PrintZooInfos();
                     break;
                 case "4" :
@@ -193,11 +192,23 @@ public void BuyMenu()
             {
                 case "1" :
                     Console.Clear();
-                    Console.WriteLine("");
+                    Console.WriteLine("====== Quelle quantité (kg) ? ======");
+                    
+                    float quantite = float.Parse(Console.ReadLine()!);
+
+                    Meat meat = new Meat("Viande", quantite, 5);
+                    meat.Buy(_zoo);
+
                     break;
                 case "2" :
                     Console.Clear();
-                    Console.WriteLine("");
+                    Console.WriteLine("====== Quelle quantité (kg) ? ======");
+
+                    float quantity = float.Parse(Console.ReadLine()!);
+
+                    Seed seed = new Seed ("Graine", quantity, 2.5f);
+                    seed.Buy(_zoo);
+
                     break;
                 case "3" :
                     Console.Clear();
@@ -226,19 +237,11 @@ public void BuyMenu()
             {
                 case "1" :
                     Console.Clear();
-                    Console.WriteLine("");
                     break;
                 case "2" :
                     Console.Clear();
-                    Console.WriteLine("");
                     break;
                 case "3" :
-                    Console.Clear();
-                    break;
-                case "4" :
-                    Console.Clear();
-                    break;
-                case "5" :
                     Console.Clear();
                     InShop = false;
                     break;
@@ -246,6 +249,27 @@ public void BuyMenu()
         }
     
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public void PrintMainMenu() {
         Console.WriteLine("\n======= Choisissez une action =======\n");
         Console.WriteLine("1.Stockage");
@@ -257,7 +281,7 @@ public void BuyMenu()
 
     public void PrintStorageMenu()
     {
-        Console.WriteLine("\n======= Choisissez une action =======\n");
+        Console.WriteLine("\n======= Stockage =======\n");
         Console.WriteLine("1.Chambre froide");
         Console.WriteLine("2.Silo");
         Console.WriteLine("3.Retour\n");
@@ -273,21 +297,21 @@ public void BuyMenu()
 
     public void PrintSiloMenu()
     {
-        Console.WriteLine("\n======= Choisissez une action =======\n");
+        Console.WriteLine("\n======= Silo =======\n");
         Console.WriteLine("1.Infos du Silo");
         Console.WriteLine("2.Retour\n");
     }
 
     public void PrintColdMenu()
     {
-        Console.WriteLine("\n======= Choisissez une action =======\n");
+        Console.WriteLine("\n======= Chambre froide =======\n");
         Console.WriteLine("1.Infos de la chambre froide");
         Console.WriteLine("2.Retour\n");
     }
 
     public void PrintShopMenu()
     {
-        Console.WriteLine("\n======= Que voulez-vous faire ? =======\n");
+        Console.WriteLine("\n======= Magasin =======\n");
         Console.WriteLine("1.Acheter");
         Console.WriteLine("2.Vendre");
         Console.WriteLine("3.Retour");
@@ -297,8 +321,8 @@ public void BuyMenu()
     public void PrintBuyMenu()
     {
         Console.WriteLine("\n======= Que voulez-vous acheter ? =======\n");
-        Console.WriteLine("1.Viandes");
-        Console.WriteLine("2.Graines");
+        Console.WriteLine("1.Viandes (5€/kg)");
+        Console.WriteLine("2.Graines (2.5€/kg)");
         Console.WriteLine("3.Animaux");
         Console.WriteLine("4.Habitats");
         Console.WriteLine("5.Retour\n");
@@ -307,10 +331,8 @@ public void BuyMenu()
     public void PrintSellMenu()
     {
         Console.WriteLine("\n======= Que voulez-vous vendre ? =======\n");
-        Console.WriteLine("1.Viandes");
-        Console.WriteLine("2.Graines");
-        Console.WriteLine("3.Animaux");
-        Console.WriteLine("4.Habitats");
-        Console.WriteLine("5.Retour\n");
+        Console.WriteLine("1.Animaux");
+        Console.WriteLine("2.Habitats");
+        Console.WriteLine("3.Retour\n");
     }
 }

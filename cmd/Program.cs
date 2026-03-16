@@ -4,12 +4,12 @@ class Program
     static string ChooseZooName()
     {
         Console.Clear();
-        Console.Write("Choisis le nom de ton Zoo : ");
+        Console.Write("Nom du Zoo : ");
         string? nomZoo = Console.ReadLine();
 
         while (string.IsNullOrWhiteSpace(nomZoo))
         {
-            Console.Write("Nom invalide. Re-tape le nom de ton Zoo : ");
+            Console.Write("Nom invalide. Re-tapez le nom de votre Zoo : ");
             nomZoo = Console.ReadLine();
         }
         return nomZoo;
@@ -30,4 +30,5 @@ class Program
         MenuManager Game = new MenuManager(monPremierZoo);
         Game.MainMenu();
     }
+    
 }
