@@ -14,6 +14,7 @@ class Item
         _sellPrice = sellPrice;
     }
 
+<<<<<<< Updated upstream
     public virtual void Buy(Zoo zoo)
     {
         
@@ -81,4 +82,6 @@ class Habitat : Item
         zoo.Pay(_cost); 
         zoo.FillSilo(_quantity);
     }
+=======
+>>>>>>> Stashed changes
 }
