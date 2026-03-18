@@ -6,8 +6,8 @@ class Zoo
     private float _adultPrice;
     public string ZooName { get; private set; }
 
-    private List<Enclosure>? enclosures;
-    private List<Animals>? animals;
+    private List<Enclosure>? _enclosures;
+    private List<Animals>? _animals;
 
     private Storage _storage;
  
@@ -17,7 +17,9 @@ class Zoo
         _childPrice = childPrice;
         _adultPrice = adultPrice;
         ZooName = zooName;
-        _storage = new Storage (200f,100f);
+        _storage = new Storage();
+        _enclosures = new List<Enclosure>();
+        _animals = new List<Animals>();
     }
 
     public void PrintZoo()
@@ -79,12 +81,12 @@ class Zoo
 
     public void AddEnclosure(Enclosure enclosure)
     {
-        enclosures.Add(enclosure); 
+        _enclosures.Add(enclosure); 
     }
 
     public void AddAnimal(Animals animal)
     {
-        animals.Add(animal);
+        _animals.Add(animal);
     }
 
 }

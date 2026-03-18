@@ -63,31 +63,3 @@ class Seed : Item
     }
 }
 
-class Animal : Item    
-{
-    public Animal(string label, float quantity, float cost, float sellPrice)
-        : base (label, quantity, cost, sellPrice)
-    {
-        
-    }
-
-    public override void Buy(Zoo zoo)
-    {
-        zoo.Pay(_cost); 
-    }
-}
-
-class Home : Item    
-{
-    public Home(string label, float quantity, float cost, float sellPrice)
-        : base (label, quantity, cost, sellPrice)
-    {
-        
-    }
-
-    public override void Buy(Zoo zoo)
-    {
-        zoo.Pay(_cost); 
-        
-    }
-}

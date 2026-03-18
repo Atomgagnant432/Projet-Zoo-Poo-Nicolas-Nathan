@@ -37,12 +37,13 @@ class Animals
     {
         return "";
     }
+
 }
 
 class Tiger : Animals
 {
-    public Tiger(string name, string sexe, float dayliFoodNeed, float buyPrice, float sellPrice)
-        : base(name, "Tigre", "Carnivore", dayliFoodNeed, 0f, 100, 25f, sexe, 0f, buyPrice, sellPrice, 30f, 5f)
+    public Tiger(string name, string sexe, int age,float dayliFoodNeed, float buyPrice, float sellPrice)
+        : base(name, "Tigre", "Carnivore", dayliFoodNeed, 0f, 100, 25f, sexe, age, buyPrice, sellPrice, 30f, 5f)
     {
     }
 
@@ -52,18 +53,20 @@ class Tiger : Animals
         string? sexe = Console.ReadLine();
         if (sexe == "1")
         {
-            sexe = "Mâle";
+            sexe = "mâle";
         }else if (sexe == "2")
         {
-            sexe = "Femelle";
+            sexe = "femelle";
         }
         return sexe;
     }
+
+    
 }
 
 class Eagle : Animals
 {
-    public Eagle(string name, float dayliFoodNeed, string sexe, float buyPrice, float sellPrice)
+    public Eagle(string name, float dayliFoodNeed, string sexe,int age, float buyPrice, float sellPrice)
         : base(name, "Aigle", "Carnivore", dayliFoodNeed ,0f, 100, 25f, sexe, 0f, buyPrice, sellPrice, 15f, 7f)
     {
     }
@@ -74,10 +77,10 @@ class Eagle : Animals
         string? sexe = Console.ReadLine();
         if (sexe == "1")
         {
-            sexe = "Mâle";
+            sexe = "mâle";
         }else if (sexe == "2")
         {
-            sexe = "Femelle";
+            sexe = "femelle";
         }
         return sexe;
     }
@@ -85,7 +88,7 @@ class Eagle : Animals
 
 class Chicken : Animals
 {
-    public Chicken(string name, string sexe, float dayliFoodNeed, float buyPrice, float sellPrice)
+    public Chicken(string name, string sexe, float dayliFoodNeed,int age, float buyPrice, float sellPrice)
         : base(name, "Poulet", "Végétalien", dayliFoodNeed, 0f, 100, 15f, sexe, 0f, buyPrice, sellPrice, 2f, 0.5f)
     {
     }
@@ -96,10 +99,10 @@ class Chicken : Animals
         string? sexe = Console.ReadLine();
         if (sexe == "1")
         {
-            sexe = "Mâle";
+            sexe = "coq";
         }else if (sexe == "2")
         {
-            sexe = "Femelle";
+            sexe = "poule";
         }
         return sexe;
     }

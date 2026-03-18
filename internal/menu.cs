@@ -13,31 +13,29 @@ class MenuManager
         bool InMenu = true;
         while (InMenu)
         {
+            Console.Clear();
+
             PrintMainMenu();
             string? action = Console.ReadLine();
             switch (action)
             {
+                
                 case "1" :
-                    Console.Clear();
                     Console.WriteLine("\nVous entrez dans le stock\n");
                     StorageMenu();
                     break;
                 case "2" :
-                    Console.Clear();
                     Console.WriteLine("\nChoisissez un habitat\n");
                     HomeMenu();
                     break;
                 case "3" :
-                    Console.Clear();
                     _zoo.PrintZooInfos();
                     break;
                 case "4" :
-                    Console.Clear();
                     Console.WriteLine("");
                     ShopMenu();
                     break;
                 case "5" :
-                    Console.Clear();
                     InMenu = false;
                     break;
                     
@@ -51,23 +49,22 @@ class MenuManager
         bool InStorage = true;
         while (InStorage)
         {
+            Console.Clear();
+
             PrintStorageMenu();
             string? action = Console.ReadLine();
 
             switch (action)
             {
                 case "1" :
-                    Console.Clear();
                     Console.WriteLine("\nVous entrez dans la chambre froide\n");
                     ColdMenu();
                     break;
                 case "2" :
-                    Console.Clear();
                     Console.WriteLine("\nVous entrez dans le silo\n");
                     SiloMenu();
                     break;
                 case "3" :
-                    Console.Clear();
                     InStorage = false;
                     break;
             }
@@ -81,17 +78,16 @@ public void SiloMenu()
         
         while (InSilo)
         {
+
             PrintSiloMenu();
             string? action = Console.ReadLine();
 
             switch (action)
             {
                 case "1" :
-                    Console.Clear();
                     _zoo.SiloInfos();
                     break;
                 case "2" :
-                    Console.Clear();
                     InSilo = false;
                     break;
             }
@@ -105,17 +101,16 @@ public void ColdMenu()
         
         while (InCold)
         {
+
             PrintColdMenu();
             string? action = Console.ReadLine();
 
             switch (action)
             {
                 case "1" :
-                    Console.Clear();
                     _zoo.ColdInfos();
                     break;
                 case "2" :
-                    Console.Clear();
                     InCold = false;
                     break;
             }
@@ -130,6 +125,8 @@ public void ColdMenu()
         bool InHome = true;
         while (InHome)
         {
+            Console.Clear();
+
             PrintHomeMenu();
             string? action = Console.ReadLine();
 
@@ -144,7 +141,6 @@ public void ColdMenu()
                     Console.WriteLine("\nVous entrez dans l'habitat 2\n");
                     break;
                 case "3" :
-                    Console.Clear();
                     InHome = false;
                     break;
             }
@@ -157,22 +153,21 @@ public void ShopMenu()
         bool InShop = true;
         while (InShop)
         {
+            Console.Clear();
+
             PrintShopMenu();
             string? action = Console.ReadLine();
 
             switch (action)
             {
                 case "1" :
-                    Console.Clear();
                     Console.WriteLine("");
                     BuyMenu();
                     break;
                 case "2" :
-                    Console.Clear();
                     Console.WriteLine("");
                     break;
                 case "3" :
-                    Console.Clear();
                     InShop = false;
                     break;
             }
@@ -186,6 +181,7 @@ public void BuyMenu()
         bool InShop = true;
         while (InShop)
         {
+
             PrintBuyMenu();
             string? action = Console.ReadLine();
 
@@ -212,14 +208,11 @@ public void BuyMenu()
 
                     break;
                 case "3" :
-                    Console.Clear();
                     BuyAnimalMenu();
                     break;
                 case "4" :
-                    Console.Clear();
                     break;
                 case "5" :
-                    Console.Clear();
                     InShop = false;
                     break;
             }
@@ -232,19 +225,18 @@ public void BuyMenu()
         bool InShop = true;
         while (InShop)
         {
+            Console.Clear();
+
             PrintBuyMenu();
             string? action = Console.ReadLine();
 
             switch (action)
             {
                 case "1" :
-                    Console.Clear();
                     break;
                 case "2" :
-                    Console.Clear();
                     break;
                 case "3" :
-                    Console.Clear();
                     InShop = false;
                     break;
             }
@@ -257,25 +249,23 @@ public void BuyMenu()
         bool InShop = true;
         while (InShop)
         {
+            Console.Clear();
+
             PrintBuyAnimals();
             string? action = Console.ReadLine();
 
             switch (action)
             {
                 case "1" :
-                    Console.Clear();
                     BuyTigerMenu();
                     break;
                 case "2" :
-                    Console.Clear();
                     BuyEagleMenu();
                     break;
                 case "3" :
-                    Console.Clear();
                     BuyChickenMenu();
                     break;
                 case "4" :
-                    Console.Clear();
                     InShop = false;
                     break;
             }
@@ -287,34 +277,49 @@ public void BuyMenu()
         bool InShop = true;
         while (InShop)
         {
+            Console.Clear();
+
             PrintBuyTigre();
             string? action = Console.ReadLine();
+
+            float BuyPrice = 0f;
+            float SellPrice = 0f;
+            int Age = 0;
 
             switch (action)
             {
                 case "1" :
-                    Console.Clear();
-                    Console.WriteLine("Nommez le tigre :");
-                    string? name = Console.ReadLine();
-                    Tiger tigre = new Tiger(name,"mâle",12,3000f,1500f);
+                    BuyPrice = 3000f;
+                    SellPrice = 1500f;
+                    Age = 6;
                     break;
                 case "2" :
-                    Console.Clear();
-                    Console.WriteLine("Nommez le tigre :");
-                    string? name2 = Console.ReadLine();
-                    Tiger tigre2 = new Tiger(name2,"mâle",12,3000f,1500f);
+                    BuyPrice = 120000f;
+                    SellPrice = 60000f;
+                    Age = 48;
                     break;
                 case "3" :
-                    Console.Clear();
-                    Console.WriteLine("Nommez le tigre :");
-                    string? name3 = Console.ReadLine();
-                    Tiger tigre3 = new Tiger(name3,"mâle",12,3000f,1500f);
+                    BuyPrice = 60000f;
+                    SellPrice = 10000f;
+                    Age = 168;
                     break;
                 case "4" :
-                    Console.Clear();
                     InShop = false;
                     break;
             }
+            string? name = "";
+            string? sexe = "";
+            Tiger tigre = new Tiger(name,sexe,Age,12,BuyPrice,SellPrice);
+            Console.WriteLine("Nommez le tigre :");
+            name = Console.ReadLine();
+            sexe = tigre.ChooseSexe();
+            tigre.Name = name;
+            tigre.Sexe = sexe;
+            if (_zoo.Pay(tigre.BuyPrice))
+            {
+                _zoo.AddAnimal(tigre);
+            }
+            
         }
     }
 
