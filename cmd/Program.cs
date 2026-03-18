@@ -5,6 +5,7 @@
         Console.Clear();
         Console.Write("Nom du Zoo : ");
         string? nomZoo = Console.ReadLine();
+        Console.Clear();
 
         while (string.IsNullOrWhiteSpace(nomZoo))
         {
@@ -18,7 +19,9 @@
 
     static void Main(string[] args)
     {
-        Zoo zoo = new Zoo(80000,13,17,"le Zoo de nathan");
+        string zooName = ChooseZooName();
+        Zoo zoo = new Zoo(80000,13,17,zooName);
+        zoo.PrintZoo();
         MenuManager menu = new MenuManager(zoo);
 
         int numeroTour = 0;
@@ -28,8 +31,7 @@
         {
             // 1. Afficher le mois avant chaque menu
             Month moisActuel = Month.GetCurrentMonth(numeroTour);
-            Console.Clear();
-            Console.WriteLine($"Mois {moisActuel.Number}/12  |  Tour {numeroTour}");
+            Console.WriteLine($"\nMois {moisActuel.Number}/12  |  Tour {numeroTour}");
             if (moisActuel.HighSeason)
                 Console.WriteLine("Haute saison !");
             Console.WriteLine("─────────────────────────────");

@@ -13,7 +13,6 @@ class MenuManager
         bool InMenu = true;
         while (InMenu)
         {
-            Console.Clear();
 
             PrintMainMenu();
             string? action = Console.ReadLine();
@@ -21,21 +20,25 @@ class MenuManager
             {
                 
                 case "1" :
+                    Console.Clear();
                     Console.WriteLine("\nVous entrez dans le stock\n");
                     StorageMenu();
                     break;
                 case "2" :
+                    Console.Clear();
                     Console.WriteLine("\nChoisissez un habitat\n");
                     HomeMenu();
                     break;
                 case "3" :
+                    Console.Clear();
                     _zoo.PrintZooInfos();
                     break;
                 case "4" :
-                    Console.WriteLine("");
+                    Console.Clear();
                     ShopMenu();
                     break;
                 case "5" :
+                    Console.Clear();
                     InMenu = false;
                     break;
                     
@@ -49,22 +52,23 @@ class MenuManager
         bool InStorage = true;
         while (InStorage)
         {
-            Console.Clear();
-
             PrintStorageMenu();
             string? action = Console.ReadLine();
 
             switch (action)
             {
                 case "1" :
+                    Console.Clear();
                     Console.WriteLine("\nVous entrez dans la chambre froide\n");
                     ColdMenu();
                     break;
                 case "2" :
+                    Console.Clear();
                     Console.WriteLine("\nVous entrez dans le silo\n");
                     SiloMenu();
                     break;
                 case "3" :
+                    Console.Clear();
                     InStorage = false;
                     break;
             }
@@ -85,9 +89,11 @@ public void SiloMenu()
             switch (action)
             {
                 case "1" :
+                    Console.Clear();
                     _zoo.SiloInfos();
                     break;
                 case "2" :
+                    Console.Clear();
                     InSilo = false;
                     break;
             }
@@ -108,9 +114,11 @@ public void ColdMenu()
             switch (action)
             {
                 case "1" :
+                    Console.Clear();
                     _zoo.ColdInfos();
                     break;
                 case "2" :
+                    Console.Clear();
                     InCold = false;
                     break;
             }
@@ -141,6 +149,7 @@ public void ColdMenu()
                     Console.WriteLine("\nVous entrez dans l'habitat 2\n");
                     break;
                 case "3" :
+                    Console.Clear();
                     InHome = false;
                     break;
             }
@@ -153,7 +162,6 @@ public void ShopMenu()
         bool InShop = true;
         while (InShop)
         {
-            Console.Clear();
 
             PrintShopMenu();
             string? action = Console.ReadLine();
@@ -161,13 +169,16 @@ public void ShopMenu()
             switch (action)
             {
                 case "1" :
+                Console.Clear();
                     Console.WriteLine("");
                     BuyMenu();
                     break;
                 case "2" :
+                Console.Clear();
                     Console.WriteLine("");
                     break;
                 case "3" :
+                    Console.Clear();
                     InShop = false;
                     break;
             }
