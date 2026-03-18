@@ -10,7 +10,17 @@ class Animals
     public float Age;
     public float BuyPrice;
     public float SellPrice;
-    
+
+    public void PasserUnTour()
+    {
+        ActualHunger += 10f;        // l'animal a plus faim chaque tour
+
+        if (ActualHunger >= MaxHunger)
+        {
+            LifeTime -= 1f;         // il vieillit/dépérit s'il est affamé
+            ActualHunger = MaxHunger; // on plafonne à MaxHunger
+        }
+    }
 }
 
 

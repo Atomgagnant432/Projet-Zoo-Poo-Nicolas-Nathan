@@ -7,6 +7,16 @@ class Zoo
     public string ZooName { get; private set; }
 
     private Storage _storage;
+    private List<Animals> _animals;
+    public void PasserUnTour()
+    {
+        foreach (Animals animal in _animals)
+        {
+            animal.PasserUnTour();
+        }
+
+        _money -= _animals.Count * 50f; // coût d'entretien
+    }
  
     public Zoo(float money, float childPrice, float adultPrice, string zooName)
     {
@@ -15,6 +25,7 @@ class Zoo
         _adultPrice = adultPrice;
         ZooName = zooName;
         _storage = new Storage (200f,100f);
+         _animals = new List<Animals>();
     }
 
     public void PrintZoo()
