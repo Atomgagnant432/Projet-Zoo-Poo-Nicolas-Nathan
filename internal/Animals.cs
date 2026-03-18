@@ -1,17 +1,44 @@
 class Animals
 {
-    public string Name;
-    public string species;
-    public string FoodType;
+    public string? Name;
+    public string? Species;
+    public string? FoodType;
+    public float DayliFoodNeed;
     public float ActualHunger;
     public int MaxHunger;
     public float LifeTime;
-    public string Sexe;
+    public string? Sexe;
     public float Age;
     public float BuyPrice;
     public float SellPrice;
+    public float HighSaisonVisit;
+    public float DownSaisonVisit;
 
-    public void PasserUnTour()
+
+    public Animals(string name, string species, string foodType, float dayliFoodNeed, float actualHunger, int maxHunger, float lifeTime, string sexe, float age, float buyPrice, float sellPrice, float highSaisonVisit, float downSaisonVisit)
+    {
+        Name = name;
+        Species = species;
+        FoodType = foodType;
+        DayliFoodNeed = dayliFoodNeed;
+        ActualHunger = actualHunger;
+        MaxHunger = maxHunger;
+        LifeTime = lifeTime;
+        Sexe = sexe;
+        Age = age;
+        BuyPrice = buyPrice;
+        SellPrice = sellPrice;
+        HighSaisonVisit = highSaisonVisit;
+        DownSaisonVisit = downSaisonVisit;
+        
+    }
+
+    public virtual string ChooseSexe()
+    {
+        return "";
+    }
+    
+    public virtual void PasserUnTour()
     {
         ActualHunger += 10f;        // l'animal a plus faim chaque tour
 
@@ -24,54 +51,72 @@ class Animals
 }
 
 
+    
+
 class Tiger : Animals
 {
-    public Tiger(string name, string sexe)
+    public Tiger(string name, string sexe, int age,float dayliFoodNeed, float buyPrice, float sellPrice)
+        : base(name, "Tigre", "Carnivore", dayliFoodNeed, 0f, 100, 25f, sexe, age, buyPrice, sellPrice, 30f, 5f)
     {
-        Name = name;
-        species = "Tiger";
-        FoodType = "Carnivore";
-        ActualHunger = 0f;
-        MaxHunger = 100;
-        LifeTime = 25f;
-        Sexe = sexe;
-        BuyPrice = buyPrice;
-        SellPrice = sellPrice;
     }
-}
 
+    public override string ChooseSexe()
+    {
+        Console.WriteLine("Voulez-vous un mâle (1) ou une femelle (2) ?");
+        string? sexe = Console.ReadLine();
+        if (sexe == "1")
+        {
+            sexe = "mâle";
+        }else if (sexe == "2")
+        {
+            sexe = "femelle";
+        }
+        return sexe;
+    }
+
+    
+}
 
 class Eagle : Animals
 {
-     public Eagle(string name, string sexe)
+    public Eagle(string name, float dayliFoodNeed, string sexe,int age, float buyPrice, float sellPrice)
+        : base(name, "Aigle", "Carnivore", dayliFoodNeed ,0f, 100, 25f, sexe, 0f, buyPrice, sellPrice, 15f, 7f)
     {
-        Name = name;
-        species = "Eagle";
-        FoodType = "Carnivore";
-        ActualHunger = 0f;
-        MaxHunger = 100;
-        LifeTime = 25f;
-        Sexe = sexe;
-        BuyPrice = buyPrice;
-        SellPrice = sellPrice;
     }
-    
+
+    public override string ChooseSexe()
+    {
+        Console.WriteLine("Voulez-vous un mâle (1) ou une femelle (2) ?");
+        string? sexe = Console.ReadLine();
+        if (sexe == "1")
+        {
+            sexe = "mâle";
+        }else if (sexe == "2")
+        {
+            sexe = "femelle";
+        }
+        return sexe;
+    }
 }
 
 class Chicken : Animals
-{ 
-    public Chicken(string name, string sexe)
+{
+    public Chicken(string name, string sexe, float dayliFoodNeed,int age, float buyPrice, float sellPrice)
+        : base(name, "Poulet", "Végétalien", dayliFoodNeed, 0f, 100, 15f, sexe, 0f, buyPrice, sellPrice, 2f, 0.5f)
     {
-        Name = name;
-        species = "Chicken";
-        FoodType = "omnivorous";
-        ActualHunger = 0f;
-        MaxHunger = 100;
-        LifeTime = 15f;
-        Sexe = sexe;
-        BuyPrice = buyPrice;
-        SellPrice = sellPrice;
     }
-    
-}
 
+    public override string ChooseSexe()
+    {
+        Console.WriteLine("Voulez-vous un mâle (1) ou une femelle (2) ?");
+        string? sexe = Console.ReadLine();
+        if (sexe == "1")
+        {
+            sexe = "coq";
+        }else if (sexe == "2")
+        {
+            sexe = "poule";
+        }
+        return sexe;
+    }
+}

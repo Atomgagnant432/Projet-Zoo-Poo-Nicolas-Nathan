@@ -1,5 +1,21 @@
 ﻿class Program
 {
+    static string ChooseZooName()
+    {
+        Console.Clear();
+        Console.Write("Nom du Zoo : ");
+        string? nomZoo = Console.ReadLine();
+
+        while (string.IsNullOrWhiteSpace(nomZoo))
+        {
+            Console.Write("Nom invalide. Re-tapez le nom de votre Zoo : ");
+            nomZoo = Console.ReadLine();
+        }
+        return nomZoo;
+    }
+
+
+
     static void Main(string[] args)
     {
         Zoo zoo = new Zoo(80000,13,17,"le Zoo de nathan");
@@ -38,4 +54,5 @@
 
         Console.WriteLine("Merci d'avoir joué !");
     }
+    
 }

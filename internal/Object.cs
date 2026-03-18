@@ -9,11 +9,12 @@ class Item
     {
         _label = label;
         _quantity = quantity;
-        _cost = cost;
+        _cost = cost * quantity;
         _sellPrice = sellPrice;
+        
     }
 
-    public Buy(Zoo zoo)
+    public virtual void Buy(Zoo zoo)
     {
         
     }
@@ -21,15 +22,44 @@ class Item
 }
 
 
-class Viande : Item
+class Meat : Item
 {
-    public Viande(string label, float quantity, float cost, float sellPrice)
-        : base (label, quantity, cost, sellPrice );
+    public Meat(string label, float quantity, float cost)
+        : base (label, quantity, cost, 0)
+    {
+        
+    }
+
+    public override void Buy(Zoo zoo)
+    {
+        if (zoo.Pay(_cost))
+        {
+            zoo.FillCold(_quantity);
+        }else
+        {
+            Console.WriteLine("Transaction annulée.");
+        }
+    }
     
 }
 
-class Graines : Item    
+class Seed : Item    
 {
-    public Graines(string label, float quantity, float cost, float sellPrice)
-        : base (label, quantity, cost, sellPrice );
+    public Seed(string label, float quantity, float cost)
+        : base (label, quantity, cost, 0)
+    {
+        
+    }
+
+    public override void Buy(Zoo zoo)
+    {
+        if (zoo.Pay(_cost))
+        {
+            zoo.FillSilo(_quantity);
+        }else
+        {
+            Console.WriteLine("Transaction annulée.");
+        }
+    }
 }
+

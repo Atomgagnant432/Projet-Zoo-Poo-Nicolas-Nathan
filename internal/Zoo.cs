@@ -6,8 +6,9 @@ class Zoo
     private float _adultPrice;
     public string ZooName { get; private set; }
 
+    private List<Enclosure>? _enclosures;
+    private List<Animals>? _animals;
     private Storage _storage;
-    private List<Animals> _animals;
     public void PasserUnTour()
     {
         foreach (Animals animal in _animals)
@@ -24,8 +25,9 @@ class Zoo
         _childPrice = childPrice;
         _adultPrice = adultPrice;
         ZooName = zooName;
-        _storage = new Storage (200f,100f);
-         _animals = new List<Animals>();
+        _storage = new Storage();
+        _enclosures = new List<Enclosure>();
+        _animals = new List<Animals>();
     }
 
     public void PrintZoo()
@@ -68,4 +70,31 @@ class Zoo
     {
         _storage.AddMeat(amount);
     }
+
+    public bool Pay(float amount)
+    {
+        if (_money >= amount)
+        {
+            _money -= amount;
+            Console.WriteLine($"Vous venez de dépenser {amount}€");
+            Console.WriteLine($"Fonds restant {_money}€.");
+            return true;
+        }else
+        {
+            Console.WriteLine($"Fonds insufissant ! Il ne vous reste que {_money}€.");
+            return false;
+        }
+        
+    }
+
+    public void AddEnclosure(Enclosure enclosure)
+    {
+        _enclosures.Add(enclosure); 
+    }
+
+    public void AddAnimal(Animals animal)
+    {
+        _animals.Add(animal);
+    }
+
 }
