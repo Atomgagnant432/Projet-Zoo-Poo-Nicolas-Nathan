@@ -2,6 +2,7 @@
 class MenuManager 
 {
     private Zoo _zoo;
+
     public MenuManager(Zoo zoo)
     {
         _zoo = zoo;
@@ -212,6 +213,7 @@ public void BuyMenu()
                     break;
                 case "3" :
                     Console.Clear();
+                    BuyAnimalMenu();
                     break;
                 case "4" :
                     Console.Clear();
@@ -250,7 +252,125 @@ public void BuyMenu()
     
     }
 
+    public void BuyAnimalMenu()
+    {
+        bool InShop = true;
+        while (InShop)
+        {
+            PrintBuyAnimals();
+            string? action = Console.ReadLine();
 
+            switch (action)
+            {
+                case "1" :
+                    Console.Clear();
+                    BuyTigerMenu();
+                    break;
+                case "2" :
+                    Console.Clear();
+                    BuyEagleMenu();
+                    break;
+                case "3" :
+                    Console.Clear();
+                    BuyChickenMenu();
+                    break;
+                case "4" :
+                    Console.Clear();
+                    InShop = false;
+                    break;
+            }
+        }
+    }
+
+    public void BuyTigerMenu()
+    {
+        bool InShop = true;
+        while (InShop)
+        {
+            PrintBuyTigre();
+            string? action = Console.ReadLine();
+
+            switch (action)
+            {
+                case "1" :
+                    Console.Clear();
+                    Console.WriteLine("Nommez le tigre :");
+                    string? name = Console.ReadLine();
+                    Tiger tigre = new Tiger(name,"mâle",12,3000f,1500f);
+                    break;
+                case "2" :
+                    Console.Clear();
+                    Console.WriteLine("Nommez le tigre :");
+                    string? name2 = Console.ReadLine();
+                    Tiger tigre2 = new Tiger(name2,"mâle",12,3000f,1500f);
+                    break;
+                case "3" :
+                    Console.Clear();
+                    Console.WriteLine("Nommez le tigre :");
+                    string? name3 = Console.ReadLine();
+                    Tiger tigre3 = new Tiger(name3,"mâle",12,3000f,1500f);
+                    break;
+                case "4" :
+                    Console.Clear();
+                    InShop = false;
+                    break;
+            }
+        }
+    }
+
+    public void BuyEagleMenu()
+    {
+        bool InShop = true;
+        while (InShop)
+        {
+            PrintBuyEagle();
+            string? action = Console.ReadLine();
+
+            switch (action)
+            {
+                case "1" :
+                    Console.Clear();
+                    break;
+                case "2" :
+                    Console.Clear();
+                    break;
+                case "3" :
+                    Console.Clear();
+                    break;
+                case "4" :
+                    Console.Clear();
+                    InShop = false;
+                    break;
+            }
+        }
+    }
+
+    public void BuyChickenMenu()
+    {
+        bool InShop = true;
+        while (InShop)
+        {
+            PrintBuyChicken();
+            string? action = Console.ReadLine();
+
+            switch (action)
+            {
+                case "1" :
+                    Console.Clear();
+                    break;
+                case "2" :
+                    Console.Clear();
+                    break;
+                case "3" :
+                    Console.Clear();
+                    break;
+                case "4" :
+                    Console.Clear();
+                    InShop = false;
+                    break;
+            }
+        }
+    }
 
 
 
@@ -334,5 +454,41 @@ public void BuyMenu()
         Console.WriteLine("1.Animaux");
         Console.WriteLine("2.Habitats");
         Console.WriteLine("3.Retour\n");
+    }
+
+ public void PrintBuyAnimals()
+    {
+        Console.WriteLine("\n======= Quel Animal voulez-vous acheter ? =======\n");
+        Console.WriteLine("1.Tigre");
+        Console.WriteLine("2.Aigle");
+        Console.WriteLine("3.Poule");
+        Console.WriteLine("4.Retour\n");
+    }
+
+    public void PrintBuyTigre()
+    {
+        Console.WriteLine("\n======= Quel Tigre voulez-vous acheter ? =======\n");
+        Console.WriteLine("1.Tigre bébé - 6 mois (3 000€)");
+        Console.WriteLine("2.Tigre ado - 4 ans (120 000€)");
+        Console.WriteLine("3.Tigre adulte - 14 ans (60 000€)");
+        Console.WriteLine("4.Retour\n");
+    }
+
+    public void PrintBuyEagle()
+    {
+        Console.WriteLine("\n======= Quel Aigle voulez-vous acheter ? =======\n");
+        Console.WriteLine("1.Aigle bébé - 6 mois (1 000€)");
+        Console.WriteLine("2.Aigle ado - 4 ans (4 000€)");
+        Console.WriteLine("3.Aigle adulte - 14 ans (2 000€)");
+        Console.WriteLine("4.Retour\n");
+    }
+
+    public void PrintBuyChicken()
+    {
+        Console.WriteLine("\n======= Quel Poulet voulez-vous acheter ? =======\n");
+        Console.WriteLine("1.Poule - 6 mois (20€)");
+        Console.WriteLine("2.Coq - 6 mois (100€)");
+        Console.WriteLine("3.Gyrophare - 6 mois (10 000 000 000€)");
+        Console.WriteLine("4.Retour\n");
     }
 }

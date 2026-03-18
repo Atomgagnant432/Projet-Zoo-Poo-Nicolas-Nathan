@@ -74,7 +74,6 @@ class Animal : Item
     public override void Buy(Zoo zoo)
     {
         zoo.Pay(_cost); 
-        zoo.FillSilo(_quantity);
     }
 }
 
@@ -89,6 +88,6 @@ class Home : Item
     public override void Buy(Zoo zoo)
     {
         zoo.Pay(_cost); 
-        zoo.FillSilo(_quantity);
+        
     }
 }

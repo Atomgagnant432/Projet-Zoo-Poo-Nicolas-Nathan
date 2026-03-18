@@ -32,6 +32,11 @@ class Animals
         DownSaisonVisit = downSaisonVisit;
         
     }
+
+    public virtual string ChooseSexe()
+    {
+        return "";
+    }
 }
 
 class Tiger : Animals
@@ -40,13 +45,41 @@ class Tiger : Animals
         : base(name, "Tigre", "Carnivore", dayliFoodNeed, 0f, 100, 25f, sexe, 0f, buyPrice, sellPrice, 30f, 5f)
     {
     }
+
+    public override string ChooseSexe()
+    {
+        Console.WriteLine("Voulez-vous un mâle (1) ou une femelle (2) ?");
+        string? sexe = Console.ReadLine();
+        if (sexe == "1")
+        {
+            sexe = "Mâle";
+        }else if (sexe == "2")
+        {
+            sexe = "Femelle";
+        }
+        return sexe;
+    }
 }
 
 class Eagle : Animals
 {
-    public Eagle(string name, string sexe, float dayliFoodNeed, float buyPrice, float sellPrice)
+    public Eagle(string name, float dayliFoodNeed, string sexe, float buyPrice, float sellPrice)
         : base(name, "Aigle", "Carnivore", dayliFoodNeed ,0f, 100, 25f, sexe, 0f, buyPrice, sellPrice, 15f, 7f)
     {
+    }
+
+    public override string ChooseSexe()
+    {
+        Console.WriteLine("Voulez-vous un mâle (1) ou une femelle (2) ?");
+        string? sexe = Console.ReadLine();
+        if (sexe == "1")
+        {
+            sexe = "Mâle";
+        }else if (sexe == "2")
+        {
+            sexe = "Femelle";
+        }
+        return sexe;
     }
 }
 
@@ -55,5 +88,19 @@ class Chicken : Animals
     public Chicken(string name, string sexe, float dayliFoodNeed, float buyPrice, float sellPrice)
         : base(name, "Poulet", "Végétalien", dayliFoodNeed, 0f, 100, 15f, sexe, 0f, buyPrice, sellPrice, 2f, 0.5f)
     {
+    }
+
+    public override string ChooseSexe()
+    {
+        Console.WriteLine("Voulez-vous un mâle (1) ou une femelle (2) ?");
+        string? sexe = Console.ReadLine();
+        if (sexe == "1")
+        {
+            sexe = "Mâle";
+        }else if (sexe == "2")
+        {
+            sexe = "Femelle";
+        }
+        return sexe;
     }
 }
