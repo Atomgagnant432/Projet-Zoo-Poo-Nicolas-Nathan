@@ -1,22 +1,20 @@
-using System.ComponentModel.DataAnnotations.Schema;
-
-class Month{
-    public int Number;
-    public int NomberOfDay;
-    public bool highSeason;
-    static Month GetCurrentMonth(int numerb)
+class Month
 {
-    int monthofyear = (numbTour % 12) + 1; // 1 à 12
+    public int Number;
+    public int NumberOfDays;  // était "NomberOfDay"
+    public bool HighSeason;   // était "highSeason"
 
-    Month month = new Month();
-    month.Number = monthofyear;
+    public static Month GetCurrentMonth(int numeroTour)  // était "numerb", et manquait "public"
+    {
+        int monthOfYear = (numeroTour % 12) + 1;
 
-    month.HighSeason = (moisDeLAnnee >= 5 && moisDeLAnnee <= 9);
+        Month month = new Month();
+        month.Number = monthOfYear;
+        month.HighSeason = (monthOfYear >= 5 && monthOfYear <= 9); // "moisDeLAnnee" n'existait pas
+        
+        int[] days = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        month.NumberOfDays = days[monthOfYear - 1];
 
-
-    int[] days = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-    month.NumberOfDays = days[monthofyear - 1];
-
-    return month;
+        return month;
+    }
 }
-} 

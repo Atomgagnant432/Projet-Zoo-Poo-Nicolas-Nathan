@@ -1,33 +1,41 @@
-﻿using System;
-class Program
+﻿class Program
 {
-    static string ChooseZooName()
-    {
-        Console.Clear();
-        Console.Write("Choisis le nom de ton Zoo : ");
-        string? nomZoo = Console.ReadLine();
-
-        while (string.IsNullOrWhiteSpace(nomZoo))
-        {
-            Console.Write("Nom invalide. Re-tape le nom de ton Zoo : ");
-            nomZoo = Console.ReadLine();
-        }
-        return nomZoo;
-    }
-
-
-
     static void Main(string[] args)
     {
-        
-        string nomZoo = ChooseZooName();
-        Zoo monPremierZoo = new Zoo(80000f, 13f, 17f, nomZoo);
+        Zoo zoo = new Zoo(80000,13,17,"le Zoo de nathan");
+        MenuManager menu = new MenuManager(zoo);
 
+        int numeroTour = 0;
+        bool jeuEnCours = true;
 
-        monPremierZoo.PrintZoo();
-        monPremierZoo.PrintStorage();
-        
-        MenuManager Game = new MenuManager(monPremierZoo);
-        Game.MainMenu();
+        while (jeuEnCours)
+        {
+            // 1. Afficher le mois avant chaque menu
+            Month moisActuel = Month.GetCurrentMonth(numeroTour);
+            Console.Clear();
+            Console.WriteLine($"Mois {moisActuel.Number}/12  |  Tour {numeroTour}");
+            if (moisActuel.HighSeason)
+                Console.WriteLine("Haute saison !");
+            Console.WriteLine("─────────────────────────────");
+
+            // 2. Ton menu existant s'exécute normalement
+            menu.MainMenu();
+            Console.WriteLine("\n1. Passer au tour suivant");
+            Console.WriteLine("2. Quitter le jeu");
+            string? choix = Console.ReadLine();
+
+            switch (choix)
+            {
+                case "1":
+                zoo.PasserUnTour();  // ← ta méthode Zoo
+                numeroTour++;
+                break;
+                case "2":
+                    jeuEnCours = false;
+                    break;
+            }
+        }
+
+        Console.WriteLine("Merci d'avoir joué !");
     }
 }
