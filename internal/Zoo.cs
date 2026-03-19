@@ -75,6 +75,7 @@ class Zoo
     {
         if (_money >= amount)
         {
+            Console.Clear();
             _money -= amount;
             Console.WriteLine($"Vous venez de dépenser {amount}€");
             Console.WriteLine($"Fonds restant {_money}€.");

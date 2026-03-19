@@ -192,7 +192,7 @@ public void BuyMenu()
         bool InShop = true;
         while (InShop)
         {
-
+            Console.Clear();
             PrintBuyMenu();
             string? action = Console.ReadLine();
 
@@ -219,6 +219,7 @@ public void BuyMenu()
 
                     break;
                 case "3" :
+                    Console.Clear();
                     BuyAnimalMenu();
                     break;
                 case "4" :
@@ -260,7 +261,6 @@ public void BuyMenu()
         bool InShop = true;
         while (InShop)
         {
-            Console.Clear();
 
             PrintBuyAnimals();
             string? action = Console.ReadLine();
@@ -318,45 +318,79 @@ public void BuyMenu()
                     InShop = false;
                     break;
             }
+            if (Age != 0) {
             string? name = "";
             string? sexe = "";
             Tiger tigre = new Tiger(name,sexe,Age,12,BuyPrice,SellPrice);
-            Console.WriteLine("Nommez le tigre :");
-            name = Console.ReadLine();
-            sexe = tigre.ChooseSexe();
-            tigre.Name = name;
-            tigre.Sexe = sexe;
+            Console.Clear();
             if (_zoo.Pay(tigre.BuyPrice))
             {
                 _zoo.AddAnimal(tigre);
+                Console.WriteLine("==== Nommez votre tigre ====");
+                name = Console.ReadLine();
+                sexe = tigre.ChooseSexe();
+                tigre.Name = name;
+                tigre.Sexe = sexe;
+                PrintAnimal(tigre);
             }
-            
+            break;
+            }
         }
     }
+
+   
 
     public void BuyEagleMenu()
     {
         bool InShop = true;
         while (InShop)
         {
+            Console.Clear();
+
             PrintBuyEagle();
             string? action = Console.ReadLine();
+
+            float BuyPrice = 0f;
+            float SellPrice = 0f;
+            int Age = 0;
 
             switch (action)
             {
                 case "1" :
-                    Console.Clear();
+                    BuyPrice = 1000f;
+                    SellPrice = 500f;
+                    Age = 6;
                     break;
                 case "2" :
-                    Console.Clear();
+                    BuyPrice = 4000f;
+                    SellPrice = 2000f;
+                    Age = 48;
                     break;
                 case "3" :
-                    Console.Clear();
+                    BuyPrice = 2000f;
+                    SellPrice = 400f;
+                    Age = 168;
                     break;
                 case "4" :
-                    Console.Clear();
                     InShop = false;
                     break;
+            }
+            if (Age != 0){
+                string? name = "";
+                string? sexe = "";
+                Eagle aigle = new Eagle(name,12,sexe,Age,BuyPrice,SellPrice);
+                Console.Clear();
+                if (_zoo.Pay(aigle.BuyPrice))
+                {
+                    _zoo.AddAnimal(aigle);
+                    Console.WriteLine("==== Nommez votre Aigle ====");
+                    name = Console.ReadLine();
+                    sexe = aigle.ChooseSexe();
+                    aigle.Name = name;
+                    aigle.Sexe = sexe;
+                    PrintAnimal(aigle);
+                }
+                break;
             }
         }
     }
@@ -366,43 +400,68 @@ public void BuyMenu()
         bool InShop = true;
         while (InShop)
         {
+            Console.Clear();
+
             PrintBuyChicken();
             string? action = Console.ReadLine();
+
+            float BuyPrice = 0f;
+            float SellPrice = 0f;
+            int Age = 0;
 
             switch (action)
             {
                 case "1" :
-                    Console.Clear();
+                    BuyPrice = 20f;
+                    SellPrice = 10f;
+                    Age = 6;
                     break;
                 case "2" :
-                    Console.Clear();
+                    BuyPrice = 100f;
+                    SellPrice = 20f;
+                    Age = 48;
                     break;
                 case "3" :
-                    Console.Clear();
+                    BuyPrice = 10000000000f;
+                    SellPrice = 1000000000000000000000000000000f;
+                    Age = 1;
                     break;
                 case "4" :
-                    Console.Clear();
                     InShop = false;
                     break;
+            }
+            if (Age != 0){
+            string? name = "";
+            string? sexe = "";
+            Chicken poulet = new Chicken(name,sexe,Age,12,BuyPrice,SellPrice);
+            Console.Clear();
+            if (_zoo.Pay(poulet.BuyPrice))
+            {
+                _zoo.AddAnimal(poulet);
+                Console.WriteLine("==== Nommez votre poulet ====");
+                name = Console.ReadLine();
+                sexe = poulet.ChooseSexe();
+                poulet.Name = name;
+                poulet.Sexe = sexe;
+                PrintAnimal(poulet);
+            }
+            break;
             }
         }
     }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+ public void PrintAnimal(Animals animal)
+    {
+        Console.Clear();
+        Console.WriteLine("Vous venez d'aquérir un nouvel animal !\n");
+        Console.WriteLine($"Nom : {animal.Species}");
+        Console.WriteLine($"Nom : {animal.Name}");
+        Console.WriteLine($"Sexe : {animal.Sexe}");
+        Console.WriteLine($"Age : {animal.Age} mois");
+        Console.ReadLine();
+    }
 
 
 
