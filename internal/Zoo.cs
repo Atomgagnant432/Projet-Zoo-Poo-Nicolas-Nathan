@@ -98,4 +98,17 @@ class Zoo
         _animals.Add(animal);
     }
 
+    public void PrintZooAnimals()
+    {
+        for (int i = 0; i < _animals.Count;i++)
+        {
+            PrintAnimal(_animals[i]);
+        }
+    }
+
+    public void PrintAnimal(Animals animal)
+    {
+        Console.WriteLine($"Nom : {animal.Name}, espece : {animal.Species}, sexe : {animal.Sexe}, age : {animal.Age} mois");
+    }
+
 }

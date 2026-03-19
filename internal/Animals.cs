@@ -124,23 +124,6 @@ class Chicken : Animals
 
     public override string ChooseSexe()
     {
-        Console.WriteLine("Voulez-vous un mâle (1) ou une femelle (2) ?");
-
-        string? input = "";
-
-        while (input != "1" && input != "2")
-        {
-            input = Console.ReadLine();
-
-            if (input != "1" && input != "2")
-            {
-                Console.WriteLine("Choisissez 1 ou 2 !");
-            }
-        }
-
-        if (input == "1")
-            return "mâle";
-        else
-            return "femelle";
+        return "";
     }
 }
