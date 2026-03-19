@@ -1,7 +1,7 @@
 // création de la class Enclosure 
 public class Enclosure 
 { public int IdEnclosure;
-  public string EnclosureType;
+  public string EnclosureType; 
   public string AnimalType;
   public float ProbaSick;
   public int MaxResident;
