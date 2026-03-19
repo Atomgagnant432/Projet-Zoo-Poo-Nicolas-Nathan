@@ -1,23 +1,83 @@
 // création de la class Enclosure 
 public class Enclosure 
 { public int IdEnclosure;
-  public string? EnclosureType;
-  public int CurrentResident;
+  public string EnclosureType;
+  public string AnimalType;
   public float ProbaSick;
   public int MaxResident;
-  public bool Overcrowding;
   public int PurchasePriceEnclosure;
+
   public int SellingPriceEnclosure;
 
-  public Enclosure(int idEnclosure, string enclosureType, int currentResident, float probaSick, int maxResident, bool overcrowding, int purchasePriceEnclosure, int sellingPriceEnclosure)
+  private List<Animals> _residents;
+    private Random _random = new Random();
+
+    public int CurrentResident => _residents.Count;
+    public bool Overcrowding => _residents.Count > MaxResident;
+
+  public Enclosure(int idEnclosure, string enclosureType, string animalType, float probaSick, int maxResident, int purchasePriceEnclosure, int sellingPriceEnclosure)
   {
     IdEnclosure = idEnclosure;
     EnclosureType = enclosureType;
-    CurrentResident = currentResident;
+    AnimalType = animalType;
     ProbaSick = probaSick;
     MaxResident = maxResident;
-    Overcrowding = overcrowding;
     PurchasePriceEnclosure = purchasePriceEnclosure;
     SellingPriceEnclosure = sellingPriceEnclosure;
   }
+  public void AddAnimal(Animals animal)
+    {
+        // On vérifie que l'espèce correspond
+        if (animal.species != AnimalType)
+        {
+            Console.WriteLine($"Cet enclos est réservé aux {AnimalType} !");
+            return;
+        }
+
+        if (_residents.Count >= MaxResident)
+        {
+            Console.WriteLine("Enclos plein !");
+            return;
+        }
+
+        _residents.Add(animal);
+        Console.WriteLine($"{animal.Name} ajouté à l'enclos {IdEnclosure}.");
+    }
+    public void PasserUnTour()
+    {
+        // 1. Chaque animal vieillit
+        foreach (Animals animal in _residents)
+        {
+            animal.PasserUnTour();
+        }
+
+        // 2. Gestion du surpeuplement
+        if (Overcrowding)
+        {
+            Console.WriteLine($" Enclos {IdEnclosure} surpeuplé !");
+
+            int tirage = _random.Next(0, 100); // nombre entre 0 et 99
+            if (tirage < 50) // 50% de chance
+            {
+                // On choisit un résident au hasard
+                int indexVictime = _random.Next(0, _residents.Count);
+                Animals victime = _residents[indexVictime];
+
+                Console.WriteLine($" {victime.Name} est mort à cause du surpeuplement !");
+                _residents.RemoveAt(indexVictime);
+            }
+        }
+    }
+    public void PrintInfos()
+    {
+        Console.WriteLine($"Enclos {IdEnclosure} ({EnclosureType}) - {AnimalType}");
+        Console.WriteLine($"  Résidents : {CurrentResident}/{MaxResident}");
+        if (Overcrowding)
+            Console.WriteLine("SURPEUPLÉ - risque de mort 50%");
+        foreach (Animals animal in _residents)
+        {
+            Console.WriteLine($"    - {animal.Name} | Faim : {animal.ActualHunger}/{animal.MaxHunger}");
+        }
+    }
 }
+
