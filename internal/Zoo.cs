@@ -75,6 +75,7 @@ class Zoo
     {
         if (_money >= amount)
         {
+            Console.Clear();
             _money -= amount;
             Console.WriteLine($"Vous venez de dépenser {amount}€");
             Console.WriteLine($"Fonds restant {_money}€.");
@@ -95,6 +96,19 @@ class Zoo
     public void AddAnimal(Animals animal)
     {
         _animals.Add(animal);
+    }
+
+    public void PrintZooAnimals()
+    {
+        for (int i = 0; i < _animals.Count;i++)
+        {
+            PrintAnimal(_animals[i]);
+        }
+    }
+
+    public void PrintAnimal(Animals animal)
+    {
+        Console.WriteLine($"Nom : {animal.Name}, espece : {animal.Species}, sexe : {animal.Sexe}, age : {animal.Age} mois");
     }
 
 }

@@ -21,23 +21,28 @@ class MenuManager
                 
                 case "1" :
                     Console.Clear();
-                    Console.WriteLine("\nVous entrez dans le stock\n");
+                    Console.WriteLine("\n***Vous entrez dans le stock***\n");
                     StorageMenu();
                     break;
                 case "2" :
                     Console.Clear();
-                    Console.WriteLine("\nChoisissez un habitat\n");
+                    Console.WriteLine("\n***Choisissez un habitat***\n");
                     HomeMenu();
                     break;
                 case "3" :
                     Console.Clear();
-                    _zoo.PrintZooInfos();
+                    Console.WriteLine("=== Voici tous vos animaux ===\n");
+                    _zoo.PrintZooAnimals();
                     break;
                 case "4" :
                     Console.Clear();
-                    ShopMenu();
+                    _zoo.PrintZooInfos();
                     break;
                 case "5" :
+                    Console.Clear();
+                    ShopMenu();
+                    break;
+                case "6" :
                     Console.Clear();
                     InMenu = false;
                     break;
@@ -59,12 +64,12 @@ class MenuManager
             {
                 case "1" :
                     Console.Clear();
-                    Console.WriteLine("\nVous entrez dans la chambre froide\n");
+                    Console.WriteLine("\n***Vous entrez dans la chambre froide***\n");
                     ColdMenu();
                     break;
                 case "2" :
                     Console.Clear();
-                    Console.WriteLine("\nVous entrez dans le silo\n");
+                    Console.WriteLine("\n***Vous entrez dans le silo***\n");
                     SiloMenu();
                     break;
                 case "3" :
@@ -162,20 +167,18 @@ public void ShopMenu()
         bool InShop = true;
         while (InShop)
         {
-
+            Console.Clear();
             PrintShopMenu();
             string? action = Console.ReadLine();
 
             switch (action)
             {
                 case "1" :
-                Console.Clear();
-                    Console.WriteLine("");
+                    Console.Clear();
                     BuyMenu();
                     break;
                 case "2" :
-                Console.Clear();
-                    Console.WriteLine("");
+                    Console.Clear();
                     break;
                 case "3" :
                     Console.Clear();
@@ -192,7 +195,6 @@ public void BuyMenu()
         bool InShop = true;
         while (InShop)
         {
-
             PrintBuyMenu();
             string? action = Console.ReadLine();
 
@@ -219,6 +221,7 @@ public void BuyMenu()
 
                     break;
                 case "3" :
+                    Console.Clear();
                     BuyAnimalMenu();
                     break;
                 case "4" :
@@ -260,7 +263,6 @@ public void BuyMenu()
         bool InShop = true;
         while (InShop)
         {
-            Console.Clear();
 
             PrintBuyAnimals();
             string? action = Console.ReadLine();
@@ -318,45 +320,85 @@ public void BuyMenu()
                     InShop = false;
                     break;
             }
+            if (Age != 0) {
             string? name = "";
             string? sexe = "";
             Tiger tigre = new Tiger(name,sexe,Age,12,BuyPrice,SellPrice);
-            Console.WriteLine("Nommez le tigre :");
-            name = Console.ReadLine();
-            sexe = tigre.ChooseSexe();
-            tigre.Name = name;
-            tigre.Sexe = sexe;
+            Console.Clear();
             if (_zoo.Pay(tigre.BuyPrice))
             {
                 _zoo.AddAnimal(tigre);
+                Console.WriteLine("==== Nommez votre tigre ====");
+                name = Console.ReadLine();
+                sexe = tigre.ChooseSexe();
+                tigre.Name = name;
+                tigre.Sexe = sexe;
+                Console.Clear();
+                Console.WriteLine("Vous venez d'aquérir un nouvel animal !\n");
+                _zoo.PrintAnimal(tigre);
+                Console.ReadLine();
             }
-            
+            break;
+            }
         }
     }
+
+   
 
     public void BuyEagleMenu()
     {
         bool InShop = true;
         while (InShop)
         {
+            Console.Clear();
+
             PrintBuyEagle();
             string? action = Console.ReadLine();
+
+            float BuyPrice = 0f;
+            float SellPrice = 0f;
+            int Age = 0;
 
             switch (action)
             {
                 case "1" :
-                    Console.Clear();
+                    BuyPrice = 1000f;
+                    SellPrice = 500f;
+                    Age = 6;
                     break;
                 case "2" :
-                    Console.Clear();
+                    BuyPrice = 4000f;
+                    SellPrice = 2000f;
+                    Age = 48;
                     break;
                 case "3" :
-                    Console.Clear();
+                    BuyPrice = 2000f;
+                    SellPrice = 400f;
+                    Age = 168;
                     break;
                 case "4" :
-                    Console.Clear();
                     InShop = false;
                     break;
+            }
+            if (Age != 0){
+                string? name = "";
+                string? sexe = "";
+                Eagle aigle = new Eagle(name,12,sexe,Age,BuyPrice,SellPrice);
+                Console.Clear();
+                if (_zoo.Pay(aigle.BuyPrice))
+                {
+                    _zoo.AddAnimal(aigle);
+                    Console.WriteLine("==== Nommez votre Aigle ====");
+                    name = Console.ReadLine();
+                    sexe = aigle.ChooseSexe();
+                    aigle.Name = name;
+                    aigle.Sexe = sexe;
+                    Console.Clear();
+                    Console.WriteLine("Vous venez d'aquérir un nouvel animal !\n");
+                    _zoo.PrintAnimal(aigle);
+                    Console.ReadLine();
+                }
+                break;
             }
         }
     }
@@ -366,41 +408,58 @@ public void BuyMenu()
         bool InShop = true;
         while (InShop)
         {
+            Console.Clear();
+
             PrintBuyChicken();
             string? action = Console.ReadLine();
+
+            float BuyPrice = 0f;
+            float SellPrice = 0f;
+            int Age = 0;
+            string Sexe = "";
 
             switch (action)
             {
                 case "1" :
-                    Console.Clear();
+                    BuyPrice = 20f;
+                    SellPrice = 10f;
+                    Age = 6;
+                    Sexe = "poule";
                     break;
                 case "2" :
-                    Console.Clear();
+                    BuyPrice = 100f;
+                    SellPrice = 20f;
+                    Age = 480;
+                    Sexe = "coq";
                     break;
                 case "3" :
-                    Console.Clear();
+                    BuyPrice = 10000000000f;
+                    SellPrice = 1000000000000000000000000000000f;
+                    Age = 1;
                     break;
                 case "4" :
-                    Console.Clear();
                     InShop = false;
                     break;
             }
+            if (Age != 0){
+            string? name = "";
+            Chicken poulet = new Chicken(name,Sexe,Age,12,BuyPrice,SellPrice);
+            Console.Clear();
+            if (_zoo.Pay(poulet.BuyPrice))
+            {
+                _zoo.AddAnimal(poulet);
+                Console.WriteLine("==== Nommez votre poulet ====");
+                name = Console.ReadLine();
+                poulet.Name = name;
+                Console.Clear();
+                Console.WriteLine("Vous venez d'aquérir un nouvel animal !\n");
+                _zoo.PrintAnimal(poulet);
+                Console.ReadLine();
+            }
+            break;
+            }
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -410,9 +469,10 @@ public void BuyMenu()
         Console.WriteLine("\n======= Choisissez une action =======\n");
         Console.WriteLine("1.Stockage");
         Console.WriteLine("2.Habitats");
-        Console.WriteLine("3.Infos du zoo");
-        Console.WriteLine("4.Magasin");
-        Console.WriteLine("5.Quitter\n");
+        Console.WriteLine("3.Animaux");
+        Console.WriteLine("4.Infos du zoo");
+        Console.WriteLine("5.Magasin");
+        Console.WriteLine("6.Quitter\n");
     }
 
     public void PrintStorageMenu()

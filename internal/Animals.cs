@@ -63,60 +63,67 @@ class Tiger : Animals
     public override string ChooseSexe()
     {
         Console.WriteLine("Voulez-vous un mâle (1) ou une femelle (2) ?");
-        string? sexe = Console.ReadLine();
-        if (sexe == "1")
-        {
-            sexe = "mâle";
-        }else if (sexe == "2")
-        {
-            sexe = "femelle";
-        }
-        return sexe;
-    }
 
-    
+        string? input = "";
+
+        while (input != "1" && input != "2")
+        {
+            input = Console.ReadLine();
+
+            if (input != "1" && input != "2")
+            {
+                Console.WriteLine("Choisissez 1 ou 2 !");
+            }
+        }
+
+        if (input == "1")
+            return "mâle";
+        else
+            return "femelle";
+    }  
 }
 
 class Eagle : Animals
 {
-    public Eagle(string name, float dayliFoodNeed, string sexe,int age, float buyPrice, float sellPrice)
-        : base(name, "Aigle", "Carnivore", dayliFoodNeed ,0f, 100, 25f, sexe, 0f, buyPrice, sellPrice, 15f, 7f)
+    public Eagle(string name, float dayliFoodNeed, string sexe, int age, float buyPrice, float sellPrice)
+        : base(name, "Aigle", "Carnivore", dayliFoodNeed ,0f, 100, 25f, sexe, age, buyPrice, sellPrice, 15f, 7f)
     {
     }
 
     public override string ChooseSexe()
     {
         Console.WriteLine("Voulez-vous un mâle (1) ou une femelle (2) ?");
-        string? sexe = Console.ReadLine();
-        if (sexe == "1")
-        {
-            sexe = "mâle";
-        }else if (sexe == "2")
-        {
-            sexe = "femelle";
-        }
-        return sexe;
-    }
-}
 
+        string? input = "";
+
+        while (input != "1" && input != "2")
+        {
+            input = Console.ReadLine();
+
+            if (input != "1" && input != "2")
+            {
+                Console.WriteLine("Choisissez 1 ou 2 !");
+            }
+        }
+
+        if (input == "1")
+            return "mâle";
+        else
+            return "femelle";
+        }
+    }
+
+
+    
 class Chicken : Animals
 {
-    public Chicken(string name, string sexe, float dayliFoodNeed,int age, float buyPrice, float sellPrice)
-        : base(name, "Poulet", "Végétalien", dayliFoodNeed, 0f, 100, 15f, sexe, 0f, buyPrice, sellPrice, 2f, 0.5f)
+    public Chicken(string name, string sexe, float dayliFoodNeed, int age, float buyPrice, float sellPrice)
+        : base(name, "Poulet", "Végétalien", dayliFoodNeed, 0f, 100, 15f, sexe, age, buyPrice, sellPrice, 2f, 0.5f)
     {
     }
 
     public override string ChooseSexe()
     {
-        Console.WriteLine("Voulez-vous un mâle (1) ou une femelle (2) ?");
-        string? sexe = Console.ReadLine();
-        if (sexe == "1")
-        {
-            sexe = "coq";
-        }else if (sexe == "2")
-        {
-            sexe = "poule";
-        }
-        return sexe;
+        return "";
     }
 }

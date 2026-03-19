@@ -3,7 +3,8 @@
     static string ChooseZooName()
     {
         Console.Clear();
-        Console.Write("Nom du Zoo : ");
+        Console.WriteLine("===== Bienvenue dans ce super simulateur de Zoo ! =====\n");
+        Console.Write("Choisissez le nom de votre Zoo : ");
         string? nomZoo = Console.ReadLine();
         Console.Clear();
 
@@ -21,9 +22,9 @@
     {
         string zooName = ChooseZooName();
         Zoo zoo = new Zoo(80000,13,17,zooName);
-        zoo.PrintZoo();
         MenuManager menu = new MenuManager(zoo);
-
+        zoo.PrintZoo();
+        
         int numeroTour = 0;
         bool jeuEnCours = true;
 
