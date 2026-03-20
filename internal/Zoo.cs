@@ -6,7 +6,7 @@ class Zoo
     private float _adultPrice;
     public string ZooName { get; private set; }
 
-    private List<Enclosure>? _enclosures;
+    public List<Enclosure>? _enclosures;
     private List<Animals>? _animals;
     private Storage _storage;
     public void PasserUnTour()
@@ -102,13 +102,26 @@ class Zoo
     {
         for (int i = 0; i < _animals.Count;i++)
         {
-            PrintAnimal(_animals[i]);
+            PrintAnimals(_animals[i]);
         }
     }
 
-    public void PrintAnimal(Animals animal)
+    public void PrintZooEnclosure()
+    {
+        for (int i = 0; i < _enclosures.Count;i++)
+        {
+            PrintEnclosures(_enclosures[i]);
+        }
+    }
+
+    public void PrintAnimals(Animals animal)
     {
         Console.WriteLine($"Nom : {animal.Name}, espece : {animal.Species}, sexe : {animal.Sexe}, age : {animal.Age} mois");
+    }
+
+    public void PrintEnclosures(Enclosure enclosure)
+    {
+        Console.WriteLine($"ID : {enclosure.IdEnclosure}, Type : {enclosure.EnclosureType}, resident actuel : {enclosure.CurrentResident}/{enclosure.MaxResident}");
     }
 
 }
