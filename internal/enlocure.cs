@@ -24,6 +24,7 @@ public class Enclosure
     MaxResident = maxResident;
     PurchasePriceEnclosure = purchasePriceEnclosure;
     SellingPriceEnclosure = sellingPriceEnclosure;
+    _residents = new List<Animals>();
   }
   public void AddAnimalToEnclosure(Animals animal)
     {

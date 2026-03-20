@@ -26,8 +26,8 @@ class MenuManager
                     break;
                 case "2" :
                     Console.Clear();
-                    Console.WriteLine("\n***Choisissez un habitat***\n");
-                    HomeMenu();
+                    Console.WriteLine("=== Voici tous vos habitats ===\n");
+                    _zoo.PrintZooEnclosure();
                     break;
                 case "3" :
                     Console.Clear();
@@ -132,36 +132,6 @@ public void ColdMenu()
 }
 
 
-// FONCTION A REFAIRE POUR GERER UN PLUS GRAND NOMBRE D'HABITAT
-    public void HomeMenu()
-    {
-        bool InHome = true;
-        while (InHome)
-        {
-            Console.Clear();
-
-            PrintHomeMenu();
-            string? action = Console.ReadLine();
-
-            switch (action)
-            {
-                case "1" :
-                    Console.Clear();
-                    Console.WriteLine("\nVous entrez dans l'habitat 1\n");
-                    break;
-                case "2" :
-                    Console.Clear();
-                    Console.WriteLine("\nVous entrez dans l'habitat 2\n");
-                    break;
-                case "3" :
-                    Console.Clear();
-                    InHome = false;
-                    break;
-            }
-        }
-    
-    }
-
 public void ShopMenu()
     {
         bool InShop = true;
@@ -225,6 +195,8 @@ public void BuyMenu()
                     BuyAnimalMenu();
                     break;
                 case "4" :
+                    Console.Clear();
+                    BuyEnclosureMenu();
                     break;
                 case "5" :
                     InShop = false;
@@ -335,7 +307,7 @@ public void BuyMenu()
                 tigre.Sexe = sexe;
                 Console.Clear();
                 Console.WriteLine("Vous venez d'aquérir un nouvel animal !\n");
-                _zoo.PrintAnimal(tigre);
+                _zoo.PrintAnimals(tigre);
                 Console.ReadLine();
             }
             break;
@@ -395,7 +367,7 @@ public void BuyMenu()
                     aigle.Sexe = sexe;
                     Console.Clear();
                     Console.WriteLine("Vous venez d'aquérir un nouvel animal !\n");
-                    _zoo.PrintAnimal(aigle);
+                    _zoo.PrintAnimals(aigle);
                     Console.ReadLine();
                 }
                 break;
@@ -453,10 +425,59 @@ public void BuyMenu()
                 poulet.Name = name;
                 Console.Clear();
                 Console.WriteLine("Vous venez d'aquérir un nouvel animal !\n");
-                _zoo.PrintAnimal(poulet);
+                _zoo.PrintAnimals(poulet);
                 Console.ReadLine();
             }
             break;
+            }
+        }
+    }
+
+    public void BuyEnclosureMenu()
+    {
+        bool InShop = true;
+        while (InShop)
+        {
+            Console.Clear();
+
+            PrintBuyEnclosure();
+            string? action = Console.ReadLine();
+
+            switch (action)
+            {
+                case "1":
+                    Enclosure TigerEnclos = new Enclosure(_zoo._enclosures.Count+1,"Enclos pour Tigre","Tigre",20f,2,2000,500);
+                    if (_zoo.Pay(TigerEnclos.PurchasePriceEnclosure))
+                        {
+                            _zoo.AddEnclosure(TigerEnclos);   
+                            Console.Clear();
+                            Console.WriteLine("Vous venez d'aquérir un nouvel habitat !\n");
+                        }
+                        Console.ReadLine();
+                    break;
+                case "2":
+                    Enclosure EagleEnclos = new Enclosure(_zoo._enclosures.Count+1,"Enclos pour Aigle","Aigle",10f,4,2000,500);
+                    if (_zoo.Pay(EagleEnclos.PurchasePriceEnclosure))
+                    {
+                        _zoo.AddEnclosure(EagleEnclos);   
+                        Console.Clear();
+                        Console.WriteLine("Vous venez d'aquérir un nouvel habitat !\n");
+                    }
+                    Console.ReadLine();
+                    break;
+                case "3" : 
+                    Enclosure ChickenEnclos = new Enclosure(_zoo._enclosures.Count+1,"Poulailler","Poulet",5f,10,300,50);
+                    if (_zoo.Pay(ChickenEnclos.PurchasePriceEnclosure))
+                    {
+                        _zoo.AddEnclosure(ChickenEnclos);   
+                        Console.Clear();
+                        Console.WriteLine("Vous venez d'aquérir un nouvel habitat !\n");
+                    }
+                    Console.ReadLine();
+                    break;
+                case "4" :
+                    InShop = false;
+                    break;
             }
         }
     }
@@ -565,6 +586,15 @@ public void BuyMenu()
         Console.WriteLine("1.Poule - 6 mois (20€)");
         Console.WriteLine("2.Coq - 6 mois (100€)");
         Console.WriteLine("3.Gyrophare - 6 mois (10 000 000 000€)");
+        Console.WriteLine("4.Retour\n");
+    }
+
+    public void PrintBuyEnclosure()
+    {
+        Console.WriteLine("\n======= Quel enclos voulez-vous acheter ? =======\n");
+        Console.WriteLine("1.Enclos pour Tigre");
+        Console.WriteLine("2.Enclos pour Aigle");
+        Console.WriteLine("3.Poulailler");
         Console.WriteLine("4.Retour\n");
     }
 }
