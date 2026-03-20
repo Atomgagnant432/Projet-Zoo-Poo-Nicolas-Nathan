@@ -25,10 +25,10 @@ public class Enclosure
     PurchasePriceEnclosure = purchasePriceEnclosure;
     SellingPriceEnclosure = sellingPriceEnclosure;
   }
-  public void AddAnimal(Animals animal)
+  public void AddAnimalToEnclosure(Animals animal)
     {
         // On vérifie que l'espèce correspond
-        if (animal.species != AnimalType)
+        if (animal.Species != AnimalType)
         {
             Console.WriteLine($"Cet enclos est réservé aux {AnimalType} !");
             return;

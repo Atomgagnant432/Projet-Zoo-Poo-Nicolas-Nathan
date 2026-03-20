@@ -1,4 +1,4 @@
-class Animals
+public class Animals
 {
     public string? Name;
     public string? Species;
