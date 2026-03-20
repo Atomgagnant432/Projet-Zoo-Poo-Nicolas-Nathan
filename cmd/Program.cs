@@ -41,8 +41,11 @@
             menu.MainMenu();
             Console.WriteLine("\n1. Passer au tour suivant");
             Console.WriteLine("2. Quitter le jeu");
+            Console.WriteLine("3.retour au menu");
             string? choix = Console.ReadLine();
 
+            bool inOption = true;
+            while (inOption) {
             switch (choix)
             {
                 case "1":
@@ -52,6 +55,10 @@
                 case "2":
                     jeuEnCours = false;
                     break;
+                case "3":
+                inOption = false;
+                break;
+            }
             }
         }
 

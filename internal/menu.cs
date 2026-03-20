@@ -472,7 +472,7 @@ public void BuyMenu()
         Console.WriteLine("3.Animaux");
         Console.WriteLine("4.Infos du zoo");
         Console.WriteLine("5.Magasin");
-        Console.WriteLine("6.Quitter\n");
+        Console.WriteLine("6.Autre options\n");
     }
 
     public void PrintStorageMenu()
