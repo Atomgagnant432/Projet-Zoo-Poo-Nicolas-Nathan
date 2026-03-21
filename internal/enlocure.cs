@@ -9,11 +9,11 @@ public class Enclosure
 
   public int SellingPriceEnclosure;
 
-  private List<Animals> _residents;
-    private Random _random = new Random();
+  private List<Animals> _residents = new List<Animals>();
 
     public int CurrentResident => _residents.Count;
     public bool Overcrowding => _residents.Count > MaxResident;
+    private Random _random = new Random();
 
   public Enclosure(int idEnclosure, string enclosureType, string animalType, float probaSick, int maxResident, int purchasePriceEnclosure, int sellingPriceEnclosure)
   {
@@ -43,12 +43,14 @@ public class Enclosure
         _residents.Add(animal);
         Console.WriteLine($"{animal.Name} ajouté à l'enclos {IdEnclosure}.");
     }
-    public void PasserUnTour()
+    
+    public void PasserUnTour(Month month)
     {
+        
         // 1. Chaque animal vieillit
         foreach (Animals animal in _residents)
         {
-            animal.PasserUnTour();
+            animal.PasserUnTour(month);
         }
 
         // 2. Gestion du surpeuplement

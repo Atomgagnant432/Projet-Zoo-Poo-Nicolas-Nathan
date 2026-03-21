@@ -30,32 +30,32 @@ public class Animals
         SellPrice = sellPrice;
         HighSaisonVisit = highSaisonVisit;
         DownSaisonVisit = downSaisonVisit;
-        
+
     }
 
     public virtual string ChooseSexe()
     {
         return "";
     }
-    
-    public virtual void PasserUnTour()
+
+    public virtual void PasserUnTour(Month month)
     {
+        LifeTime += 1f;
         ActualHunger += 10f;        // l'animal a plus faim chaque tour
 
         if (ActualHunger >= MaxHunger)
         {
-            LifeTime -= 1f;         // il vieillit/dépérit s'il est affamé
             ActualHunger = MaxHunger; // on plafonne à MaxHunger
         }
     }
 }
 
 
-    
+
 
 class Tiger : Animals
 {
-    public Tiger(string name, string sexe, int age,float dayliFoodNeed, float buyPrice, float sellPrice)
+    public Tiger(string name, string sexe, int age, float dayliFoodNeed, float buyPrice, float sellPrice)
         : base(name, "Tigre", "Carnivore", dayliFoodNeed, 0f, 100, 25f, sexe, age, buyPrice, sellPrice, 30f, 5f)
     {
     }
@@ -80,13 +80,13 @@ class Tiger : Animals
             return "mâle";
         else
             return "femelle";
-    }  
+    }
 }
 
 class Eagle : Animals
 {
     public Eagle(string name, float dayliFoodNeed, string sexe, int age, float buyPrice, float sellPrice)
-        : base(name, "Aigle", "Carnivore", dayliFoodNeed ,0f, 100, 25f, sexe, age, buyPrice, sellPrice, 15f, 7f)
+        : base(name, "Aigle", "Carnivore", dayliFoodNeed, 0f, 100, 25f, sexe, age, buyPrice, sellPrice, 15f, 7f)
     {
     }
 
@@ -110,11 +110,9 @@ class Eagle : Animals
             return "mâle";
         else
             return "femelle";
-        }
     }
+}
 
-
-    
 class Chicken : Animals
 {
     public Chicken(string name, string sexe, float dayliFoodNeed, int age, float buyPrice, float sellPrice)

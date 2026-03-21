@@ -49,7 +49,7 @@
             switch (choix)
             {
                 case "1":
-                zoo.PasserUnTour();  // ← ta méthode Zoo
+                zoo.PasserUnTour(numeroTour);  // 
                 numeroTour++;
                 break;
                 case "2":
