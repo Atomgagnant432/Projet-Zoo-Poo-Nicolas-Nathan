@@ -41,7 +41,7 @@
             menu.MainMenu();
             Console.WriteLine("\n1. Passer au tour suivant");
             Console.WriteLine("2. Quitter le jeu");
-            Console.WriteLine("3.retour au menu");
+            Console.WriteLine("3. Retour au menu");
             string? choix = Console.ReadLine();
 
             bool inOption = true;
@@ -49,7 +49,8 @@
             switch (choix)
             {
                 case "1":
-                zoo.PasserUnTour(numeroTour);  // 
+                zoo.PasserUnTour(numeroTour);  //
+                inOption = false; 
                 numeroTour++;
                 break;
                 case "2":
