@@ -26,11 +26,6 @@ class Zoo
 
         }  
     }
-    public float Money
-    {
-        get => _money;
-        set => _money = value;
-    }
 
     public Zoo(float money, float childPrice, float adultPrice, string zooName)
     {
