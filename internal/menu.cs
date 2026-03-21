@@ -297,18 +297,27 @@ public void BuyMenu()
             string? sexe = "";
             Tiger tigre = new Tiger(name,sexe,Age,12,BuyPrice,SellPrice);
             Console.Clear();
-            if (_zoo.Pay(tigre.BuyPrice))
+            if (_zoo._enclosures.Count > 0) 
             {
-                _zoo.AddAnimal(tigre);
-                Console.WriteLine("==== Nommez votre tigre ====");
-                name = Console.ReadLine();
-                sexe = tigre.ChooseSexe();
-                tigre.Name = name;
-                tigre.Sexe = sexe;
-                Console.Clear();
-                Console.WriteLine("Vous venez d'aquérir un nouvel animal !\n");
-                _zoo.PrintAnimals(tigre);
-                Console.ReadLine();
+                if (_zoo.Pay(tigre.BuyPrice))
+                {
+                    _zoo.AddAnimal(tigre);
+                    Console.WriteLine("==== Nommez votre tigre ====");
+                    name = Console.ReadLine();
+                    sexe = tigre.ChooseSexe();
+                    tigre.Name = name;
+                    tigre.Sexe = sexe;
+                    Console.Clear();
+                    Console.WriteLine("Vous venez d'aquérir un nouvel animal !\n");
+                    _zoo.PrintAnimals(tigre);
+                    _zoo.ChooseEnclosure(tigre);
+                    Console.ReadLine();
+
+                }
+            }
+            else
+            {
+                Console.WriteLine("Veuillez d'abord acheter un enclos.");
             }
             break;
             }
@@ -357,18 +366,26 @@ public void BuyMenu()
                 string? sexe = "";
                 Eagle aigle = new Eagle(name,12,sexe,Age,BuyPrice,SellPrice);
                 Console.Clear();
-                if (_zoo.Pay(aigle.BuyPrice))
+                if (_zoo._enclosures.Count > 0) 
                 {
-                    _zoo.AddAnimal(aigle);
-                    Console.WriteLine("==== Nommez votre Aigle ====");
-                    name = Console.ReadLine();
-                    sexe = aigle.ChooseSexe();
-                    aigle.Name = name;
-                    aigle.Sexe = sexe;
-                    Console.Clear();
-                    Console.WriteLine("Vous venez d'aquérir un nouvel animal !\n");
-                    _zoo.PrintAnimals(aigle);
-                    Console.ReadLine();
+                    if (_zoo.Pay(aigle.BuyPrice))
+                    {
+                        _zoo.AddAnimal(aigle);
+                        Console.WriteLine("==== Nommez votre Aigle ====");
+                        name = Console.ReadLine();
+                        sexe = aigle.ChooseSexe();
+                        aigle.Name = name;
+                        aigle.Sexe = sexe;
+                        Console.Clear();
+                        Console.WriteLine("Vous venez d'aquérir un nouvel animal !\n");
+                        _zoo.PrintAnimals(aigle);
+                        _zoo.ChooseEnclosure(aigle);
+                        Console.ReadLine();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Veuillez d'abord acheter un enclos.");
                 }
                 break;
             }
@@ -417,17 +434,25 @@ public void BuyMenu()
             string? name = "";
             Chicken poulet = new Chicken(name,Sexe,Age,12,BuyPrice,SellPrice);
             Console.Clear();
-            if (_zoo.Pay(poulet.BuyPrice))
-            {
-                _zoo.AddAnimal(poulet);
-                Console.WriteLine("==== Nommez votre poulet ====");
-                name = Console.ReadLine();
-                poulet.Name = name;
-                Console.Clear();
-                Console.WriteLine("Vous venez d'aquérir un nouvel animal !\n");
-                _zoo.PrintAnimals(poulet);
-                Console.ReadLine();
-            }
+            if (_zoo._enclosures.Count > 0) 
+            {    
+                if (_zoo.Pay(poulet.BuyPrice))
+                {
+                    _zoo.AddAnimal(poulet);
+                    Console.WriteLine("==== Nommez votre poulet ====");
+                    name = Console.ReadLine();
+                    poulet.Name = name;
+                    Console.Clear();
+                    Console.WriteLine("Vous venez d'aquérir un nouvel animal !\n");
+                    _zoo.PrintAnimals(poulet);
+                    _zoo.ChooseEnclosure(poulet);
+                    Console.ReadLine();
+                }
+                }
+                else
+                {
+                    Console.WriteLine("Veuillez d'abord acheter un enclos.");
+                }
             break;
             }
         }

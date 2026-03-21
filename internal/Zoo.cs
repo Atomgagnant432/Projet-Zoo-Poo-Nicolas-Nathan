@@ -132,4 +132,37 @@ class Zoo
         Console.WriteLine($"ID : {enclosure.IdEnclosure}, type : {enclosure.EnclosureType}, resident actuel : {enclosure.CurrentResident}/{enclosure.MaxResident}");
     }
 
+    public void ChooseEnclosure(Animals NewAnimal)
+    {
+        Console.WriteLine("\n=== Dans quel Enclos voulez-vous mettre votre animal ? ===\n");
+        PrintZooEnclosure();
+        
+        int IntChoice;
+
+        while (true){
+
+            string? choice = Console.ReadLine();
+
+           
+            if (!int.TryParse(choice, out IntChoice))
+            {
+                Console.WriteLine(" Veuillez entrer un NUMÉRO !");
+                continue;
+            }
+
+            if (IntChoice <= 0 || IntChoice > _enclosures.Count)
+            {
+                Console.WriteLine("====================================================");
+                Console.WriteLine($"    Choix invalide ! L'enclos {IntChoice} n'existe pas !");
+                Console.WriteLine("         Choisissez un autre enclos.");
+                Console.WriteLine("====================================================");
+                continue;
+            }
+            
+            break;
+        }
+        _enclosures[IntChoice-1].AddAnimalToEnclosure(NewAnimal);
+
+    }
+
 }

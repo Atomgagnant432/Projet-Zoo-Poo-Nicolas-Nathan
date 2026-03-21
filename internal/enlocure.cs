@@ -32,7 +32,7 @@ public class Enclosure
         // On vérifie que l'espèce correspond
         if (animal.Species != AnimalType)
         {
-            Console.WriteLine($"Cet enclos est réservé aux {AnimalType} !");
+            Console.WriteLine($"\nCet enclos est réservé aux {AnimalType} !");
             return;
         }
 
@@ -43,8 +43,9 @@ public class Enclosure
         }
 
         _residents.Add(animal);
-        Console.WriteLine($"{animal.Name} ajouté à l'enclos {IdEnclosure}.");
+        Console.WriteLine($"{animal.Name} à été ajouté à l'enclos {IdEnclosure}.");
     }
+
     
     public void NextTurn(Month month)
     {
