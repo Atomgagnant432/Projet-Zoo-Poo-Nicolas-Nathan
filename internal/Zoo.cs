@@ -11,11 +11,6 @@ class Zoo
     private Storage _storage;
     public void PasserUnTour()
     {
-        foreach (Animals animal in _animals)
-        {
-            animal.PasserUnTour();
-        }
-
         _money -= _animals.Count * 50f; // coût d'entretien
     }
  
@@ -121,7 +116,7 @@ class Zoo
 
     public void PrintEnclosures(Enclosure enclosure)
     {
-        Console.WriteLine($"ID : {enclosure.IdEnclosure}, Type : {enclosure.EnclosureType}, resident actuel : {enclosure.CurrentResident}/{enclosure.MaxResident}");
+        Console.WriteLine($"ID : {enclosure.IdEnclosure}, type : {enclosure.EnclosureType}, resident actuel : {enclosure.CurrentResident}/{enclosure.MaxResident}");
     }
 
 }

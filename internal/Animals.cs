@@ -62,7 +62,7 @@ class Tiger : Animals
 
     public override string ChooseSexe()
     {
-        Console.WriteLine("Voulez-vous un mâle (1) ou une femelle (2) ?");
+        Console.WriteLine("\nVoulez-vous un mâle (1) ou une femelle (2) ?");
 
         string? input = "";
 
@@ -92,7 +92,7 @@ class Eagle : Animals
 
     public override string ChooseSexe()
     {
-        Console.WriteLine("Voulez-vous un mâle (1) ou une femelle (2) ?");
+        Console.WriteLine("\nVoulez-vous un mâle (1) ou une femelle (2) ?");
 
         string? input = "";
 
