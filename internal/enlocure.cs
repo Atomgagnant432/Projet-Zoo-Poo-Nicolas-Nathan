@@ -26,6 +26,7 @@ public class Enclosure
     SellingPriceEnclosure = sellingPriceEnclosure;
     _residents = new List<Animals>();
   }
+
   public void AddAnimalToEnclosure(Animals animal)
     {
         // On vérifie que l'espèce correspond
@@ -45,13 +46,13 @@ public class Enclosure
         Console.WriteLine($"{animal.Name} ajouté à l'enclos {IdEnclosure}.");
     }
     
-    public void PasserUnTour(Month month)
+    public void NextTurn(Month month)
     {
         
         // 1. Chaque animal vieillit
         foreach (Animals animal in _residents)
         {
-            animal.PasserUnTour(month);
+            animal.AnimalsNextTurn(month);
         }
 
         // 2. Gestion du surpeuplement

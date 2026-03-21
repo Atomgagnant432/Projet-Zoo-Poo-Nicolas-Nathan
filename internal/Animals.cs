@@ -38,7 +38,7 @@ public class Animals
         return "";
     }
 
-    public virtual void PasserUnTour(Month month)
+    public virtual void AnimalsNextTurn(Month month)
     {
         LifeTime += 1f;
         ActualHunger += 10f;        // l'animal a plus faim chaque tour

@@ -9,7 +9,7 @@ class Zoo
     public List<Enclosure>? _enclosures;
     private List<Animals>? _animals;
     private Storage _storage;
-    public void PasserUnTour(int numeroTour)
+    public void NextTurn(int numeroTour)
     {
         Month month = Month.GetCurrentMonth(numeroTour);
         foreach (Animals animal in _animals)
@@ -21,7 +21,7 @@ class Zoo
 
         foreach (Enclosure enclosure in _enclosures)
         {
-            animal.PasserUnTour(month);
+            animal.AnimalsNextTurn(month);
         }
 
         }  
