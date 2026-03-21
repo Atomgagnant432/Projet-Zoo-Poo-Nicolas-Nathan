@@ -9,11 +9,24 @@ class Zoo
     public List<Enclosure>? _enclosures;
     private List<Animals>? _animals;
     private Storage _storage;
-    public void PasserUnTour()
+    public void PasserUnTour(int numeroTour)
     {
-        _money -= _animals.Count * 50f; // coût d'entretien
+        Month month = Month.GetCurrentMonth(numeroTour);
+        foreach (Animals animal in _animals)
+        {
+            if (month.HighSeason)
+            _money += 60 * animal.HighSaisonVisit;
+            else
+            _money += 60 * animal.DownSaisonVisit;
+
+        foreach (Enclosure enclosure in _enclosures)
+        {
+            animal.PasserUnTour(month);
+        }
+
+        }  
     }
- 
+
     public Zoo(float money, float childPrice, float adultPrice, string zooName)
     {
         _money = money;

@@ -49,15 +49,16 @@
             switch (choix)
             {
                 case "1":
-                zoo.PasserUnTour();  // ← ta méthode Zoo
+                zoo.PasserUnTour(numeroTour);  //
+                inOption = false; 
                 numeroTour++;
                 break;
                 case "2":
                     jeuEnCours = false;
                     break;
                 case "3":
-                inOption = false;
-                break;
+                    inOption = false;
+                    break;
             }
             }
         }
