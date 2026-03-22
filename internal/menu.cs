@@ -297,7 +297,7 @@ public void BuyMenu()
             string? sexe = "";
             Tiger tigre = new Tiger(name,sexe,Age,12,BuyPrice,SellPrice);
             Console.Clear();
-            if (_zoo._enclosures.Count > 0) 
+            if (_zoo._enclosures.Count > 0 && _zoo.CheckEnclosure(tigre)) 
             {
                 if (_zoo.Pay(tigre.BuyPrice))
                 {
@@ -317,7 +317,9 @@ public void BuyMenu()
             }
             else
             {
-                Console.WriteLine("Veuillez d'abord acheter un enclos.");
+                Console.WriteLine("\n===================================================\n");
+                Console.WriteLine("Veuillez d'abord acheter un enclos pour cet animal.");
+                Console.WriteLine("\n===================================================\n");
             }
             break;
             }
@@ -366,7 +368,7 @@ public void BuyMenu()
                 string? sexe = "";
                 Eagle aigle = new Eagle(name,12,sexe,Age,BuyPrice,SellPrice);
                 Console.Clear();
-                if (_zoo._enclosures.Count > 0) 
+                if (_zoo._enclosures.Count > 0 && _zoo.CheckEnclosure(aigle)) 
                 {
                     if (_zoo.Pay(aigle.BuyPrice))
                     {
@@ -385,7 +387,9 @@ public void BuyMenu()
                 }
                 else
                 {
-                    Console.WriteLine("Veuillez d'abord acheter un enclos.");
+                    Console.WriteLine("\n===================================================\n");
+                    Console.WriteLine("Veuillez d'abord acheter un enclos pour cet animal.");
+                    Console.WriteLine("\n===================================================\n");
                 }
                 break;
             }
@@ -434,7 +438,7 @@ public void BuyMenu()
             string? name = "";
             Chicken poulet = new Chicken(name,Sexe,Age,12,BuyPrice,SellPrice);
             Console.Clear();
-            if (_zoo._enclosures.Count > 0) 
+            if (_zoo._enclosures.Count > 0 && _zoo.CheckEnclosure(poulet)) 
             {    
                 if (_zoo.Pay(poulet.BuyPrice))
                 {
@@ -451,7 +455,9 @@ public void BuyMenu()
                 }
                 else
                 {
-                    Console.WriteLine("Veuillez d'abord acheter un enclos.");
+                    Console.WriteLine("\n===================================================\n");
+                    Console.WriteLine("Veuillez d'abord acheter un enclos pour cet animal.");
+                    Console.WriteLine("\n===================================================\n");
                 }
             break;
             }

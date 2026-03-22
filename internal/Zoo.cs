@@ -165,4 +165,17 @@ class Zoo
 
     }
 
+    public bool CheckEnclosure(Animals animal)
+    {
+        bool finded = false;
+
+        for (int i = 0; i < _enclosures.Count;i++)
+        {
+            if (_enclosures[i].AnimalType == animal.Species)
+            {
+                finded = true;
+            }
+        }
+        return finded;
+    }
 }
