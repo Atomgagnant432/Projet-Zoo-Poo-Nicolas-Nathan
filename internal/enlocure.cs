@@ -9,7 +9,7 @@ public class Enclosure
 
   public int SellingPriceEnclosure;
 
-  private List<Animals> _residents = new List<Animals>();
+  public List<Animals> _residents;
 
     public int CurrentResident => _residents.Count;
     public bool Overcrowding => _residents.Count > MaxResident;
@@ -27,23 +27,25 @@ public class Enclosure
     _residents = new List<Animals>();
   }
 
-  public void AddAnimalToEnclosure(Animals animal)
+  public bool AddAnimalToEnclosure(Animals animal)
     {
         // On vérifie que l'espèce correspond
         if (animal.Species != AnimalType)
         {
             Console.WriteLine($"\nCet enclos est réservé aux {AnimalType} !");
-            return;
+            return  false;
         }
 
         if (_residents.Count >= MaxResident)
         {
             Console.WriteLine("Enclos plein !");
-            return;
+            return true;
         }
 
         _residents.Add(animal);
+        animal.HomeID = IdEnclosure;
         Console.WriteLine($"{animal.Name} à été ajouté à l'enclos {IdEnclosure}.");
+        return true;
     }
 
     

@@ -1,13 +1,13 @@
 
 class Zoo
 {
-    private float _money;
+    public float _money;
     private float _childPrice;
     private float _adultPrice;
     public string ZooName { get; private set; }
 
     public List<Enclosure>? _enclosures;
-    private List<Animals>? _animals;
+    public List<Animals>? _animals;
     private Storage _storage;
     public void NextTurn(int numeroTour)
     {
@@ -110,7 +110,8 @@ class Zoo
     {
         for (int i = 0; i < _animals.Count;i++)
         {
-            PrintAnimals(_animals[i]);
+             Console.Write($"{i+1}. ");
+             PrintAnimals(_animals[i]);
         }
     }
 
@@ -118,31 +119,38 @@ class Zoo
     {
         for (int i = 0; i < _enclosures.Count;i++)
         {
+            Console.Write($"{i+1}. ");
             PrintEnclosures(_enclosures[i]);
         }
     }
 
     public void PrintAnimals(Animals animal)
     {
-        Console.WriteLine($"Nom : {animal.Name}, espece : {animal.Species}, sexe : {animal.Sexe}, age : {animal.Age} mois");
+        Console.Write($"ID : {animal.ID}, nom : {animal.Name}, espece : {animal.Species}, sexe : {animal.Sexe}, age : {animal.Age} mois\n");
     }
 
     public void PrintEnclosures(Enclosure enclosure)
     {
-        Console.WriteLine($"ID : {enclosure.IdEnclosure}, type : {enclosure.EnclosureType}, resident actuel : {enclosure.CurrentResident}/{enclosure.MaxResident}");
+        Console.Write($"ID : {enclosure.IdEnclosure}, type : {enclosure.EnclosureType}, resident actuel : {enclosure.CurrentResident}/{enclosure.MaxResident}\n");
     }
 
-    public void ChooseEnclosure(Animals NewAnimal)
+    public bool ChooseEnclosure(Animals NewAnimal)
     {
         Console.WriteLine("\n=== Dans quel Enclos voulez-vous mettre votre animal ? ===\n");
         PrintZooEnclosure();
-        
+        Console.WriteLine("Q. Retour");
+
         int IntChoice;
 
         while (true){
 
             string? choice = Console.ReadLine();
 
+            if (choice == "Q")
+            {
+                Console.Clear();
+                return false;  
+            }
            
             if (!int.TryParse(choice, out IntChoice))
             {
@@ -153,7 +161,7 @@ class Zoo
             if (IntChoice <= 0 || IntChoice > _enclosures.Count)
             {
                 Console.WriteLine("====================================================");
-                Console.WriteLine($"    Choix invalide ! L'enclos {IntChoice} n'existe pas !");
+                Console.WriteLine($"    Choix invalide ! L'enclos numéro {IntChoice} n'existe pas !");
                 Console.WriteLine("         Choisissez un autre enclos.");
                 Console.WriteLine("====================================================");
                 continue;
@@ -161,10 +169,92 @@ class Zoo
             
             break;
         }
-        _enclosures[IntChoice-1].AddAnimalToEnclosure(NewAnimal);
+        return _enclosures[IntChoice-1].AddAnimalToEnclosure(NewAnimal);
 
     }
+    public Animals? ChooseAnimal()
+    {
+        PrintZooAnimals();
+        Console.WriteLine("Q. Retour");
 
+        int IntChoice;
+
+        while (true){
+
+            string? choice = Console.ReadLine();
+
+           if (choice == "Q")
+            {
+                Console.Clear();
+                return null;  
+            }
+            
+            if (!int.TryParse(choice, out IntChoice))
+            {
+                Console.WriteLine(" Veuillez entrer un NUMÉRO !");
+                continue;
+            }
+
+            if (IntChoice <= 0 || IntChoice > _animals.Count)
+            {
+                Console.WriteLine("====================================================");
+                Console.WriteLine($"    Choix invalide ! L'animal numéro {IntChoice} n'existe pas !");
+                Console.WriteLine("             Choisissez un autre animal.");
+                Console.WriteLine("====================================================");
+                continue;
+            }
+            
+            break;
+        }
+        return _animals[IntChoice-1];
+    }
+
+
+    public Enclosure? ChooseEnclosureToSell()
+    {
+        PrintZooEnclosure();
+        Console.WriteLine("Q. Retour");
+        
+        int IntChoice;
+
+        while (true){
+
+            string? choice = Console.ReadLine();
+
+            if (choice == "Q")
+            {
+                Console.Clear();
+                return null;   
+            }
+
+            if (!int.TryParse(choice, out IntChoice))
+            {
+                Console.WriteLine(" Veuillez entrer un NUMÉRO !");
+                continue;
+            }
+
+            if (IntChoice <= 0 || IntChoice > _enclosures.Count)
+            {
+                Console.WriteLine("====================================================");
+                Console.WriteLine($"    Choix invalide ! L'enclos numéro {IntChoice} n'existe pas !");
+                Console.WriteLine("             Choisissez un autre enclos.");
+                Console.WriteLine("====================================================");
+                continue;
+            }
+
+            if (_enclosures[IntChoice-1]._residents.Count > 0)
+            {
+                Console.WriteLine("====================================================");
+                Console.WriteLine($"    Choix invalide ! L'enclos numéro {IntChoice} contient des animaux !");
+                Console.WriteLine("             Vendez d'abords vos animaux.");
+                Console.WriteLine("====================================================");
+                continue;
+            }
+            
+            break;
+        }
+        return _enclosures[IntChoice-1];
+    }
     public bool CheckEnclosure(Animals animal)
     {
         bool finded = false;

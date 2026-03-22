@@ -1,5 +1,6 @@
 public class Animals
 {
+    public int ID;
     public string? Name;
     public string? Species;
     public string? FoodType;
@@ -13,10 +14,12 @@ public class Animals
     public float SellPrice;
     public float HighSaisonVisit;
     public float DownSaisonVisit;
+    public int HomeID;
 
 
-    public Animals(string name, string species, string foodType, float dayliFoodNeed, float actualHunger, int maxHunger, float lifeTime, string sexe, float age, float buyPrice, float sellPrice, float highSaisonVisit, float downSaisonVisit)
+    public Animals(int id,string name, string species, string foodType, float dayliFoodNeed, float actualHunger, int maxHunger, float lifeTime, string sexe, float age, float buyPrice, float sellPrice, float highSaisonVisit, float downSaisonVisit)
     {
+        ID = id;
         Name = name;
         Species = species;
         FoodType = foodType;
@@ -55,8 +58,8 @@ public class Animals
 
 class Tiger : Animals
 {
-    public Tiger(string name, string sexe, int age, float dayliFoodNeed, float buyPrice, float sellPrice)
-        : base(name, "Tigre", "Carnivore", dayliFoodNeed, 0f, 100, 25f, sexe, age, buyPrice, sellPrice, 30f, 5f)
+    public Tiger(int id, string name, string sexe, int age, float dayliFoodNeed, float buyPrice, float sellPrice)
+        : base(id, name, "Tigre", "Carnivore", dayliFoodNeed, 0f, 100, 25f, sexe, age, buyPrice, sellPrice, 30f, 5f)
     {
     }
 
@@ -85,8 +88,8 @@ class Tiger : Animals
 
 class Eagle : Animals
 {
-    public Eagle(string name, float dayliFoodNeed, string sexe, int age, float buyPrice, float sellPrice)
-        : base(name, "Aigle", "Carnivore", dayliFoodNeed, 0f, 100, 25f, sexe, age, buyPrice, sellPrice, 15f, 7f)
+    public Eagle(int id, string name, float dayliFoodNeed, string sexe, int age, float buyPrice, float sellPrice)
+        : base(id, name, "Aigle", "Carnivore", dayliFoodNeed, 0f, 100, 25f, sexe, age, buyPrice, sellPrice, 15f, 7f)
     {
     }
 
@@ -115,8 +118,8 @@ class Eagle : Animals
 
 class Chicken : Animals
 {
-    public Chicken(string name, string sexe, float dayliFoodNeed, int age, float buyPrice, float sellPrice)
-        : base(name, "Poulet", "Végétalien", dayliFoodNeed, 0f, 100, 15f, sexe, age, buyPrice, sellPrice, 2f, 0.5f)
+    public Chicken(int id, string name, string sexe, float dayliFoodNeed, int age, float buyPrice, float sellPrice)
+        : base(id, name, "Poulet", "Végétalien", dayliFoodNeed, 0f, 100, 15f, sexe, age, buyPrice, sellPrice, 2f, 0.5f)
     {
     }
 
