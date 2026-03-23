@@ -9,6 +9,7 @@ class Zoo
     public List<Enclosure>? _enclosures;
     public List<Animals>? _animals;
     private Storage _storage;
+
     public void NextTurn(int numeroTour)
     {
         Month month = Month.GetCurrentMonth(numeroTour);
@@ -60,7 +61,9 @@ class Zoo
 
     public void PrintZoo()
     {
-        Console.WriteLine($"\nVotre Zoo {ZooName}, vient d'être créé avec un budget initial de {_money} € ! ");
+        Console.WriteLine($"=================================================================================");
+        Console.WriteLine($"        Votre Zoo {ZooName}, vient d'être créé avec un budget initial de {_money} € ! ");
+        Console.WriteLine($"=================================================================================");
         Console.WriteLine($"\nTarif enfant : {_childPrice} €\nTarif adulte : {_adultPrice} €");
         
     }
@@ -110,7 +113,9 @@ class Zoo
             return true;
         }else
         {
-            Console.WriteLine($"Fonds insufissant ! Il ne vous reste que {_money}€.");
+            Console.WriteLine($"=====================================================");
+            Console.WriteLine($"    Fonds insufissant ! Il ne vous reste que {_money}€.");
+            Console.WriteLine($"=====================================================");
             return false;
         }
         

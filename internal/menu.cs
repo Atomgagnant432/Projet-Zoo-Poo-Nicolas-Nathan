@@ -8,6 +8,18 @@ class MenuManager
         _zoo = zoo;
     }
 
+    public void PrintTitle(string title)
+    {
+        int width = title.Length + 6; // marge autour du texte
+        string line = new string('=', width);
+
+        int padding = (width - title.Length) / 2;
+        string centeredTitle = new string(' ', padding) + title;
+
+        Console.WriteLine("\n" + line);
+        Console.WriteLine(centeredTitle);
+        Console.WriteLine(line + "\n");
+    }
 
     public void MainMenu() {
         bool InMenu = true;
@@ -26,12 +38,12 @@ class MenuManager
                     break;
                 case "2" :
                     Console.Clear();
-                    Console.WriteLine("=== Voici tous vos habitats ===\n");
+                    PrintTitle("Voici tous vos habitats");
                     _zoo.PrintZooEnclosure();
                     break;
                 case "3" :
                     Console.Clear();
-                    Console.WriteLine("=== Voici tous vos animaux ===\n");
+                    PrintTitle("Voici tous vos animaux");
                     _zoo.PrintZooAnimals();
                     break;
                 case "4" :
@@ -173,7 +185,7 @@ public void BuyMenu()
             {
                 case "1" :
                     Console.Clear();
-                    Console.WriteLine("====== Quelle quantité (kg) ? ======");
+                    PrintTitle("Quelle quantité (kg) ?");
                     
                     float quantite = float.Parse(Console.ReadLine()!);
 
@@ -183,7 +195,7 @@ public void BuyMenu()
                     break;
                 case "2" :
                     Console.Clear();
-                    Console.WriteLine("====== Quelle quantité (kg) ? ======");
+                    PrintTitle("Quelle quantité (kg) ?");
 
                     float quantity = float.Parse(Console.ReadLine()!);
 
@@ -306,7 +318,7 @@ public void BuyMenu()
                     if (_zoo.Pay(tigre.BuyPrice))
                     {
                         _zoo.AddAnimal(tigre);
-                        Console.WriteLine("==== Nommez votre tigre ====");
+                        PrintTitle("Nommez votre tigre :");
                         name = Console.ReadLine();
                         sexe = tigre.ChooseSexe();
                         tigre.Name = name;
@@ -321,9 +333,7 @@ public void BuyMenu()
             }
             else
             {
-                Console.WriteLine("\n===================================================\n");
-                Console.WriteLine("Veuillez d'abord acheter un enclos pour cet animal.");
-                Console.WriteLine("\n===================================================\n");
+                PrintTitle("Veuillez d'abord acheter un enclos pour cet animal.");
             }
             break;
             }
@@ -378,7 +388,7 @@ public void BuyMenu()
                         if (_zoo.Pay(aigle.BuyPrice))
                         {
                             _zoo.AddAnimal(aigle);
-                            Console.WriteLine("==== Nommez votre Aigle ====");
+                            PrintTitle("Nommez votre aigle :");
                             name = Console.ReadLine();
                             sexe = aigle.ChooseSexe();
                             aigle.Name = name;
@@ -392,9 +402,7 @@ public void BuyMenu()
                 }
                 else
                 {
-                    Console.WriteLine("\n===================================================\n");
-                    Console.WriteLine("Veuillez d'abord acheter un enclos pour cet animal.");
-                    Console.WriteLine("\n===================================================\n");
+                    PrintTitle("Veuillez d'abord acheter un enclos pour cet animal.");
                 }
                 break;
             }
@@ -449,7 +457,8 @@ public void BuyMenu()
                     if (_zoo.Pay(poulet.BuyPrice))
                     {
                         _zoo.AddAnimal(poulet);
-                        Console.WriteLine("==== Nommez votre poulet ====");
+                        
+                        PrintTitle("Nommez votre poulet :");
                         name = Console.ReadLine();
                         poulet.Name = name;
                         Console.Clear();
@@ -461,9 +470,8 @@ public void BuyMenu()
             }
             else
             {
-                Console.WriteLine("\n===================================================");
-                Console.WriteLine("Veuillez d'abord acheter un enclos pour cet animal.");
-                Console.WriteLine("===================================================\n");
+                
+                PrintTitle("Veuillez d'abord acheter un enclos pour cet animal.");
             }
             break;
             }
@@ -533,7 +541,8 @@ public void BuyMenu()
             if (_zoo._animals.Count > 0)
             {
                 Console.Clear();
-                Console.WriteLine("\n=== Quel animal voulez-vous vendre ? ===\n");
+                PrintTitle("Quel animal voulez-vous vendre ?");
+
                 Animals animal = _zoo.ChooseAnimal();
                 _zoo._money += animal.SellPrice;
                 
@@ -563,7 +572,7 @@ public void BuyMenu()
             if (_zoo._enclosures.Count > 0)
             {
                 Console.Clear();
-                Console.WriteLine("\n=== Quel enclos voulez-vous vendre ? ===\n");
+                PrintTitle("Quel enclos voulez-vous vendre ?");
 
                 Enclosure? enclos = _zoo.ChooseEnclosureToSell();
 
@@ -595,109 +604,118 @@ public void BuyMenu()
 
 
 
-    public void PrintMainMenu() {
-        Console.WriteLine("\n======= Choisissez une action =======\n");
-        Console.WriteLine("1. Stockage");
-        Console.WriteLine("2. Habitats");
-        Console.WriteLine("3. Animaux");
-        Console.WriteLine("4. Infos du zoo");
-        Console.WriteLine("5. Magasin");
-        Console.WriteLine("6. Autre options\n");
-    }
+        public void PrintMainMenu() {
+    PrintTitle("Choisissez une action");
 
-    public void PrintStorageMenu()
-    {
-        Console.WriteLine("\n======= Stockage =======\n");
-        Console.WriteLine("1. Chambre froide");
-        Console.WriteLine("2. Silo");
-        Console.WriteLine("3. Retour\n");
-    }
+    Console.WriteLine("1. Stockage");
+    Console.WriteLine("2. Habitats");
+    Console.WriteLine("3. Animaux");
+    Console.WriteLine("4. Infos du zoo");
+    Console.WriteLine("5. Magasin");
+    Console.WriteLine("6. Autre options\n");
+}
 
-    public void PrintSiloMenu()
-    {
-        Console.WriteLine("\n======= Silo =======\n");
-        Console.WriteLine("1. Infos du Silo");
-        Console.WriteLine("2. Retour\n");
-    }
+public void PrintStorageMenu()
+{
+    PrintTitle("Stockage");
 
-    public void PrintColdMenu()
-    {
-        Console.WriteLine("\n======= Chambre froide =======\n");
-        Console.WriteLine("1. Infos de la chambre froide");
-        Console.WriteLine("2. Retour\n");
-    }
+    Console.WriteLine("1. Chambre froide");
+    Console.WriteLine("2. Silo");
+    Console.WriteLine("3. Retour\n");
+}
 
-    public void PrintShopMenu()
-    {
-        Console.WriteLine("\n======= Magasin =======\n");
-        Console.WriteLine("1. Acheter");
-        Console.WriteLine("2. Vendre");
-        Console.WriteLine("3. Retour");
-    
-    }
+public void PrintSiloMenu()
+{
+    PrintTitle("Silo");
 
-    public void PrintBuyMenu()
-    {
-        Console.WriteLine("\n======= Que voulez-vous acheter ? =======\n");
-        Console.WriteLine("1. Viandes (5€/kg)");
-        Console.WriteLine("2. Graines (2.5€/kg)");
-        Console.WriteLine("3. Animaux");
-        Console.WriteLine("4. Habitats");
-        Console.WriteLine("5. Retour\n");
-    }
+    Console.WriteLine("1. Infos du Silo");
+    Console.WriteLine("2. Retour\n");
+}
 
-    public void PrintSellMenu()
-    {
-        Console.WriteLine("\n======= Que voulez-vous vendre ? =======\n");
-        Console.WriteLine("1. Animaux");
-        Console.WriteLine("2. Habitats");
-        Console.WriteLine("3. Retour\n");
-    }
+public void PrintColdMenu()
+{
+    PrintTitle("Chambre froide");
 
+    Console.WriteLine("1. Infos de la chambre froide");
+    Console.WriteLine("2. Retour\n");
+}
 
+public void PrintShopMenu()
+{
+    PrintTitle("Magasin");
 
- public void PrintBuyAnimals()
-    {
-        Console.WriteLine("\n======= Quel Animal voulez-vous acheter ? =======\n");
-        Console.WriteLine("1. Tigre");
-        Console.WriteLine("2. Aigle");
-        Console.WriteLine("3. Poule");
-        Console.WriteLine("4. Retour\n");
-    }
+    Console.WriteLine("1. Acheter");
+    Console.WriteLine("2. Vendre");
+    Console.WriteLine("3. Retour");
+}
 
-    public void PrintBuyTigre()
-    {
-        Console.WriteLine("\n======= Quel Tigre voulez-vous acheter ? =======\n");
-        Console.WriteLine("1. Tigre bébé - 6 mois (3 000€)");
-        Console.WriteLine("2. Tigre ado - 4 ans (120 000€)");
-        Console.WriteLine("3. Tigre adulte - 14 ans (60 000€)");
-        Console.WriteLine("4. Retour\n");
-    }
+public void PrintBuyMenu()
+{
+    PrintTitle("Que voulez-vous acheter ?");
 
-    public void PrintBuyEagle()
-    {
-        Console.WriteLine("\n======= Quel Aigle voulez-vous acheter ? =======\n");
-        Console.WriteLine("1. Aigle bébé - 6 mois (1 000€)");
-        Console.WriteLine("2. Aigle ado - 4 ans (4 000€)");
-        Console.WriteLine("3. Aigle adulte - 14 ans (2 000€)");
-        Console.WriteLine("4. Retour\n");
-    }
+    Console.WriteLine("1. Viandes (5€/kg)");
+    Console.WriteLine("2. Graines (2.5€/kg)");
+    Console.WriteLine("3. Animaux");
+    Console.WriteLine("4. Habitats");
+    Console.WriteLine("5. Retour\n");
+}
 
-    public void PrintBuyChicken()
-    {
-        Console.WriteLine("\n======= Quel Poulet voulez-vous acheter ? =======\n");
-        Console.WriteLine("1. Poule - 6 mois (20€)");
-        Console.WriteLine("2. Coq - 6 mois (100€)");
-        Console.WriteLine("3. Gyrophare - 6 mois (10 000 000 000€)");
-        Console.WriteLine("4. Retour\n");
-    }
+public void PrintSellMenu()
+{
+    PrintTitle("Que voulez-vous vendre ?");
 
-    public void PrintBuyEnclosure()
-    {
-        Console.WriteLine("\n======= Quel enclos voulez-vous acheter ? =======\n");
-        Console.WriteLine("1. Enclos pour Tigre - 2000€");
-        Console.WriteLine("2. Enclos pour Aigle - 2000€");
-        Console.WriteLine("3. Poulailler - 300€");
-        Console.WriteLine("4. Retour\n");
-    }
+    Console.WriteLine("1. Animaux");
+    Console.WriteLine("2. Habitats");
+    Console.WriteLine("3. Retour\n");
+}
+
+public void PrintBuyAnimals()
+{
+    PrintTitle("Quel Animal voulez-vous acheter ?");
+
+    Console.WriteLine("1. Tigre");
+    Console.WriteLine("2. Aigle");
+    Console.WriteLine("3. Poule");
+    Console.WriteLine("4. Retour\n");
+}
+
+public void PrintBuyTigre()
+{
+    PrintTitle("Quel Tigre voulez-vous acheter ?");
+
+    Console.WriteLine("1. Tigre bébé - 6 mois (3 000€)");
+    Console.WriteLine("2. Tigre ado - 4 ans (120 000€)");
+    Console.WriteLine("3. Tigre adulte - 14 ans (60 000€)");
+    Console.WriteLine("4. Retour\n");
+}
+
+public void PrintBuyEagle()
+{
+    PrintTitle("Quel Aigle voulez-vous acheter ?");
+
+    Console.WriteLine("1. Aigle bébé - 6 mois (1 000€)");
+    Console.WriteLine("2. Aigle ado - 4 ans (4 000€)");
+    Console.WriteLine("3. Aigle adulte - 14 ans (2 000€)");
+    Console.WriteLine("4. Retour\n");
+}
+
+public void PrintBuyChicken()
+{
+    PrintTitle("Quel Poulet voulez-vous acheter ?");
+
+    Console.WriteLine("1. Poule - 6 mois (20€)");
+    Console.WriteLine("2. Coq - 6 mois (100€)");
+    Console.WriteLine("3. Gyrophare - 6 mois (10 000 000 000€)");
+    Console.WriteLine("4. Retour\n");
+}
+
+public void PrintBuyEnclosure()
+{
+    PrintTitle("Quel enclos voulez-vous acheter ?");
+
+    Console.WriteLine("1. Enclos pour Tigre - 2000€");
+    Console.WriteLine("2. Enclos pour Aigle - 2000€");
+    Console.WriteLine("3. Poulailler - 300€");
+    Console.WriteLine("4. Retour\n");
+}
 }
