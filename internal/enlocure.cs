@@ -75,6 +75,7 @@ public class Enclosure
             }
         }
     }
+
     public void PrintInfos()
     {
         Console.WriteLine($"Enclos {IdEnclosure} ({EnclosureType}) - {AnimalType}");

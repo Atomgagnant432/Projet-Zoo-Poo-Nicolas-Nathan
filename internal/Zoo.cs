@@ -23,7 +23,27 @@ class Zoo
         {
             animal.AnimalsNextTurn(month);
         }
+        float PreMoney = _money;
 
+        if (month.Number == 0 )
+            {
+                foreach (Animals animals in _animals)
+                {
+                    if (animals.Species == "Tigre")
+                    {
+                        _money += 43800f;
+                    }else if (animals.Species == "Aigle")
+                    {
+                        _money += 2190f;
+                    }
+                }
+            }
+            if (_money != PreMoney)
+            {
+                Console.WriteLine("=================================================================================================");
+                Console.WriteLine($"Vous vennez de gagnez {_money - PreMoney}€, grâce aux subvention annuelle des espèces protégée ! ");
+                Console.WriteLine("=================================================================================================");
+            }
         }  
     }
 
@@ -85,8 +105,8 @@ class Zoo
         {
             Console.Clear();
             _money -= amount;
-            Console.WriteLine($"Vous venez de dépenser {amount}€");
-            Console.WriteLine($"Fonds restant {_money}€.");
+            Console.WriteLine($"\nVous venez de dépenser {amount}€");
+            Console.WriteLine($"Fonds restant {_money}€.\n");
             return true;
         }else
         {
