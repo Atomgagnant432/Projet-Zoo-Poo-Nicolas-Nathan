@@ -1,120 +1,100 @@
-Projet POO — Simulation de Zoo
+# Simulation de Zoo — Projet POO
+
+> Simulation de gestion de zoo développée en c#, appliquant les principes fondamentaux de la programmation orientée objet.
+
+---
+
+## Description
+
+Ce projet modélise un système de gestion de zoo réaliste. Il permet de gérer le budget, les animaux, leurs habitats, leur alimentation, ainsi que les achats et ventes liés au fonctionnement du zoo.
+
+Concepts POO appliqués : classes & objets, encapsulation, relations entre objets.
+
+---
+## Arborescence
+```
+a
+
+```
 
 
-Description
+---
+## Fonctionnalités
 
-Ce projet consiste à développer une simulation de gestion de zoo en utilisant les principes de la programmation orientée objet (POO).
+### Zoo
 
-Le programme permet de gérer :
+Entité principale du programme.
 
-- le budget du zoo,
-- les animaux,
-- les habitats,
-- l’alimentation,
-- les achats et ventes liés au fonctionnement du zoo.
+**Attributs :** `budget`, `tarifAdulte`, `tarifEnfant`
 
-L’objectif est de modéliser un système réaliste en appliquant les concepts fondamentaux de la POO : classes, objets, encapsulation, relations entre objets.
+**Responsabilités :** gérer les finances, centraliser les animaux et habitats, coordonner les transactions.
 
+---
 
- 
-Fonctionnalités
-Zoo
+### Animal
 
-Le zoo représente l’entité principale du programme.
+Chaque animal possède des caractéristiques et des besoins propres.
 
-Attributs :
+**Attributs :** `satiete`, `typeAlimentation`, `quantiteNourriture` , `esperanceVie`, `sexe`, `habitat`
 
-- Budget du zoo
-- Tarif adulte
-- Tarif enfant
+**Objectifs :** simuler les besoins alimentaires et associer chaque animal à son habitat.
 
-Responsabilités :
+---
 
-- Gérer les finances
-- Centraliser les animaux et habitats
-- Gérer les transactions (achat / vente)
-
-
-
-Création d’animaux
-
-Chaque animal possède des caractéristiques propres.
-
-Attributs :
-
-- Satiété de l’animal
-- Type d’alimentation
-- Quantité de nourriture (kg/jour)
-- Espérance de vie
-- Sexe
-- Habitat associé
-
-Objectifs :
-
-- Simuler les besoins alimentaires
-- Associer un animal à un habitat
-
-
-
-Création d’habitats
+### Habitat
 
 Les habitats accueillent les animaux selon leur espèce.
 
-Attributs :
+**Attributs :** `nbResidents`, `especeAutorisee`, `probabiliteMaladie`
 
-- Nombre de résidents
-- Espèce autorisée
-- Probabilité de maladie
+**Objectifs :** regrouper les animaux compatibles et simuler les risques sanitaires.
 
-Objectifs :
+---
 
-- Regrouper les animaux compatibles
-- Simuler les risques sanitaires
-
-
-
-Aliment
+### Aliment
 
 Représente la nourriture utilisée pour nourrir les animaux.
 
-Attributs :
+**Attributs :** `type`, `prixKg`
 
--Type d’aliment
--Prix par kilogramme
+**Objectif :** calculer le coût alimentaire quotidien du zoo.
 
-Objectifs :
+---
 
--Calculer le coût alimentaire quotidien
+### Achat
 
+Gestion des acquisitions effectuées par le zoo.
 
+**Attributs :** `typeBien`, `cout`
 
-Achat
+**Exemples :** achat d'un animal, achat de nourriture, construction d'un habitat.
 
-Gestion des achats effectués par le zoo.
+---
 
-Attributs :
+### Vente
 
--Type de bien acheté
--Coût
+Gestion des cessions réalisées par le zoo.
 
-Exemples :
+**Attributs :** `typeBien`, `cout`
 
--Achat d’un animal
--Achat de nourriture
--Construction d’un habitat
+**Exemples :** vente d'un animal, vente d'habitat.
 
+---
 
+## Evenement
 
-Vente
+création d'evenement que le joueur ne peut pas gérer, pour ne pas avoir une partie trop répétitive.
 
-Gestion des ventes réalisées par le zoo.
+**Attributs :**`typeEvent`,`proba`, 
 
-Attributs :
+**Exemples :** Nuisibles, Incendie, Vol, Viande avariée
 
--Type de bien vendu
--Coût
+---
 
-Exemples :
+## Téléchargement et Lancement du projet 
 
--Vente d’un animal
--Vente d’équipements
+- git clone https://github.com/Atomgagnant432/Projet-Zoo-Poo-Nicolas-Nathan.git 
+
+- dotnet run 
+
+- Navigué ensuite grace au chiffre indiqué dans le terminal 
