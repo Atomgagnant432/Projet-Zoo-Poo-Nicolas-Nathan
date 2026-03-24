@@ -40,8 +40,9 @@
             // 2. Ton menu existant s'exécute normalement
             menu.MainMenu();
             Console.WriteLine("\n1. Passer au tour suivant");
-            Console.WriteLine("2. Quitter le jeu");
-            Console.WriteLine("3. Retour au menu");
+            Console.WriteLine("2. Retour au menu");
+            Console.WriteLine("3. Quitter le jeu");
+            
             
             string? choix = Console.ReadLine();
 
@@ -55,10 +56,10 @@
                     numeroTour++;
                     break;
                     case "2":
-                        jeuEnCours = false;
                         inOption = false;
                         break;
                     case "3":
+                        jeuEnCours = false;
                         inOption = false;
                         break;
                 }

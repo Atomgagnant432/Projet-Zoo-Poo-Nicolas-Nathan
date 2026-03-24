@@ -32,6 +32,11 @@ class Zoo
 
         }
 
+        foreach (Enclosure enclos in _enclosures)
+        {
+            enclos.PrintInfos();
+        }
+
         float PreMoney = _money;
 
         if (month.Number == 0 )
@@ -188,6 +193,7 @@ class Zoo
         {
              Console.Write($"{i+1}. ");
              PrintAnimals(_animals[i]);
+             Console.WriteLine("────────────────────────────────────────────────────────────────────────────────────────────");
         }
     }
 
@@ -197,12 +203,13 @@ class Zoo
         {
             Console.Write($"{i+1}. ");
             PrintEnclosures(_enclosures[i]);
+            Console.WriteLine("────────────────────────────────────────────────────────────────────────────────────────────");
         }
     }
 
     public void PrintAnimals(Animals animal)
     {
-        Console.Write($"ID : {animal.ID}, nom : {animal.Name}, espece : {animal.Species}, sexe : {animal.Sexe}, age : {animal.Age} mois. Prix de vente {animal.SellPrice}€\n");
+        Console.Write($"ID : {animal.ID}, nom : {animal.Name}, espece : {animal.Species}, sexe : {animal.Sexe}, age : {animal.Age} mois, enclos actuel : {animal.HomeID} . Prix de vente {animal.SellPrice}€\n");
     }
 
     public void PrintEnclosures(Enclosure enclosure)

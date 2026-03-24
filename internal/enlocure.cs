@@ -39,7 +39,6 @@ public class Enclosure
         if (_residents.Count >= MaxResident)
         {
             Console.WriteLine("Enclos plein !");
-            return true;
         }
 
         _residents.Add(animal);
@@ -49,16 +48,9 @@ public class Enclosure
     }
 
     
-    public void NextTurn(Month month)
+    public void OverCrowd()
     {
-        
-        // 1. Chaque animal vieillit
-        foreach (Animals animal in _residents)
-        {
-            animal.AnimalsNextTurn(month);
-        }
 
-        // 2. Gestion du surpeuplement
         if (Overcrowding)
         {
             Console.WriteLine($" Enclos {IdEnclosure} surpeuplé !");
@@ -78,14 +70,11 @@ public class Enclosure
 
     public void PrintInfos()
     {
-        Console.WriteLine($"Enclos {IdEnclosure} ({EnclosureType}) - {AnimalType}");
+        Console.WriteLine($"\nEnclos {IdEnclosure} ({EnclosureType})");
         Console.WriteLine($"  Résidents : {CurrentResident}/{MaxResident}");
         if (Overcrowding)
-            Console.WriteLine("SURPEUPLÉ - risque de mort 50%");
-        foreach (Animals animal in _residents)
-        {
-            Console.WriteLine($"    - {animal.Name} | Faim : {animal.ActualHunger}/{animal.MaxHunger}");
-        }
+            OverCrowd();
+            Console.ReadLine();
     }
 }
 
