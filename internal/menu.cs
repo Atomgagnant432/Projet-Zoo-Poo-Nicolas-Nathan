@@ -187,19 +187,32 @@ public void BuyMenu()
                     Console.Clear();
                     PrintTitle("Quelle quantité (kg) ?");
                     
-                    float quantite = float.Parse(Console.ReadLine()!);
+                    string? quantite =Console.ReadLine();
+                    float Fquantite;
 
-                    Meat meat = new Meat("Viande", quantite, 5);
+                    if (!float.TryParse(quantite, out Fquantite))
+                    {
+                        Console.WriteLine(" Veuillez entrer un NUMÉRO !");
+                        continue;
+                    }
+                    Meat meat = new Meat("Viande", Fquantite, 5);
                     meat.Buy(_zoo);
 
                     break;
                 case "2" :
                     Console.Clear();
                     PrintTitle("Quelle quantité (kg) ?");
+                    
+                    string? quantity =Console.ReadLine();
+                    float Fquantity;
 
-                    float quantity = float.Parse(Console.ReadLine()!);
+                    if (!float.TryParse(quantity, out Fquantity))
+                    {
+                        Console.WriteLine(" Veuillez entrer un NUMÉRO !");
+                        continue;
+                    }
 
-                    Seed seed = new Seed ("Graine", quantity, 2.5f);
+                    Seed seed = new Seed ("Graine", Fquantity, 2.5f);
                     seed.Buy(_zoo);
 
                     break;
@@ -380,7 +393,7 @@ public void BuyMenu()
             if (Age != 0){
                 string? name = "";
                 string? sexe = "";
-                Eagle aigle = new Eagle(_zoo._animals.Count+1,name,12,sexe,Age,BuyPrice,SellPrice);
+                Eagle aigle = new Eagle(_zoo._animals.Count+1,name,0.25f,sexe,Age,BuyPrice,SellPrice);
                 Console.Clear();
                 if (_zoo._enclosures.Count > 0 && _zoo.CheckEnclosure(aigle)) 
                 {
@@ -423,6 +436,7 @@ public void BuyMenu()
             float SellPrice = 0f;
             int Age = 0;
             string Sexe = "";
+            float DailyFood = 0f;
 
             switch (action)
             {
@@ -431,12 +445,14 @@ public void BuyMenu()
                     SellPrice = 10f;
                     Age = 6;
                     Sexe = "poule";
+                    DailyFood = 0.15f;
                     break;
                 case "2" :
                     BuyPrice = 100f;
                     SellPrice = 20f;
                     Age = 480;
                     Sexe = "coq";
+                    DailyFood = 0.18f;
                     break;
                 case "3" :
                     BuyPrice = 10000000000f;
@@ -449,7 +465,7 @@ public void BuyMenu()
             }
             if (Age != 0){
             string? name = "";
-            Chicken poulet = new Chicken(_zoo._animals.Count+1, name,Sexe,Age,12,BuyPrice,SellPrice);
+            Chicken poulet = new Chicken(_zoo._animals.Count+1, name,Sexe,DailyFood,Age,BuyPrice,SellPrice);
             Console.Clear();
             if (_zoo._enclosures.Count > 0 && _zoo.CheckEnclosure(poulet)) 
             {   

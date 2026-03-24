@@ -2,8 +2,8 @@
 
 class Storage
 {
-    private float _actualSiloStorage;
-    private float _actualColdChamberStorage;
+    public float _actualSiloStorage;
+    public float _actualColdChamberStorage;
 
 
     public Storage ()

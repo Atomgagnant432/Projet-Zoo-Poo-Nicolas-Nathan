@@ -15,9 +15,10 @@ public class Animals
     public float HighSaisonVisit;
     public float DownSaisonVisit;
     public int HomeID;
+    public bool Alive;
 
 
-    public Animals(int id,string name, string species, string foodType, float dayliFoodNeed, float actualHunger, int maxHunger, float lifeTime, string sexe, float age, float buyPrice, float sellPrice, float highSaisonVisit, float downSaisonVisit)
+    public Animals(int id,string name, string species, string foodType, float dayliFoodNeed, float actualHunger, int maxHunger, float lifeTime, string sexe, float age, float buyPrice, float sellPrice, float highSaisonVisit, float downSaisonVisit, bool alive)
     {
         ID = id;
         Name = name;
@@ -33,6 +34,7 @@ public class Animals
         SellPrice = sellPrice;
         HighSaisonVisit = highSaisonVisit;
         DownSaisonVisit = downSaisonVisit;
+        Alive = alive;
 
     }
 
@@ -43,13 +45,18 @@ public class Animals
 
     public virtual void AnimalsNextTurn(Month month)
     {
-        LifeTime += 1f;
+        Age += 1f;
         ActualHunger += 10f;        // l'animal a plus faim chaque tour
 
         if (ActualHunger >= MaxHunger)
         {
             ActualHunger = MaxHunger; // on plafonne à MaxHunger
         }
+        if (Age > LifeTime)
+        {
+            Alive = false;
+        }
+        
     }
 }
 
@@ -59,7 +66,7 @@ public class Animals
 class Tiger : Animals
 {
     public Tiger(int id, string name, string sexe, int age, float dayliFoodNeed, float buyPrice, float sellPrice)
-        : base(id, name, "Tigre", "Carnivore", dayliFoodNeed, 0f, 100, 25f, sexe, age, buyPrice, sellPrice, 30f, 5f)
+        : base(id, name, "Tigre", "Carnivore", dayliFoodNeed, 0f, 100, 300f, sexe, age, buyPrice, sellPrice, 30f, 5f, true)
     {
     }
 
@@ -80,16 +87,23 @@ class Tiger : Animals
         }
 
         if (input == "1")
+        {
+            DayliFoodNeed = 12f;
             return "mâle";
+        }
         else
+        {
+            DayliFoodNeed = 10f;
             return "femelle";
+        }
+            
     }
 }
 
 class Eagle : Animals
 {
     public Eagle(int id, string name, float dayliFoodNeed, string sexe, int age, float buyPrice, float sellPrice)
-        : base(id, name, "Aigle", "Carnivore", dayliFoodNeed, 0f, 100, 25f, sexe, age, buyPrice, sellPrice, 15f, 7f)
+        : base(id, name, "Aigle", "Carnivore", dayliFoodNeed, 0f, 100, 300f, sexe, age, buyPrice, sellPrice, 15f, 7f, true)
     {
     }
 
@@ -110,16 +124,22 @@ class Eagle : Animals
         }
 
         if (input == "1")
+        {
+            DayliFoodNeed = 0.25f;
             return "mâle";
+        }
         else
+        {
+            DayliFoodNeed = 10f;
             return "femelle";
+        }
     }
 }
 
 class Chicken : Animals
 {
     public Chicken(int id, string name, string sexe, float dayliFoodNeed, int age, float buyPrice, float sellPrice)
-        : base(id, name, "Poulet", "Végétalien", dayliFoodNeed, 0f, 100, 15f, sexe, age, buyPrice, sellPrice, 2f, 0.5f)
+        : base(id, name, "Poulet", "Végétalien", dayliFoodNeed, 0f, 100, 180f, sexe, age, buyPrice, sellPrice, 2f, 0.5f, true)
     {
     }
 
