@@ -18,12 +18,13 @@ public class Zoo
         {
             
             animal.AnimalsNextTurn(month);
-            if (!CheckAnimalDeath(animal))
+
+            if (CheckAnimalDeath(animal))
             {
                 break;
             }
             
-            FeedAnimals(animal,month);
+            animal.FeedAnimals(this,month);
 
             if (month.HighSeason)
             _money += 60 * animal.HighSaisonVisit;
@@ -72,46 +73,22 @@ public class Zoo
         _animals = new List<Animals>();
     }
 
-    public void FeedAnimals(Animals animal, Month month)
-    {
-        float MonthFood = animal.DayliFoodNeed * month.NumberOfDays;
-        if (animal.FoodType == "Carnivore")
-        {
-            if (MonthFood <= _storage._actualColdChamberStorage)
-            {
-                    animal.ActualHunger = 0f;
-                    _storage._actualColdChamberStorage -= MonthFood;
-                    Console.WriteLine($"\n{animal.Name} vient de manger {MonthFood}kg de viandes :");
-                    ColdInfos();
-            }else
-            {
-                Console.WriteLine($"Vous n'avez plus assez de nourriture pour nourrir {animal.Name}..");
-            }
-        }else if (animal.FoodType == "Végétalien")
-        {
-            if (MonthFood <= _storage._actualSiloStorage)
-            {
-                    animal.ActualHunger = 0f;
-                    _storage._actualSiloStorage -= MonthFood;
-                    Console.WriteLine($"\n{animal.Name} vient de manger {MonthFood}kg de graines :");
-                    SiloInfos();
-            }else
-            {
-                Console.WriteLine($"Vous n'avez plus assez de nourriture pour nourrir {animal.Name}...");
-            }
-        }
-    }
 
     public bool CheckAnimalDeath(Animals animal)
     {
-        if (!animal.Alive)
+        if (!animal.Alive && animal.ActualHunger == animal.MaxHunger)
+        {
+            Console.WriteLine($"\nVotre animal {animal.Name} est malhereusement mort de faim a {animal.Age} mois....");
+            _animals.Remove(animal);
+            return true;
+        }else if (!animal.Alive)
         {
             Console.WriteLine($"\nVotre animal {animal.Name} est malhereusement mort a {animal.Age} mois....");
             _animals.Remove(animal);
-            return false;
+            return true;
         }else
         {
-            return true;
+            return false;
         }
     }
 
