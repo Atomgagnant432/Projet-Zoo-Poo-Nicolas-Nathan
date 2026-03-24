@@ -45,17 +45,6 @@ public class Animals
 
     public virtual void AnimalsNextTurn(Month month)
     {
-        Age += 1f;
-        ActualHunger += 10f;        // l'animal a plus faim chaque tour
-
-        if (ActualHunger >= MaxHunger)
-        {
-            ActualHunger = MaxHunger; // on plafonne à MaxHunger
-        }
-        if (Age > LifeTime)
-        {
-            Alive = false;
-        }
         
     }
 }
@@ -98,6 +87,29 @@ class Tiger : Animals
         }
             
     }
+
+    public override void AnimalsNextTurn(Month month)
+    {
+        Age += 100f;
+        ActualHunger += 10f;        // l'animal a plus faim chaque tour
+
+        if (ActualHunger >= MaxHunger)
+        {
+            ActualHunger = MaxHunger; // on plafonne à MaxHunger
+        }
+        if (Age > LifeTime)
+        {
+            Alive = false;
+        }
+        if (Age > 47 && Age < 168)
+        {
+            SellPrice = 60000f;
+
+        }else if (Age > 167)
+        {
+            SellPrice = 10000f;
+        }
+    }
 }
 
 class Eagle : Animals
@@ -134,6 +146,29 @@ class Eagle : Animals
             return "femelle";
         }
     }
+
+    public override void AnimalsNextTurn(Month month)
+    {
+        Age += 1f;
+        ActualHunger += 10f;        // l'animal a plus faim chaque tour
+
+        if (ActualHunger >= MaxHunger)
+        {
+            ActualHunger = MaxHunger; // on plafonne à MaxHunger
+        }
+        if (Age > LifeTime)
+        {
+            Alive = false;
+        }
+        if (Age > 47 && Age < 168)
+        {
+            SellPrice = 2000f;
+
+        }else if (Age > 167)
+        {
+            SellPrice = 400f;
+        }
+    }
 }
 
 class Chicken : Animals
@@ -146,5 +181,20 @@ class Chicken : Animals
     public override string ChooseSexe()
     {
         return "";
+    }
+    public override void AnimalsNextTurn(Month month)
+    {
+        Age += 1f;
+        ActualHunger += 10f;        // l'animal a plus faim chaque tour
+
+        if (ActualHunger >= MaxHunger)
+        {
+            ActualHunger = MaxHunger; // on plafonne à MaxHunger
+        }
+        if (Age > LifeTime)
+        {
+            Alive = false;
+        }
+        
     }
 }

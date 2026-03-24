@@ -202,12 +202,12 @@ class Zoo
 
     public void PrintAnimals(Animals animal)
     {
-        Console.Write($"ID : {animal.ID}, nom : {animal.Name}, espece : {animal.Species}, sexe : {animal.Sexe}, age : {animal.Age} mois\n");
+        Console.Write($"ID : {animal.ID}, nom : {animal.Name}, espece : {animal.Species}, sexe : {animal.Sexe}, age : {animal.Age} mois. Prix de vente {animal.SellPrice}€\n");
     }
 
     public void PrintEnclosures(Enclosure enclosure)
     {
-        Console.Write($"ID : {enclosure.IdEnclosure}, type : {enclosure.EnclosureType}, resident actuel : {enclosure.CurrentResident}/{enclosure.MaxResident}\n");
+        Console.Write($"ID : {enclosure.IdEnclosure}, type : {enclosure.EnclosureType}, resident actuel : {enclosure.CurrentResident}/{enclosure.MaxResident}. Prix de vente {enclosure.SellingPriceEnclosure}€\n");
     }
 
     public bool ChooseEnclosure(Animals NewAnimal)
