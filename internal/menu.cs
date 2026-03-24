@@ -27,7 +27,7 @@ class MenuManager
         {
 
             PrintMainMenu();
-            string? action = Console.ReadLine();
+            string action = Console.ReadLine() ?? "";
             switch (action)
             {
                 
@@ -70,7 +70,7 @@ class MenuManager
         while (InStorage)
         {
             PrintStorageMenu();
-            string? action = Console.ReadLine();
+            string action = Console.ReadLine() ?? "";
 
             switch (action)
             {
@@ -101,7 +101,7 @@ public void SiloMenu()
         {
 
             PrintSiloMenu();
-            string? action = Console.ReadLine();
+            string action = Console.ReadLine() ?? "";
 
             switch (action)
             {
@@ -126,7 +126,7 @@ public void ColdMenu()
         {
 
             PrintColdMenu();
-            string? action = Console.ReadLine();
+            string action = Console.ReadLine() ?? "";
 
             switch (action)
             {
@@ -151,7 +151,7 @@ public void ShopMenu()
         {
             Console.Clear();
             PrintShopMenu();
-            string? action = Console.ReadLine();
+            string action = Console.ReadLine() ?? "";
 
             switch (action)
             {
@@ -179,7 +179,7 @@ public void BuyMenu()
         while (InShop)
         {
             PrintBuyMenu();
-            string? action = Console.ReadLine();
+            string action = Console.ReadLine() ?? "";
 
             switch (action)
             {
@@ -240,7 +240,7 @@ public void BuyMenu()
             Console.Clear();
 
             PrintSellMenu();
-            string? action = Console.ReadLine();
+            string action = Console.ReadLine() ?? "";
 
             switch (action)
             {
@@ -265,7 +265,7 @@ public void BuyMenu()
         {
 
             PrintBuyAnimals();
-            string? action = Console.ReadLine();
+            string action = Console.ReadLine() ?? "";
 
             switch (action)
             {
@@ -293,7 +293,7 @@ public void BuyMenu()
             Console.Clear();
 
             PrintBuyTigre();
-            string? action = Console.ReadLine();
+            string action = Console.ReadLine() ?? "";
 
             float BuyPrice = 0f;
             float SellPrice = 0f;
@@ -322,7 +322,7 @@ public void BuyMenu()
             }
             if (Age != 0) {
             string? name = "";
-            string? sexe = "";
+            string sexe = "";
             Tiger tigre = new Tiger(_zoo._animals.Count+1,name,sexe,Age,12,BuyPrice,SellPrice);
             Console.Clear();
             if (_zoo._enclosures.Count > 0 && _zoo.CheckEnclosure(tigre)) 
@@ -363,7 +363,7 @@ public void BuyMenu()
             Console.Clear();
 
             PrintBuyEagle();
-            string? action = Console.ReadLine();
+            string action = Console.ReadLine() ?? "";
 
             float BuyPrice = 0f;
             float SellPrice = 0f;
@@ -392,7 +392,7 @@ public void BuyMenu()
             }
             if (Age != 0){
                 string? name = "";
-                string? sexe = "";
+                string sexe = "";
                 Eagle aigle = new Eagle(_zoo._animals.Count+1,name,0.25f,sexe,Age,BuyPrice,SellPrice);
                 Console.Clear();
                 if (_zoo._enclosures.Count > 0 && _zoo.CheckEnclosure(aigle)) 
@@ -430,7 +430,7 @@ public void BuyMenu()
             Console.Clear();
 
             PrintBuyChicken();
-            string? action = Console.ReadLine();
+            string action = Console.ReadLine() ?? "";
 
             float BuyPrice = 0f;
             float SellPrice = 0f;
@@ -502,7 +502,7 @@ public void BuyMenu()
             Console.Clear();
 
             PrintBuyEnclosure();
-            string? action = Console.ReadLine();
+            string action = Console.ReadLine() ?? "";
 
             switch (action)
             {
@@ -559,7 +559,15 @@ public void BuyMenu()
                 Console.Clear();
                 PrintTitle("Quel animal voulez-vous vendre ?");
 
-                Animals animal = _zoo.ChooseAnimal();
+                Animals? animal = _zoo.ChooseAnimal();
+
+                if (animal == null)
+                {
+                    Console.WriteLine("Vente annulée.");
+                    Console.ReadLine();
+                    break;
+                }
+                
                 _zoo._money += animal.SellPrice;
                 
                 Console.WriteLine($"l'animal {animal.Name} d'Id {animal.ID} a bien était vendu pour {animal.SellPrice}€");

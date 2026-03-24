@@ -56,6 +56,7 @@
                     break;
                     case "2":
                         jeuEnCours = false;
+                        inOption = false;
                         break;
                     case "3":
                         inOption = false;
@@ -63,8 +64,9 @@
                 }
             }
         }
-
-        Console.WriteLine("Merci d'avoir joué !");
+        Console.WriteLine("\n=====================");
+        Console.WriteLine(" Merci d'avoir joué !");
+        Console.WriteLine("=====================\n");
     }
     
 }

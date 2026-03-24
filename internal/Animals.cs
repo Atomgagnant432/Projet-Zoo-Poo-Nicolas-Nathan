@@ -90,7 +90,7 @@ class Tiger : Animals
 
     public override void AnimalsNextTurn(Month month)
     {
-        Age += 100f;
+        Age += 1f;
         ActualHunger += 10f;        // l'animal a plus faim chaque tour
 
         if (ActualHunger >= MaxHunger)

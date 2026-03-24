@@ -6,8 +6,8 @@ class Zoo
     private float _adultPrice;
     public string ZooName { get; private set; }
 
-    public List<Enclosure>? _enclosures;
-    public List<Animals>? _animals;
+    public List<Animals> _animals = new List<Animals>();
+    public List<Enclosure> _enclosures = new List<Enclosure>();
     private Storage _storage;
 
     public void NextTurn(int numeroTour)
