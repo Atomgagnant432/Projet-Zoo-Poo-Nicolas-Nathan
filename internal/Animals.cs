@@ -47,6 +47,9 @@ public class Animals
     {
         
     }
+    public virtual void FeedAnimals(Zoo _zoo, Month month)
+    {
+    }
 }
 
 
@@ -111,8 +114,25 @@ class Tiger : Animals
             SellPrice = 10000f;
         }
     }
-}
 
+    public override void FeedAnimals(Zoo _zoo, Month month)
+    {
+        float MonthFood = DayliFoodNeed * month.NumberOfDays;
+        if (FoodType == "Carnivore")
+        {
+            if (MonthFood <= _zoo._storage._actualColdChamberStorage)
+            {
+                    ActualHunger = 0f;
+                    _zoo._storage._actualColdChamberStorage -= MonthFood;
+                    Console.WriteLine($"\n{Name} vient de manger {MonthFood}kg de viandes :");
+                    _zoo.ColdInfos();
+            }else
+            {
+                Console.WriteLine($"Vous n'avez plus assez de nourriture pour nourrir {Name}..");
+            }
+        }
+    }
+}
 class Eagle : Animals
 {
     public Eagle(int id, string name, float dayliFoodNeed, string sexe, int age, float buyPrice, float sellPrice)
@@ -171,6 +191,24 @@ class Eagle : Animals
             SellPrice = 400f;
         }
     }
+
+    public override void FeedAnimals(Zoo _zoo, Month month)
+    {
+        float MonthFood = DayliFoodNeed * month.NumberOfDays;
+        if (FoodType == "Carnivore")
+        {
+            if (MonthFood <= _zoo._storage._actualColdChamberStorage)
+            {
+                    ActualHunger = 0f;
+                    _zoo._storage._actualColdChamberStorage -= MonthFood;
+                    Console.WriteLine($"\n{Name} vient de manger {MonthFood}kg de viandes :");
+                    _zoo.ColdInfos();
+            }else
+            {
+                Console.WriteLine($"Vous n'avez plus assez de nourriture pour nourrir {Name}..");
+            }
+        }
+    }
 }
 
 class Chicken : Animals
@@ -199,5 +237,23 @@ class Chicken : Animals
             Alive = false;
         }
         
+    }
+
+    public override void FeedAnimals(Zoo _zoo, Month month)
+    {
+        float MonthFood = DayliFoodNeed * month.NumberOfDays;
+        if (FoodType == "Végétalien")
+        {
+            if (MonthFood <= _zoo._storage._actualSiloStorage)
+            {
+                    ActualHunger = 0f;
+                    _zoo._storage._actualSiloStorage -= MonthFood;
+                    Console.WriteLine($"\n{Name} vient de manger {MonthFood}kg de graines :");
+                    _zoo.SiloInfos();
+            }else
+            {
+                Console.WriteLine($"Vous n'avez plus assez de nourriture pour nourrir {Name}...");
+            }
+        }
     }
 }

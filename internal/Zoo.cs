@@ -1,5 +1,5 @@
 
-class Zoo
+public class Zoo
 {
     public float _money;
     private float _childPrice;
@@ -8,7 +8,7 @@ class Zoo
 
     public List<Animals> _animals = new List<Animals>();
     public List<Enclosure> _enclosures = new List<Enclosure>();
-    private Storage _storage;
+    public Storage _storage;
 
     public void NextTurn(int numeroTour)
     {
@@ -18,12 +18,13 @@ class Zoo
         {
             
             animal.AnimalsNextTurn(month);
-            if (!CheckAnimalDeath(animal))
+
+            if (CheckAnimalDeath(animal))
             {
                 break;
             }
             
-            FeedAnimals(animal,month);
+            animal.FeedAnimals(this,month);
 
             if (month.HighSeason)
             _money += 60 * animal.HighSaisonVisit;
@@ -58,6 +59,7 @@ class Zoo
                 Console.WriteLine($"Vous vennez de gagnez {_money - PreMoney}€, grâce aux subvention annuelle des espèces protégée ! ");
                 Console.WriteLine("=================================================================================================");
             } 
+        TriggerRandomEvent();
     }
 
     public Zoo(float money, float childPrice, float adultPrice, string zooName)
@@ -71,49 +73,51 @@ class Zoo
         _animals = new List<Animals>();
     }
 
-    public void FeedAnimals(Animals animal, Month month)
-    {
-        float MonthFood = animal.DayliFoodNeed * month.NumberOfDays;
-        if (animal.FoodType == "Carnivore")
-        {
-            if (MonthFood <= _storage._actualColdChamberStorage)
-            {
-                    animal.ActualHunger = 0f;
-                    _storage._actualColdChamberStorage -= MonthFood;
-                    Console.WriteLine($"\n{animal.Name} vient de manger {MonthFood}kg de viandes :");
-                    ColdInfos();
-            }else
-            {
-                Console.WriteLine($"Vous n'avez plus assez de nourriture pour nourrir {animal.Name}..");
-            }
-        }else if (animal.FoodType == "Végétalien")
-        {
-            if (MonthFood <= _storage._actualSiloStorage)
-            {
-                    animal.ActualHunger = 0f;
-                    _storage._actualSiloStorage -= MonthFood;
-                    Console.WriteLine($"\n{animal.Name} vient de manger {MonthFood}kg de graines :");
-                    SiloInfos();
-            }else
-            {
-                Console.WriteLine($"Vous n'avez plus assez de nourriture pour nourrir {animal.Name}...");
-            }
-        }
-    }
 
     public bool CheckAnimalDeath(Animals animal)
     {
-        if (!animal.Alive)
+        if (!animal.Alive && animal.ActualHunger == animal.MaxHunger)
+        {
+            Console.WriteLine($"\nVotre animal {animal.Name} est malhereusement mort de faim a {animal.Age} mois....");
+            _animals.Remove(animal);
+            return true;
+        }else if (!animal.Alive)
         {
             Console.WriteLine($"\nVotre animal {animal.Name} est malhereusement mort a {animal.Age} mois....");
             _animals.Remove(animal);
-            return false;
+            return true;
         }else
         {
-            return true;
+            return false;
         }
     }
 
+
+    public void TriggerRandomEvent()
+    {
+        List<Event> Events = new List<Event>()
+        {
+            new Fire(),
+            new Robbery(),
+            new Harmful(),
+            new SpoiledMeat()
+        };
+
+        Random rand = new Random();
+
+        foreach (var events in Events)
+        {
+            if (rand.NextDouble() < events.GetProba())
+            {
+                Console.Clear();
+                Console.WriteLine("\n====================================");
+                Console.WriteLine($"        Événement : {events.GetType()}");
+                Console.WriteLine("====================================\n");
+                events.Consequence(this);
+                Console.ReadLine();
+            }
+        }
+    }
 
     public void PrintZoo()
     {
