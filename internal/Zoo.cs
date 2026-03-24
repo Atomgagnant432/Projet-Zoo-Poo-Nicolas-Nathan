@@ -1,5 +1,5 @@
 
-class Zoo
+public class Zoo
 {
     public float _money;
     private float _childPrice;
@@ -8,7 +8,7 @@ class Zoo
 
     public List<Animals> _animals = new List<Animals>();
     public List<Enclosure> _enclosures = new List<Enclosure>();
-    private Storage _storage;
+    public Storage _storage;
 
     public void NextTurn(int numeroTour)
     {
@@ -58,6 +58,7 @@ class Zoo
                 Console.WriteLine($"Vous vennez de gagnez {_money - PreMoney}€, grâce aux subvention annuelle des espèces protégée ! ");
                 Console.WriteLine("=================================================================================================");
             } 
+        TriggerRandomEvent();
     }
 
     public Zoo(float money, float childPrice, float adultPrice, string zooName)
@@ -114,6 +115,32 @@ class Zoo
         }
     }
 
+
+    public void TriggerRandomEvent()
+    {
+        List<Event> Events = new List<Event>()
+        {
+            new Fire(),
+            new Robbery(),
+            new Harmful(),
+            new SpoiledMeat()
+        };
+
+        Random rand = new Random();
+
+        foreach (var events in Events)
+        {
+            if (rand.NextDouble() < events.GetProba())
+            {
+                Console.Clear();
+                Console.WriteLine("\n====================================");
+                Console.WriteLine($"        Événement : {events.GetType()}");
+                Console.WriteLine("====================================\n");
+                events.Consequence(this);
+                Console.ReadLine();
+            }
+        }
+    }
 
     public void PrintZoo()
     {

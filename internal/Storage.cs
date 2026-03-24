@@ -1,6 +1,6 @@
 
 
-class Storage
+public class Storage
 {
     public float _actualSiloStorage;
     public float _actualColdChamberStorage;
