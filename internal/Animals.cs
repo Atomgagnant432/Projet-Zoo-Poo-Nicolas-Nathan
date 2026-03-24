@@ -91,11 +91,12 @@ class Tiger : Animals
     public override void AnimalsNextTurn(Month month)
     {
         Age += 1f;
-        ActualHunger += 10f;        // l'animal a plus faim chaque tour
+        ActualHunger += 50f;        // l'animal a plus faim chaque tour
 
         if (ActualHunger >= MaxHunger)
         {
             ActualHunger = MaxHunger; // on plafonne à MaxHunger
+            Alive = false;
         }
         if (Age > LifeTime)
         {
@@ -150,11 +151,12 @@ class Eagle : Animals
     public override void AnimalsNextTurn(Month month)
     {
         Age += 1f;
-        ActualHunger += 10f;        // l'animal a plus faim chaque tour
+        ActualHunger += 100f;        // l'animal a plus faim chaque tour
 
         if (ActualHunger >= MaxHunger)
         {
             ActualHunger = MaxHunger; // on plafonne à MaxHunger
+            Alive = false;
         }
         if (Age > LifeTime)
         {
@@ -185,11 +187,12 @@ class Chicken : Animals
     public override void AnimalsNextTurn(Month month)
     {
         Age += 1f;
-        ActualHunger += 10f;        // l'animal a plus faim chaque tour
+        ActualHunger += 100f;        // l'animal a plus faim chaque tour
 
         if (ActualHunger >= MaxHunger)
         {
             ActualHunger = MaxHunger; // on plafonne à MaxHunger
+            Alive = false;
         }
         if (Age > LifeTime)
         {
