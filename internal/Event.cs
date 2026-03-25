@@ -9,16 +9,19 @@ public class Event
         Proba = proba;
     }
 
+    // Attributes a consequence to an event
     public virtual void Consequence(Zoo zoo)
     {
         
     }
 
+    // Get the event probability
     public float GetProba()
     {
         return Proba;
     }
 
+    // Get the event type 
     public string GetEventType()
     {
         return Type;

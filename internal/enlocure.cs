@@ -27,6 +27,7 @@ public class Enclosure
     _residents = new List<Animals>();
   }
 
+    // Allow the player to assign an animal an enclosure
   public bool AddAnimalToEnclosure(Animals animal)
     {
         // On vérifie que l'espèce correspond
@@ -47,7 +48,7 @@ public class Enclosure
         return true;
     }
 
-    
+    // Check if the an enclosure is overcrowded and has 50% chance to kill an animal if is it 
     public void OverCrowd()
     {
 
@@ -68,6 +69,7 @@ public class Enclosure
         }
     }
 
+    // Print the infos of and enclosure
     public void PrintInfos()
     {
         Console.WriteLine($"\nEnclos {IdEnclosure} ({EnclosureType})");

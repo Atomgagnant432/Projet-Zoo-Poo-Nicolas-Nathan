@@ -38,15 +38,18 @@ public class Animals
 
     }
 
+    // Allow the player the choose the sexe of the animal he buy 
     public virtual string ChooseSexe()
     {
         return "";
     }
 
+    // Increase the age of the animal and check if he is still alive, change the selling price depending on the age 
     public virtual void AnimalsNextTurn(Month month)
     {
         
     }
+    // Feed the animal a the end of the month 
     public virtual void FeedAnimals(Zoo _zoo, Month month)
     {
     }

@@ -10,6 +10,7 @@ public class Zoo
     public List<Enclosure> _enclosures = new List<Enclosure>();
     public Storage _storage;
 
+    // Check if the animal is alive, if he is it feed him. Add the protected animals subventions 
     public void NextTurn(int numeroTour)
     {
         Month month = Month.GetCurrentMonth(numeroTour);
@@ -74,7 +75,7 @@ public class Zoo
         _animals = new List<Animals>();
     }
 
-
+    // Check if an animal is dead 
     public bool CheckAnimalDeath(Animals animal)
     {
         if (!animal.Alive && animal.ActualHunger == animal.MaxHunger)
@@ -95,7 +96,7 @@ public class Zoo
         }
     }
 
-
+    // Trigger a random event from a list of event
     public void TriggerRandomEvent()
     {
         List<Event> Events = new List<Event>()
@@ -166,7 +167,8 @@ public class Zoo
     {
         _storage.AddMeat(amount);
     }
-
+    
+    // Try to pay an amount, return false if not enough money
     public bool Pay(float amount)
     {
         if (_money >= amount)
@@ -186,11 +188,13 @@ public class Zoo
         
     }
 
+    // Add a new enclosure to the zoo
     public void AddEnclosure(Enclosure enclosure)
     {
         _enclosures.Add(enclosure); 
     }
 
+    // Add a new animal to the zoo
     public void AddAnimal(Animals animal)
     {
         _animals.Add(animal);
@@ -226,6 +230,7 @@ public class Zoo
         Console.Write($"ID : {enclosure.IdEnclosure}, type : {enclosure.EnclosureType}, resident actuel : {enclosure.CurrentResident}/{enclosure.MaxResident}. Prix de vente {enclosure.SellingPriceEnclosure}€\n");
     }
 
+    // Let the player choose an enclosure for a given animal
     public bool ChooseEnclosure(Animals NewAnimal)
     {
         Console.WriteLine("\n=== Dans quel Enclos voulez-vous mettre votre animal ? ===\n");
@@ -264,6 +269,8 @@ public class Zoo
         return _enclosures[IntChoice-1].AddAnimalToEnclosure(NewAnimal);
 
     }
+
+    // Let the player choose an animal from the zoo (or return null)
     public Animals? ChooseAnimal()
     {
         PrintZooAnimals();
@@ -301,7 +308,7 @@ public class Zoo
         return _animals[IntChoice-1];
     }
 
-
+    // Let the player choose an empty enclosure to sell
     public Enclosure? ChooseEnclosureToSell()
     {
         PrintZooEnclosure();
@@ -347,6 +354,8 @@ public class Zoo
         }
         return _enclosures[IntChoice-1];
     }
+
+    // Check if at least one enclosure matches the animal species
     public bool CheckEnclosure(Animals animal)
     {
         bool finded = false;

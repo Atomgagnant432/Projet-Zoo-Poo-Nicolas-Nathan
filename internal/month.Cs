@@ -4,6 +4,7 @@ public class Month
     public int NumberOfDays;  // le nombre de jour dans le moi 
     public bool HighSeason;   // la saison haute ( plus de visiteurs)
 
+    // Get the current month of the game 
     public static Month GetCurrentMonth(int numeroTour)  // voit dans quel moi le joueur est  
     {
         int monthOfYear = (numeroTour % 12) + 1;

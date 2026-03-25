@@ -13,7 +13,21 @@ Concepts POO appliqués : classes & objets, encapsulation, relations entre objet
 ---
 ## Arborescence
 ```
-a
+├── cmd/
+│   └── Program.cs
+├── internal/
+│   ├── Animals.cs
+│   ├── enlocure.cs
+│   ├── Event.cs
+│   ├── menu.cs
+│   ├── month.Cs
+│   ├── Object.cs
+│   ├── Storage.cs
+│   └── Zoo.cs
+├── .gitignore
+├── Projet-Zoo-Poo-Nicolas-Nathan.csproj
+├── Projet-Zoo-Poo-Nicolas-Nathan.sln
+└── README.md
 
 ```
 
@@ -25,9 +39,9 @@ a
 
 Entité principale du programme.
 
-**Attributs :** `budget`, `tarifAdulte`, `tarifEnfant`
+**Attributs :** `money`, `childPrice`, `adultPrice`, `animals`, `enclosures`, `storage`
 
-**Responsabilités :** gérer les finances, centraliser les animaux et habitats, coordonner les transactions.
+**Responsabilités :** gérer le budget du zoo, coordonner les tours de jeu, gérer les animaux et les enclos, appliquer les revenus (visites, subventions) et déclencher les événements aléatoires.
 
 ---
 
@@ -35,9 +49,9 @@ Entité principale du programme.
 
 Chaque animal possède des caractéristiques et des besoins propres.
 
-**Attributs :** `satiete`, `typeAlimentation`, `quantiteNourriture` , `esperanceVie`, `sexe`, `habitat`
+**Attributs :** `age`, `lifeTime`, `actualHunger`, `maxHunger`, `foodType`, `dailyFoodNeed`, `buyPrice`, `sellPrice`, `sexe`, `homeID`, `alive`
 
-**Objectifs :** simuler les besoins alimentaires et associer chaque animal à son habitat.
+**Objectifs :** gérer la vie de l’animal (vieillissement, faim, mort), adapter son prix selon l’âge et gérer son alimentation.
 
 ---
 
@@ -45,9 +59,9 @@ Chaque animal possède des caractéristiques et des besoins propres.
 
 Les habitats accueillent les animaux selon leur espèce.
 
-**Attributs :** `nbResidents`, `especeAutorisee`, `probabiliteMaladie`
+**Attributs :** `idEnclosure`, `enclosureType`, `animalType`, `maxResident`, `residents`, `purchasePrice`, `sellingPrice`, `probaSick`
 
-**Objectifs :** regrouper les animaux compatibles et simuler les risques sanitaires.
+**Objectifs :** héberger les animaux compatibles, limiter le nombre de résidents, gérer le surpeuplement et ses conséquences.
 
 ---
 
@@ -55,9 +69,9 @@ Les habitats accueillent les animaux selon leur espèce.
 
 Représente la nourriture utilisée pour nourrir les animaux.
 
-**Attributs :** `type`, `prixKg`
+**Attributs :** `label`, `quantity`, `cost`
 
-**Objectif :** calculer le coût alimentaire quotidien du zoo.
+**Objectif :** permettre l’achat de nourriture et alimenter le stockage du zoo (viande ou graines).
 
 ---
 
@@ -65,9 +79,9 @@ Représente la nourriture utilisée pour nourrir les animaux.
 
 Gestion des acquisitions effectuées par le zoo.
 
-**Attributs :** `typeBien`, `cout`
+**Attributs :** `cost`, `quantity`
 
-**Exemples :** achat d'un animal, achat de nourriture, construction d'un habitat.
+**Objectifs :** vérifier les fonds disponibles, débiter le joueur et ajouter l’élément acheté (animal, nourriture ou enclos).
 
 ---
 
@@ -75,20 +89,19 @@ Gestion des acquisitions effectuées par le zoo.
 
 Gestion des cessions réalisées par le zoo.
 
-**Attributs :** `typeBien`, `cout`
+**Attributs :** `sellPrice`
 
-**Exemples :** vente d'un animal, vente d'habitat.
+**Objectifs :** permettre au joueur de vendre des animaux ou des enclos et récupérer de l’argent.
 
 ---
 
 ## Evenement
 
-création d'evenement que le joueur ne peut pas gérer, pour ne pas avoir une partie trop répétitive.
+Création d’événements aléatoires impactant la partie.
 
-**Attributs :**`typeEvent`,`proba`, 
+**Attributs :** `type`, `proba`
 
-**Exemples :** Nuisibles, Incendie, Vol, Viande avariée
-
+**Objectifs :** ajouter de l’imprévu dans le jeu en appliquant des conséquences (perte de ressources, destruction, vol, etc.).
 ---
 
 ## Téléchargement et Lancement du projet 

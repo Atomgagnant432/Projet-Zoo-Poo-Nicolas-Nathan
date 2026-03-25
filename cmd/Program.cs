@@ -1,5 +1,6 @@
 ﻿class Program
 {
+    // Choose the Zoo name with a name verification; accept numbers and symbole but no space
     static string ChooseZooName()
     {
         Console.Clear();
@@ -17,7 +18,7 @@
     }
 
 
-
+    // Starting the Zoo simulator, call the name fonction and start a little menu
     static void Main(string[] args)
     {
         PrintPrologue();
@@ -71,6 +72,8 @@
         Console.WriteLine("=====================\n");
     }
     
+
+    // Only print a small text
     static void PrintPrologue()
     {
         Console.Clear();

@@ -14,6 +14,7 @@ class Item
         
     }
 
+    // Remove money from the player and adds an item to their inventory
     public virtual void Buy(Zoo zoo)
     {
         
