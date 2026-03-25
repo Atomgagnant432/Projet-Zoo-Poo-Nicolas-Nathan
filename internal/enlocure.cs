@@ -74,6 +74,7 @@ public class Enclosure
         Console.WriteLine($"  Résidents : {CurrentResident}/{MaxResident}");
         if (Overcrowding)
             OverCrowd();
+            Console.WriteLine("\n\n**Appuyez sur Entrée pour continuer.**");
             Console.ReadLine();
     }
 }

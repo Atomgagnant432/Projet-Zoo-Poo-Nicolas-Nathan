@@ -3,7 +3,7 @@
     static string ChooseZooName()
     {
         Console.Clear();
-        Console.WriteLine("===== Bienvenue dans ce super simulateur de Zoo ! =====\n");
+        
         Console.Write("Choisissez le nom de votre Zoo : ");
         string? nomZoo = Console.ReadLine();
         Console.Clear();
@@ -20,6 +20,7 @@
 
     static void Main(string[] args)
     {
+        PrintPrologue();
         string zooName = ChooseZooName();
         Zoo zoo = new Zoo(80000,13,17,zooName);
         MenuManager menu = new MenuManager(zoo);
@@ -70,4 +71,23 @@
         Console.WriteLine("=====================\n");
     }
     
+    static void PrintPrologue()
+    {
+        Console.Clear();
+        Console.WriteLine("        ===== Bienvenue dans ce super simulateur de Zoo ! =====");
+        Console.WriteLine("\n=========================================================================");
+        Console.WriteLine("   Votre mission : accueillir, nourrir et prendre soin de vos animaux.");
+        Console.WriteLine("         Développez vos installations et créer le zoo de vos rêves.");
+        Console.WriteLine("   Gérez vos ressources avec attention pour faire prospérer votre parc.");
+        Console.WriteLine("                 Bonne chance et amusez-vous bien !");
+        Console.WriteLine("=========================================================================\n");
+
+        Console.WriteLine("**Appuyez sur Entrée pour continuer.**");
+
+        Console.ReadLine();
+
+
+    }
 }
+
+

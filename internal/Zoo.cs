@@ -13,6 +13,7 @@ public class Zoo
     public void NextTurn(int numeroTour)
     {
         Month month = Month.GetCurrentMonth(numeroTour);
+        float PreMoney = _money;
 
         foreach (Animals animal in _animals)
         {
@@ -32,14 +33,14 @@ public class Zoo
             _money += 60 * animal.DownSaisonVisit;
 
         }
+        Console.WriteLine($"\n**Vos animaux vous ont rapportez un total de {_money - PreMoney}€ ce mois ci.**\n");
 
         foreach (Enclosure enclos in _enclosures)
         {
             enclos.PrintInfos();
         }
 
-        float PreMoney = _money;
-
+        float MoneyPreSubv = _money;
         if (month.Number == 0 )
             {
                 foreach (Animals animals in _animals)
@@ -53,10 +54,10 @@ public class Zoo
                     }
                 }
             }
-            if (_money != PreMoney)
+            if (_money != MoneyPreSubv)
             {
                 Console.WriteLine("=================================================================================================");
-                Console.WriteLine($"Vous vennez de gagnez {_money - PreMoney}€, grâce aux subvention annuelle des espèces protégée ! ");
+                Console.WriteLine($"        Vous vennez de gagnez {_money - MoneyPreSubv}€, grâce aux subvention annuelle des espèces protégée ! ");
                 Console.WriteLine("=================================================================================================");
             } 
         TriggerRandomEvent();
@@ -78,13 +79,15 @@ public class Zoo
     {
         if (!animal.Alive && animal.ActualHunger == animal.MaxHunger)
         {
-            Console.WriteLine($"\nVotre animal {animal.Name} est malhereusement mort de faim a {animal.Age} mois....");
+            Console.WriteLine($"\nVotre {animal.Species} {animal.Name} est malhereusement mort de faim a {animal.Age} mois....");
             _animals.Remove(animal);
+            _enclosures[animal.HomeID-1]._residents.Remove(animal);
             return true;
         }else if (!animal.Alive)
         {
-            Console.WriteLine($"\nVotre animal {animal.Name} est malhereusement mort a {animal.Age} mois....");
+            Console.WriteLine($"\nVotre {animal.Species} {animal.Name} est malhereusement mort a {animal.Age} mois....");
             _animals.Remove(animal);
+            _enclosures[animal.HomeID-1]._residents.Remove(animal);
             return true;
         }else
         {
@@ -114,6 +117,8 @@ public class Zoo
                 Console.WriteLine($"        Événement : {events.GetType()}");
                 Console.WriteLine("====================================\n");
                 events.Consequence(this);
+
+                Console.WriteLine("\n**Appuyez sur Entrée pour continuer.**");
                 Console.ReadLine();
             }
         }
@@ -122,7 +127,7 @@ public class Zoo
     public void PrintZoo()
     {
         Console.WriteLine($"=================================================================================");
-        Console.WriteLine($"        Votre Zoo {ZooName}, vient d'être créé avec un budget initial de {_money} € ! ");
+        Console.WriteLine($"     Votre Zoo {ZooName}, vient d'être créé avec un budget initial de {_money} € ! ");
         Console.WriteLine($"=================================================================================");
         Console.WriteLine($"\nTarif enfant : {_childPrice} €\nTarif adulte : {_adultPrice} €");
         
@@ -197,7 +202,7 @@ public class Zoo
         {
              Console.Write($"{i+1}. ");
              PrintAnimals(_animals[i]);
-             Console.WriteLine("────────────────────────────────────────────────────────────────────────────────────────────");
+             Console.WriteLine("────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
         }
     }
 
@@ -207,7 +212,7 @@ public class Zoo
         {
             Console.Write($"{i+1}. ");
             PrintEnclosures(_enclosures[i]);
-            Console.WriteLine("────────────────────────────────────────────────────────────────────────────────────────────");
+            Console.WriteLine("───────────────────────────────────────────────────────────────────────────────────────");
         }
     }
 
@@ -247,10 +252,10 @@ public class Zoo
 
             if (IntChoice <= 0 || IntChoice > _enclosures.Count)
             {
-                Console.WriteLine("====================================================");
+                Console.WriteLine("====================================================================");
                 Console.WriteLine($"    Choix invalide ! L'enclos numéro {IntChoice} n'existe pas !");
                 Console.WriteLine("         Choisissez un autre enclos.");
-                Console.WriteLine("====================================================");
+                Console.WriteLine("====================================================================");
                 continue;
             }
             
@@ -284,10 +289,10 @@ public class Zoo
 
             if (IntChoice <= 0 || IntChoice > _animals.Count)
             {
-                Console.WriteLine("====================================================");
+                Console.WriteLine("====================================================================");
                 Console.WriteLine($"    Choix invalide ! L'animal numéro {IntChoice} n'existe pas !");
                 Console.WriteLine("             Choisissez un autre animal.");
-                Console.WriteLine("====================================================");
+                Console.WriteLine("====================================================================");
                 continue;
             }
             
@@ -322,19 +327,19 @@ public class Zoo
 
             if (IntChoice <= 0 || IntChoice > _enclosures.Count)
             {
-                Console.WriteLine("====================================================");
+                Console.WriteLine("====================================================================");
                 Console.WriteLine($"    Choix invalide ! L'enclos numéro {IntChoice} n'existe pas !");
                 Console.WriteLine("             Choisissez un autre enclos.");
-                Console.WriteLine("====================================================");
+                Console.WriteLine("====================================================================");
                 continue;
             }
 
             if (_enclosures[IntChoice-1]._residents.Count > 0)
             {
-                Console.WriteLine("====================================================");
+                Console.WriteLine("============================================================================");
                 Console.WriteLine($"    Choix invalide ! L'enclos numéro {IntChoice} contient des animaux !");
                 Console.WriteLine("             Vendez d'abords vos animaux.");
-                Console.WriteLine("====================================================");
+                Console.WriteLine("============================================================================");
                 continue;
             }
             

@@ -33,18 +33,30 @@ class MenuManager
                 
                 case "1" :
                     Console.Clear();
-                    Console.WriteLine("\n***Vous entrez dans le stock***\n");
+                    Console.WriteLine("\n**Vous entrez dans le stock**\n");
                     StorageMenu();
                     break;
                 case "2" :
                     Console.Clear();
                     PrintTitle("Voici tous vos habitats");
-                    _zoo.PrintZooEnclosure();
+                    if (_zoo._enclosures.Count > 0)
+                    {
+                        _zoo.PrintZooEnclosure();
+                    }else
+                    {
+                        Console.WriteLine("**Vous n'avez pas encore d'habitat.**");
+                    }
                     break;
                 case "3" :
                     Console.Clear();
                     PrintTitle("Voici tous vos animaux");
-                    _zoo.PrintZooAnimals();
+                    if (_zoo._enclosures.Count > 0)
+                    {
+                        _zoo.PrintZooAnimals();
+                    }else
+                    {
+                        Console.WriteLine("**Vous n'avez pas encore d'animaux.**");
+                    }
                     break;
                 case "4" :
                     Console.Clear();
@@ -76,12 +88,12 @@ class MenuManager
             {
                 case "1" :
                     Console.Clear();
-                    Console.WriteLine("\n***Vous entrez dans la chambre froide***\n");
+                    Console.WriteLine("\n**Vous entrez dans la chambre froide**\n");
                     ColdMenu();
                     break;
                 case "2" :
                     Console.Clear();
-                    Console.WriteLine("\n***Vous entrez dans le silo***\n");
+                    Console.WriteLine("\n**Vous entrez dans le silo**\n");
                     SiloMenu();
                     break;
                 case "3" :
@@ -450,7 +462,7 @@ public void BuyMenu()
                 case "2" :
                     BuyPrice = 100f;
                     SellPrice = 20f;
-                    Age = 480;
+                    Age = 6;
                     Sexe = "coq";
                     DailyFood = 0.18f;
                     break;
@@ -579,7 +591,7 @@ public void BuyMenu()
                 break;
             }else
             {
-                Console.WriteLine("Vous n'avez aucun animal a vendre.");
+                Console.WriteLine("\n**Vous n'avez aucun animal a vendre.**");
                 Console.ReadLine();
                 InShop = false;
                 break;
@@ -617,7 +629,7 @@ public void BuyMenu()
                 InShop = false;
             }else
             {
-                Console.WriteLine("Vous n'avez aucun enclos a vendre.");
+                Console.WriteLine("\n**Vous n'avez aucun enclos a vendre.**");
                 Console.ReadLine();
                 InShop = false;
             }

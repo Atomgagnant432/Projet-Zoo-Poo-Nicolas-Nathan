@@ -124,11 +124,11 @@ class Tiger : Animals
             {
                     ActualHunger = 0f;
                     _zoo._storage._actualColdChamberStorage -= MonthFood;
-                    Console.WriteLine($"\n{Name} vient de manger {MonthFood}kg de viandes :");
+                    Console.WriteLine($"\n{Name} vient de manger {MonthFood}kg de viandes ce mois ci.");
                     _zoo.ColdInfos();
             }else
             {
-                Console.WriteLine($"Vous n'avez plus assez de nourriture pour nourrir {Name}..");
+                Console.WriteLine($"**Vous n'avez plus assez de nourriture pour nourrir {Name}..**");
             }
         }
     }
@@ -171,7 +171,7 @@ class Eagle : Animals
     public override void AnimalsNextTurn(Month month)
     {
         Age += 1f;
-        ActualHunger += 100f;        // l'animal a plus faim chaque tour
+        ActualHunger += 50f;        // l'animal a plus faim chaque tour
 
         if (ActualHunger >= MaxHunger)
         {
@@ -201,11 +201,11 @@ class Eagle : Animals
             {
                     ActualHunger = 0f;
                     _zoo._storage._actualColdChamberStorage -= MonthFood;
-                    Console.WriteLine($"\n{Name} vient de manger {MonthFood}kg de viandes :");
+                    Console.WriteLine($"\n{Name} vient de manger {MonthFood}kg de viandes ce mois ci.");
                     _zoo.ColdInfos();
             }else
             {
-                Console.WriteLine($"Vous n'avez plus assez de nourriture pour nourrir {Name}..");
+                Console.WriteLine($"**Vous n'avez plus assez de nourriture pour nourrir {Name}..**");
             }
         }
     }
@@ -225,7 +225,7 @@ class Chicken : Animals
     public override void AnimalsNextTurn(Month month)
     {
         Age += 1f;
-        ActualHunger += 100f;        // l'animal a plus faim chaque tour
+        ActualHunger += 50f;        // l'animal a plus faim chaque tour
 
         if (ActualHunger >= MaxHunger)
         {
@@ -241,6 +241,7 @@ class Chicken : Animals
 
     public override void FeedAnimals(Zoo _zoo, Month month)
     {
+        Console.Clear();
         float MonthFood = DayliFoodNeed * month.NumberOfDays;
         if (FoodType == "Végétalien")
         {
@@ -248,11 +249,11 @@ class Chicken : Animals
             {
                     ActualHunger = 0f;
                     _zoo._storage._actualSiloStorage -= MonthFood;
-                    Console.WriteLine($"\n{Name} vient de manger {MonthFood}kg de graines :");
+                    Console.WriteLine($"\n{Name} vient de manger {MonthFood}kg de graines ce mois ci.");
                     _zoo.SiloInfos();
             }else
             {
-                Console.WriteLine($"Vous n'avez plus assez de nourriture pour nourrir {Name}...");
+                Console.WriteLine($"**Vous n'avez plus assez de nourriture pour nourrir {Name}...**");
             }
         }
     }
